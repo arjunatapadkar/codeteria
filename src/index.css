@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.gradient{
+    /* background: #C9D6FF;  */
+    /* background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);   */
+    background: linear-gradient(to bottom, #E6EAF8, #ffffff); 
+
+}
+
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+
+  .masonry { 
+    column-count: 2; 
+    column-gap: 2rem;
+}
+
+.masonry-item { 
+    break-inside: avoid;
+    margin-bottom: 2rem;
+}
