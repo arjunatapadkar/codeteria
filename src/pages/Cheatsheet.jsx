@@ -29,9 +29,8 @@ const Cheatsheet = () => {
 		<div className=" min-h-screen bg-[#F1F5F9] pt-5 ">
 			<Navbar cheats={cheats} />
 
-			{!currentCheatData ? (
-				<span className="absolute top-[50%] left-[50%] loading loading-spinner loading-lg"></span>
-			) : (
+			{currentCheatData &&(
+
 				<div className="py-0 px-12  rounded-3xl m-10">
 					<h1 className="text-center text-3xl font-semibold">
 						{currentCheatData && currentCheatData[0].name}
@@ -52,7 +51,8 @@ const Cheatsheet = () => {
 						)}
 					</div>
 				</div>
-			)}
+			)
+			}
 
             <SpecialFooter />
 		</div>

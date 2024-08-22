@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Homepage from './pages/Homepage'
 import Cheatsheet from './pages/Cheatsheet'
+import Playground from './pages/Playground'
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/cheats' element={<Cheatsheet />} />
+        {/* <Route path='/playground' element={<Playground />} /> */}
       </Routes>
     </div>
   )

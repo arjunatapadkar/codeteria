@@ -30,9 +30,6 @@ export const APIProvider = ({ children }) => {
 		}
 	};
 
-
-
-
 	// ##################################  for sections apis ##############################3
 
 	
