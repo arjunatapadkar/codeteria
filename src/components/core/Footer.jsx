@@ -1,48 +1,48 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.svg";
 
+import { FaYoutube } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
 const Footer = () => {
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 	return (
-		<div className=" -bottom-9 w-screen">
-			<footer className="footer bg-gradient-to-r from-[#6445D9] to-[#000000] text-white  flex flex-wrap md:flex-nowrap md:justify-around p-2 py-4 sm:px-10 lg:px-36">
-				<nav>
-					<h6 className="footer-title">Services</h6>
-					<a className="link link-hover">Software Developmet</a>
-					<a onClick={()=>navigate('/cheats')} className="link link-hover">Cheatsheets</a>
-					<a className="link link-hover">Guides</a>
-					<a className="link link-hover">Puzzles</a>
-				</nav>
-				<nav>
-					<h6 className="footer-title">Company</h6>
-					<a className="link link-hover">About us</a>
-					<a className="link link-hover">Contact</a>
-					{/* <a className="link link-hover">Jobs</a>
-					<a className="link link-hover">Press kit</a> */}
-				</nav>
-				<nav>
-					<h6 className="footer-title">Legal</h6>
-					<a className="link link-hover">Terms of use</a>
-					<a className="link link-hover">Privacy policy</a>
-					<a className="link link-hover">Cookie policy</a>
-				</nav>
-				<form>
-					<h6 className="footer-title">Newsletter</h6>
-					<fieldset className="form-control w-80">
-						<label className="label">
-							<span className="label-text">Enter your email address</span>
-						</label>
-						<div className="join">
-							<input
-								type="text"
-								placeholder="username@site.com"
-								className="input input-bordered join-item"
-							/>
-							<button className="btn btn-primary join-item ">Subscribe</button>
-						</div>
-					</fieldset>
-				</form>
-			</footer>
+		<div className=" shadow-sm bg-[#FAFAFBFF] py-8 flex flex-col items-center justify-center gap-8">
+			<div className="flex items-center gap-2">
+				<img className="w-[48px]" src={logo} />
+				<h2 className="text-4xl font-bold">Codeteria</h2>
+			</div>
+
+			<div className="flex flex-wrap justify-around w-full">
+				<div className=" space-y-4">
+					<h2 className="text-lg font-semibold">Product</h2>
+					<p className="text-[#323743FF] text-sm">Features</p>
+					<p className="text-[#323743FF] text-sm">Pricing</p>
+				</div>
+				<div className=" space-y-4">
+					<h2 className="text-lg font-semibold">Resources</h2>
+					<p className="text-[#323743FF] text-sm">Cheats</p>
+					<p className="text-[#323743FF] text-sm">Guides</p>
+					<p className="text-[#323743FF] text-sm">Blog</p>
+				</div>
+				<div className=" space-y-4">
+					<h2 className="text-lg font-semibold">Company</h2>
+					<p className="text-[#323743FF] text-sm">About us</p>
+					<p className="text-[#323743FF] text-sm">Contact us</p>
+				</div>
+				
+			</div>
+			<div className="mt-8 w-full flex justify-around">
+				<p> Copyright © {new Date().getFullYear()} - All right reserved by Codeteria pvt ltd </p>
+				<div className="flex gap-8 text-2xl">
+				<FaTwitter className="text-[#2EBAE8]" />
+				<FaFacebook className="text-[#2E6FE8]" />
+				<FaLinkedin className="text-[#2148A5]" />
+				<FaYoutube className="text-[#E82E2E]" />
+				</div>
+			</div>
 		</div>
 	);
 };

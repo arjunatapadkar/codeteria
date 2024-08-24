@@ -2,15 +2,18 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Homepage from './pages/Homepage'
 import Cheatsheet from './pages/Cheatsheet'
-import Playground from './pages/Playground'
+
+import Upcoming from './pages/upcoming'
+import Navbar from './components/landing page/Navbar'
 
 const App = () => {
   return (
-    <div className='  bg-[#6647DE] overflow-x-hidden scroll-smooth' >
+    <div className='   overflow-x-hidden scroll-smooth' >
+      <Navbar />
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/cheats' element={<Cheatsheet />} />
-        {/* <Route path='/playground' element={<Playground />} /> */}
+        <Route path='/upcoming' element={<Upcoming />} />
       </Routes>
     </div>
   )

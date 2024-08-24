@@ -1,49 +1,61 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import css from "../../assets/css.png";
+import js from "../../assets/js.png";
+import python from "../../assets/pythonc.png";
+import git from "../../assets/git.png";
 
 const Cheatsheets = () => {
-
 	const navigate = useNavigate();
 
 	return (
-		<div className=" space-y-10 py-10 ">
-			<div className="flex flex-wrap gap-4 sm:flex-nowrap justify-between">
-				<h1 className="text-4xl font-semibold">Trending Cheatsheets! 🔥</h1>
-                <button onClick={()=>navigate('/cheats')} className="btn btn-outline border-white text-white hover:bg-white hover:text-black hover:border-none">{"Explore More  >>"}</button>
-			</div>
-
-			<div className="flex items-center justify-center sm:items-stretch flex-wrap lg:flex-nowrap gap-10">
-				{/* card 1 */}
-				<div className="card opacity-80 hover:opacity-100  image-full w-full rounded-md overflow-hidden hover:scale-105 duration-150 shadow-xl">
-					<div className="card-body  bg-white  ">
-						<h2 className="card-title text-black">Data Structures</h2>
-
-						<p className="text-black">Queue Up for Success: Data Structures Simplified!</p>
-						<div className="card-actions justify-end">
-                        <button className="btn btn-outline text-[#714EF5] border-[#714EF5] hover:bg-[#714EF5] hover:border-none">Expore</button>
-						</div>
+		<div className="h-[500px] flex flex-col justify-center items-center gap-10">
+			<div className=" text-center text-4xl font-bold">CheatSheets</div>
+			<div className="flex flex-wrap items-center justify-center gap-5">
+				<div className=" w-[580px] border rounded-md shadow-sm flex gap-5 justify-between p-3">
+					<div className=" space-y-2">
+						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+							CSS Cheatsheet
+						</h2>
+						<p className=" text-base text-[#9095A1FF]">
+							A comprehensive guide to CSS properties and values.
+						</p>
 					</div>
+					<img src={css} className="w-[160px] h-[108px] rounded" />
 				</div>
 
-				{/* card 2 */}
-				<div className="card opacity-80 hover:opacity-100  rounded-md overflow-hidden hover:scale-105 duration-150 image-full  w-full shadow-xl">
-					<div className="card-body bg-white">
-						<h2 className="card-title text-black">MERN</h2>
-						<p className="text-black">Get MERNified: The Full-Stack Fab Four!</p>
-						<div className="card-actions justify-end">
-                        <button className="btn btn-outline text-[#714EF5] border-[#714EF5] hover:bg-[#714EF5] hover:border-none">Explore</button>
-						</div>
+				<div className=" w-[580px] border rounded-md shadow-sm flex gap-5 justify-between p-3">
+					<div className=" space-y-2">
+						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+							Javascript Cheatsheet
+						</h2>
+						<p className=" text-base text-[#9095A1FF]">
+							Quick reference for JavaScript syntax and functions.
+						</p>
 					</div>
+					<img src={js} className="w-[160px] h-[108px] rounded" />
 				</div>
-				{/* card 3 */}
-				<div className="card opacity-80 hover:opacity-100  rounded-md overflow-hidden hover:scale-105 duration-150 image-full   w-full shadow-xl">
-					<div className="card-body bg-white">
-						<h2 className="card-title text-black">Machine Learning</h2>
-						<p className="text-black">Teach Your Computer Well: Machine Learning Edition!</p>
-						<div className="card-actions justify-end">
-                        <button className="btn btn-outline text-[#714EF5] border-[#714EF5] hover:bg-[#714EF5] hover:border-none">Explore</button>
-						</div>
+				<div className=" w-[580px] border rounded-md shadow-sm flex gap-5 justify-between p-3">
+					<div className=" space-y-2">
+						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+							Git Cheatsheet
+						</h2>
+						<p className=" text-base text-[#9095A1FF]">
+							Essential Git commands for version control.
+						</p>
 					</div>
+					<img src={git} className="w-[160px] h-[108px] rounded" />
+				</div>
+				<div className=" w-[580px] border rounded-md shadow-sm flex gap-5 justify-between p-3">
+					<div className=" space-y-2">
+						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+							Python Cheatsheet
+						</h2>
+						<p className=" text-base text-[#9095A1FF]">
+							Key Python functions and libraries overview.
+						</p>
+					</div>
+					<img src={python} className="w-[160px] h-[108px] rounded" />
 				</div>
 			</div>
 		</div>

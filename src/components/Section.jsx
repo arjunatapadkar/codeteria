@@ -6,7 +6,7 @@ const Section = ({ title, code, description }) => {
 	console.log(title, code, description);
 
 	return (
-		<div className="masonry-item  px-10 py-5 space-y-3 border border-[#0056B3] bg-[#e9e5fc] duration-150  ">
+		<div className="masonry-item  px-10 py-5 space-y-3  border-[#0056B3] shadow-md  bg-white duration-150  ">
 			<h3 className=" font-bold text-md text-[#0056B3]">{title}</h3>
 			<div className=" pl-4 mockup-code  bg-[#275374] ">
 				<pre>
