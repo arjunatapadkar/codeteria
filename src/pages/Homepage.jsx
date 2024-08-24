@@ -1,7 +1,7 @@
 import React from "react";
 
 import code from "../assets/code.jpg";
-import Btn from "../components/core/btn";
+
 
 import Cheatsheets from "../components/landing page/Cheatsheets";
 import Interview from "../components/landing page/Interview";
@@ -22,13 +22,7 @@ const Homepage = () => {
 					className="absolute w-full h-full object-fill"
 					loading="lazy"
 				/>
-				{/* <div className="absolute bottom-36 left-36 space-y-4">
-					<p className="text-[#6355D8] text-xl font-bold">
-						Find curated resources to enhance your development skills and
-						knowledge.
-					</p>
-					<Btn link="" text="Explore" />
-				</div> */}
+				
 			</div>
 
 			{/* section 2    */}

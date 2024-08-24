@@ -1,6 +1,6 @@
 import React from "react";
 import css from "../../assets/css.png";
-import sys from "../../assets/sys.jfif";
+import sys from "../../assets/sys.png";
 import java from "../../assets/java.png";
 import cpp from "../../assets/cpp.png";
 import algo from "../../assets/algo.png";
