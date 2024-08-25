@@ -9,10 +9,10 @@ const Project = () => {
 	// const navigate = useNavigate();
 
 	return (
-		<div className="h-[500px] flex flex-col justify-center items-center gap-10">
+		<div className="lg:h-[500px] mt-10 lg:mt-0 flex flex-col justify-center items-center gap-4 lg:gap-10">
 			<div className=" text-center text-4xl font-bold">Project Guides</div>
 			<div className="flex flex-wrap items-center justify-center gap-5">
-				<div className=" w-[580px] border rounded-md shadow-sm flex  justify-between p-3">
+				<div className="  lg:w-[580px] w-[90%] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2 w-[370px]">
 						<h2 className="text-xl font-semibold text-[#171A1FFF]">
 							Full Stack
@@ -25,7 +25,7 @@ const Project = () => {
 					<img src={full} className="w-[160px] h-[108px] rounded" />
 				</div>
 
-				<div className=" w-[580px] border rounded-md shadow-sm flex gap-5 justify-between p-3">
+				<div className=" lg:w-[580px] w-[90%] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2 w-[370px]">
 						<h2 className="text-xl font-semibold text-[#171A1FFF]">
 							Frontend Dev
@@ -37,7 +37,7 @@ const Project = () => {
 					</div>
 					<img src={front} className="w-[160px] h-[108px] rounded" />
 				</div>
-				<div className=" w-[580px] border rounded-md shadow-sm flex gap-5 justify-between p-3">
+				<div className="  lg:w-[580px] w-[90%] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2 w-[370px]">
 						<h2 className="text-xl font-semibold text-[#171A1FFF]">
 							Machine Learning
@@ -49,7 +49,7 @@ const Project = () => {
 					</div>
 					<img src={ml} className="w-[160px] h-[108px] rounded" />
 				</div>
-				<div className=" w-[580px] border rounded-md shadow-sm flex gap-5 justify-between p-3">
+				<div className="  lg:w-[580px] w-[90%] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2 w-[370px]">
 						<h2 className="text-xl font-semibold text-[#171A1FFF]">
 							Data Science

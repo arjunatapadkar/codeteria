@@ -16,10 +16,10 @@ const Homepage = () => {
 			{/* <Navbar /> */}
 
 			{/* section 1 */}
-			<div className="relative h-[640px] overflow-hidden ">
+			<div className="relative h-full lg:h-[640px] overflow-hidden ">
 				<img
 					src={code}
-					className="absolute w-full h-full object-fill"
+					className=" w-full h-full object-contain lg:object-fill"
 					loading="lazy"
 				/>
 				

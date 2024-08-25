@@ -8,7 +8,7 @@ import algo from "../../assets/algo.png";
 
 const Interview = () => {
 	return (
-		<div className="h-[500px] flex flex-col justify-center items-center gap-10">
+		<div className="lg:h-[500px] flex flex-col justify-center items-center mt-10 lg:mt-0 gap-4 lg:gap-10">
 			<div className=" text-center text-4xl font-bold">
 				Interview Preparation
 			</div>

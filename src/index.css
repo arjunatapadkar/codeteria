@@ -24,7 +24,7 @@
   }
 
 
-  .masonry { 
+.masonry { 
     column-count: 2; 
     column-gap: 2rem;
 }
@@ -32,4 +32,10 @@
 .masonry-item { 
     break-inside: avoid;
     margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .masonry {
+      column-count: 1;
+  }
 }

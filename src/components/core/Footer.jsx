@@ -34,7 +34,7 @@ const Footer = () => {
 				</div>
 				
 			</div>
-			<div className="mt-8 w-full flex justify-around">
+			<div className="mt-8 w-full flex lg:flex-row flex-col items-center gap-4 justify-around">
 				<p> Copyright © {new Date().getFullYear()} - All right reserved by Codeteria pvt ltd </p>
 				<div className="flex gap-8 text-2xl">
 				<FaTwitter className="text-[#2EBAE8]" />

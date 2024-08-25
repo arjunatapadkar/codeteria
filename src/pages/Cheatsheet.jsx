@@ -26,16 +26,16 @@ const Cheatsheet = () => {
 	const sectionData = currentCheatData && currentCheatData[0].Section;
 
 	return (
-		<div className=" min-h-screen bg-[#F1F5F9] pt-5 ">
+		<div className=" min-h-screen bg-[#F1F5F9] lg:pt-5 ">
 			<Navbar cheats={cheats} />
 
 			{currentCheatData &&(
 
-				<div className="py-0 px-12  rounded-3xl m-10">
+				<div className="py-0 lg:px-12 m-3 lg:m-10">
 					<h1 className="text-center text-3xl font-semibold">
 						{currentCheatData && currentCheatData[0].name}
 					</h1>
-					<div className="masonry mt-10 scroll-smooth ">
+					<div className="masonry mt-5 lg:mt-10 scroll-smooth">
 						{sectionData.length == 0 ? (
 							<div className="text-3xl text-center py-56">
 								Coming Soon........ Stay Tuned!🚀{" "}

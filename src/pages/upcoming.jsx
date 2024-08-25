@@ -15,7 +15,7 @@ const Upcoming = () => {
             <div className="relative h-[600px] overflow-hidden ">
 				<img
 					src={logo}
-					className="absolute w-full h-full object-cover "
+					className="lg:absolute hidden w-full h-full object-cover "
 					loading="lazy"
 				/>
 				<div className="flex items-center justify-center flex-col h-full space-y-4">
