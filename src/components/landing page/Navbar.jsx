@@ -23,7 +23,7 @@ const Navbar = () => {
 						</li>
 						<li>
 							<Link
-								to="/upcoming"
+								to="/interview"
 								className="text-[#565D6DFF] hover:text-[#6355D8FF]  duration-150"
 							>
 								Interview Prep
@@ -68,7 +68,7 @@ const Navbar = () => {
 							Cheatsheets
 						</Link>
 						<Link
-							to="/upcoming"
+							to="/interview"
 							className="text-[#565D6DFF] hover:text-[#6355D8FF]  duration-150"
 						>
 							Interview Prep
