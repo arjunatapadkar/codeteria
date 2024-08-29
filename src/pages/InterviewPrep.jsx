@@ -9,7 +9,7 @@ const data = [
 		title: "Machine Coding",
 		desc: "Understand and solve real-world problems by implementing solutions in code.",
 		image: <FaCode />,
-        path: "/upcoming"
+        path: "/machinecoding"
 	},
 	{
 		title: "System Design",

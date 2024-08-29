@@ -12,7 +12,7 @@ import Footer from "../components/core/Footer";
 
 const Homepage = () => {
 	return (
-		<div className="w-full h-full">
+		<div className="w-full h-full space-y-3">
 			{/* <Navbar /> */}
 
 			{/* section 1 */}

@@ -2,8 +2,10 @@ import React from "react";
 import Footer from "../components/core/Footer";
 import logo from "../assets/logo.svg"
 import Btn from "../components/core/btn";
+import { useNavigate } from "react-router-dom";
 
 const Upcoming = () => {
+	const navigate = useNavigate()
 	return (
 		<div className=" ">
 			{/* <div className=" py-5 px-5">
@@ -26,7 +28,7 @@ const Upcoming = () => {
 
                     Stay ahead with Codeteria updates
 					</p>
-					<Btn link="" text="Explore" />
+					<button className="bg-[#5039b8] px-8 text-lg py-1 text-white rounded-full" onClick={()=>navigate(-1)} >Back</button>
 				</div>
 			</div>
 

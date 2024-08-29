@@ -9,6 +9,7 @@ export const APIProvider = ({ children }) => {
 	const [error, setError] = useState(null);
 	const [currentCheat, setCurrentCheat] = useState();
 	const [allCheats, setAllCheats] = useState();
+	const [problems, setAllProblems] = useState();
 	const url = import.meta.env.VITE_BASE_URL;
 
 	// ################################### for cheats api ####################################
@@ -17,7 +18,7 @@ export const APIProvider = ({ children }) => {
 		setLoading(true);
 		try {
 			const response = await axios.get(`${url}/cheat`);
-		
+
 			setLoading(false);
 
 			setAllCheats(response.data);
@@ -30,9 +31,21 @@ export const APIProvider = ({ children }) => {
 		}
 	};
 
-	// ##################################  for sections apis ##############################3
+	// ##################################  for machine coding round ##############################3
 
-	
+	const getAllProblems = async () => {
+		setLoading(true);
+		try {
+			const response = await axios.get(`${url}/challenge`);
+			setLoading(false);
+			setAllProblems(response.data);
+			console.log(response.data);
+			return response.data;
+		} catch (error) {
+			setLoading(false);
+			setError(error);
+		}
+	};
 
 	return (
 		<APIContext.Provider
@@ -48,7 +61,9 @@ export const APIProvider = ({ children }) => {
 				setAllCheats,
 
 				getAllCheats,
-				
+				getAllProblems,
+				problems,
+				setAllProblems,
 			}}
 		>
 			{children}
