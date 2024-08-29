@@ -55,7 +55,7 @@ const Cheatsheets = () => {
 							Key Python functions and libraries overview.
 						</p>
 					</div>
-					<img src={python} className="w-[160px]  rounded" />
+					<img src={python} className="w-[160px] h-[108px]  rounded" />
 				</div>
 			</div>
 		</div>
