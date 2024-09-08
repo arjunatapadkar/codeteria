@@ -2,17 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import { HiMenuAlt1 } from "react-icons/hi";
-
+import { MdDarkMode } from "react-icons/md";
+import { CiLight } from "react-icons/ci";
+import { useAPI } from "../../context/apiContext";
 const Navbar = () => {
+	const {dark, setDark} = useAPI();
 	return (
-		<div className="">
+		<div className={`${dark? "bg-[#0F172A]"  : "" }`}>
 			{/* mobile */}
-			<div className="navbar flex justify-between items-center lg:hidden">
+			<div className={`  navbar flex justify-between items-center lg:hidden`}>
 				<details className="dropdown">
-					<summary className="btn bg-white m-1">
+					<summary className={`${dark ? "bg-[#0F172A] text-white" : "" } btn bg-white m-1`}>
 						<HiMenuAlt1 className="text-3xl" />
 					</summary>
-					<ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow text-lg font-bold">
+					<ul className={`menu ${dark ? "bg-[#0F172A] text-white" : "" }  dropdown-content bg-base-100 rounded-box z-[50] w-52 p-2 shadow text-lg font-bold`}>
 						<li>
 							<Link
 								to="/cheats"
@@ -47,6 +50,11 @@ const Navbar = () => {
 						</li>
 					</ul>
 				</details>
+
+				<button onClick={() => setDark(!dark)} className="text-3xl ">
+					{dark ? <CiLight className="" /> : <MdDarkMode />}
+				</button>
+
 				<Link to="/" className="flex items-center">
 					<img src={logo} loading="lazy" className="w-[50px]" />
 					<span className="text-3xl pl-2 font-bold">Codeteria</span>
@@ -94,8 +102,8 @@ const Navbar = () => {
 					</div>
 				</div>
 				<div>
-					<button className=" px-8 text-xl text-[#6355D8FF] font-semibold hover:text-[#4D3ED3FF]  border-2 border-[#6355D8FF] rounded-md">
-						Get Started
+					<button onClick={() => setDark(!dark)} className="text-3xl ">
+						{dark ? <CiLight className="text-white" /> : <MdDarkMode />}
 					</button>
 				</div>
 			</div>

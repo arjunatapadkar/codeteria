@@ -1,8 +1,9 @@
 import React from "react";
-import Footer from "../components/core/Footer";
-import IntSection from "../components/IntSection";
+import Footer from "../../components/core/Footer";
+import IntSection from "../../components/IntSection";
 // import { FaReact } from "react-icons/fa6";
 import { FaReact, FaDatabase, FaCode, FaJava, FaPython, FaCloud } from 'react-icons/fa';
+import { useAPI } from "../../context/apiContext";
 
 const data = [
 	{
@@ -91,8 +92,11 @@ const data = [
 // ];
 
 const InterviewPrep = () => {
+
+	const {dark} = useAPI()
+
 	return (
-		<div className=" min-h-screen bg-[#F1F5F9] flex flex-col justify-between ">
+		<div className={`${dark? "": "bg-[#F1F5F9] "} min-h-screen  flex flex-col justify-between `}>
 			<div className="flex flex-wrap justify-center gap-10 py-16">
 				{data.map((card, index) => (
 					<IntSection card={card} key={index} />

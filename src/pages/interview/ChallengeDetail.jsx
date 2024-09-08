@@ -1,14 +1,14 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAPI } from "../context/apiContext";
-import Loading from "../components/core/Loading";
-import SpecialFooter from "../components/core/SpecialFooter";
+import { useAPI } from "../../context/apiContext";
+import Loading from "../../components/core/Loading";
+import SpecialFooter from "../../components/core/SpecialFooter";
 import { VscDebugBreakpointLog } from "react-icons/vsc";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
 const ChallengeDetail = () => {
 	const { id } = useParams();
-	const { problems } = useAPI();
+	const { problems,dark } = useAPI();
 
 	const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const ChallengeDetail = () => {
 	if (!challenge) return <Loading />;
 
 	return (
-		<div className="bg-slate-100 w-full h-full flex flex-col justify-between items-center">
+		<div className={` ${dark? "" : "bg-slate-100 "} w-full h-full flex flex-col justify-between items-center`}>
 			<button
 				onClick={() => navigate(-1)}
 				className=" rounded-full border border-slate-400 text-[#5577ef] hover:text-[#334fb2] flex items-center gap-4 font-semibold  px-10 py-2 mt-10 mx-10 self-start"

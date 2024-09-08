@@ -4,17 +4,20 @@ import css from "../../assets/css.png";
 import js from "../../assets/js.png";
 import python from "../../assets/pythonc.png";
 import git from "../../assets/git.png";
+import { useAPI } from "../../context/apiContext";
 
 const Cheatsheets = () => {
 	const navigate = useNavigate();
+
+	// const {dark} = useAPI()
 
 	return (
 		<div className="lg:h-[500px]  mt-5 lg:mt-0 flex flex-col justify-center items-center gap-4 lg:gap-10">
 			<div className=" text-center text-4xl font-bold">CheatSheets</div>
 			<div className="flex flex-col lg:flex-row flex-wrap items-center justify-center lg:gap-5 space-y-4 lg:space-y-0">
-				<div className=" lg:w-[580px] w-[90%] border rounded-md shadow-sm flex gap-5 justify-between p-3">
+				<div className={` lg:w-[580px] w-[90%] border rounded-md shadow-sm flex gap-5 justify-between p-3`}>
 					<div className=" space-y-2">
-						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+						<h2 className="text-xl font-semibold ">
 							CSS Cheatsheet
 						</h2>
 						<p className=" text-base text-[#9095A1FF]">
@@ -26,7 +29,7 @@ const Cheatsheets = () => {
 
 				<div className="  lg:w-[580px] w-[90%] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2">
-						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+						<h2 className="text-xl font-semibold ">
 							Javascript Cheatsheet
 						</h2>
 						<p className=" text-base text-[#9095A1FF]">
@@ -37,7 +40,7 @@ const Cheatsheets = () => {
 				</div>
 				<div className="  lg:w-[580px] w-[90%] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2">
-						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+						<h2 className="text-xl font-semibold ">
 							Git Cheatsheet
 						</h2>
 						<p className=" text-base text-[#9095A1FF]">
@@ -48,7 +51,7 @@ const Cheatsheets = () => {
 				</div>
 				<div className="  lg:w-[580px] w-[90%] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2">
-						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+						<h2 className="text-xl font-semibold ">
 							Python Cheatsheet
 						</h2>
 						<p className=" text-base text-[#9095A1FF]">

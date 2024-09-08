@@ -6,10 +6,12 @@ import { FaYoutube } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
+import { useAPI } from "../../context/apiContext";
 const Footer = () => {
 	const navigate = useNavigate();
+	const {dark} = useAPI()
 	return (
-		<div className=" shadow-sm bg-[#FAFAFBFF] py-8 flex flex-col items-center justify-center gap-8">
+		<div className={` ${dark?"bg-slate-900": "bg-[#FAFAFBFF]"} shadow-xl  py-8 flex flex-col items-center justify-center gap-8`}>
 			<div className="flex items-center gap-2">
 				<img className="w-[48px]" src={logo} />
 				<h2 className="text-4xl font-bold">Codeteria</h2>
@@ -18,19 +20,19 @@ const Footer = () => {
 			<div className="flex flex-wrap justify-around w-full">
 				<div className=" space-y-4">
 					<h2 className="text-lg font-semibold">Product</h2>
-					<p className="text-[#323743FF] text-sm">Features</p>
-					<p className="text-[#323743FF] text-sm">Pricing</p>
+					<p className=" text-sm">Features</p>
+					<p className=" text-sm">Pricing</p>
 				</div>
 				<div className=" space-y-4">
 					<h2 className="text-lg font-semibold">Resources</h2>
-					<p className="text-[#323743FF] text-sm">Cheats</p>
-					<p className="text-[#323743FF] text-sm">Guides</p>
-					<p className="text-[#323743FF] text-sm">Blog</p>
+					<p className=" text-sm">Cheats</p>
+					<p className=" text-sm">Guides</p>
+					<p className=" text-sm">Blog</p>
 				</div>
 				<div className=" space-y-4">
 					<h2 className="text-lg font-semibold">Company</h2>
-					<p className="text-[#323743FF] text-sm">About us</p>
-					<p className="text-[#323743FF] text-sm">Contact us</p>
+					<p className=" text-sm">About us</p>
+					<p className=" text-sm">Contact us</p>
 				</div>
 				
 			</div>

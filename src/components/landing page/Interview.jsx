@@ -15,7 +15,7 @@ const Interview = () => {
 			<div className="flex flex-wrap items-center justify-center gap-5">
 				<div className=" w-[380px] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2">
-						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+						<h2 className="text-xl font-semibold ">
 							System Design
 						</h2>
 						<p className=" text-base text-[#9095A1FF]">
@@ -26,7 +26,7 @@ const Interview = () => {
 				</div>
 				<div className=" w-[380px] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2">
-						<h2 className="text-xl font-semibold text-[#171A1FFF]">Java</h2>
+						<h2 className="text-xl font-semibold ">Java</h2>
 						<p className=" text-base text-[#9095A1FF]">
 							Enhance your Java skills with in-depth interview questions.
 						</p>
@@ -35,7 +35,7 @@ const Interview = () => {
 				</div>
 				<div className=" w-[380px] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2">
-						<h2 className="text-xl font-semibold text-[#171A1FFF]">C++</h2>
+						<h2 className="text-xl font-semibold ">C++</h2>
 						<p className=" text-base text-[#9095A1FF]">
 							Ace your C++ interviews with comprehensive preparation materials.
 						</p>
@@ -44,7 +44,7 @@ const Interview = () => {
 				</div>
 				<div className=" w-[380px] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2">
-						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+						<h2 className="text-xl font-semibold ">
 							Algorithms
 						</h2>
 						<p className=" text-base text-[#9095A1FF]">
@@ -55,7 +55,7 @@ const Interview = () => {
 				</div>
 				<div className=" w-[380px] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2">
-						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+						<h2 className="text-xl font-semibold ">
 							Data Structures
 						</h2>
 						<p className=" text-base text-[#9095A1FF]">
@@ -66,7 +66,7 @@ const Interview = () => {
 				</div>
 				<div className=" w-[380px] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2">
-						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+						<h2 className="text-xl font-semibold ">
 							Databases
 						</h2>
 						<p className=" text-base text-[#9095A1FF]">

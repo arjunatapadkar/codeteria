@@ -4,6 +4,9 @@ import axios from "axios";
 const APIContext = createContext();
 
 export const APIProvider = ({ children }) => {
+
+	const [dark, setDark] = useState(true);
+
 	const [count, setCount] = useState(0);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
@@ -64,6 +67,7 @@ export const APIProvider = ({ children }) => {
 				getAllProblems,
 				problems,
 				setAllProblems,
+				dark, setDark
 			}}
 		>
 			{children}

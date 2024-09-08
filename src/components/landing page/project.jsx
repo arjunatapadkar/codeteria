@@ -14,7 +14,7 @@ const Project = () => {
 			<div className="flex flex-wrap items-center justify-center gap-5">
 				<div className="  lg:w-[580px] w-[90%] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2 w-[370px]">
-						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+						<h2 className="text-xl font-semibold ">
 							Full Stack
 						</h2>
 						<p className=" text-base text-[#9095A1FF]">
@@ -27,7 +27,7 @@ const Project = () => {
 
 				<div className=" lg:w-[580px] w-[90%] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2 w-[370px]">
-						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+						<h2 className="text-xl font-semibold ">
 							Frontend Dev
 						</h2>
 						<p className=" text-base text-[#9095A1FF]">
@@ -39,7 +39,7 @@ const Project = () => {
 				</div>
 				<div className="  lg:w-[580px] w-[90%] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2 w-[370px]">
-						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+						<h2 className="text-xl font-semibold ">
 							Machine Learning
 						</h2>
 						<p className=" text-base text-[#9095A1FF]">
@@ -51,7 +51,7 @@ const Project = () => {
 				</div>
 				<div className="  lg:w-[580px] w-[90%] border rounded-md shadow-sm flex gap-5 justify-between p-3">
 					<div className=" space-y-2 w-[370px]">
-						<h2 className="text-xl font-semibold text-[#171A1FFF]">
+						<h2 className="text-xl font-semibold ">
 							Data Science
 						</h2>
 						<p className=" text-base text-[#9095A1FF]">

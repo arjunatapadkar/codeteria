@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../components/core/Navbar";
+import Navbar from "../../components/core/Navbar";
 import axios from "axios";
-import { useAPI } from "../context/apiContext";
-import SpecialFooter from "../components/core/SpecialFooter";
+import { useAPI } from "../../context/apiContext";
+import SpecialFooter from "../../components/core/SpecialFooter";
 
-import Section from "../components/Section";
+import Section from "../../components/Section";
 
 const Cheatsheet = () => {
-	const { currentCheat, setCurrentCheat, getAllCheats } = useAPI();
+	const { dark, currentCheat, setCurrentCheat, getAllCheats } = useAPI();
 	const [cheats, setCheats] = useState();
+	
 
 	useEffect(() => {
 		const func = async () => {
@@ -26,7 +27,7 @@ const Cheatsheet = () => {
 	const sectionData = currentCheatData && currentCheatData[0].Section;
 
 	return (
-		<div className=" min-h-screen bg-[#F1F5F9] lg:pt-5 ">
+		<div className={ ` ${dark? "bg-[#0F111D]" : "bg-[#F1F5F9] " } min-h-screen ` }>
 			<Navbar cheats={cheats} />
 
 			{currentCheatData &&(
