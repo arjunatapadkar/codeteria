@@ -5,7 +5,7 @@ const APIContext = createContext();
 
 export const APIProvider = ({ children }) => {
 
-	const [dark, setDark] = useState(true);
+	const [dark, setDark] = useState(false);
 
 	const [count, setCount] = useState(0);
 	const [loading, setLoading] = useState(false);
