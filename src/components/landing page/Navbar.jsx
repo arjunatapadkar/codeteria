@@ -48,7 +48,7 @@ const Navbar = () => {
 						</li>
 						<li>
 							<Link
-								to="/upcoming"
+								to="/product"
 								className=" hover:text-[#6355D8FF]  duration-150"
 							>
 								Products
