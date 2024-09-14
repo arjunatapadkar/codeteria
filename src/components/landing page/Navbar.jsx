@@ -103,7 +103,7 @@ const Navbar = () => {
 						Project Guides
 					</Link>
 					<Link
-						to="/upcoming"
+						to="/product"
 						className="hover:text-indigo-600 transition-colors"
 					>
 						Products

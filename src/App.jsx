@@ -12,6 +12,7 @@ import MachineCoding from "./pages/interview/machineCoding";
 import ChallengeDetail from "./pages/interview/ChallengeDetail";
 import { useAPI } from "./context/apiContext";
 import Chat from "./components/chatbot/Chat";
+import Product from "./pages/products/product";
 
 const App = () => {
 	const { dark } = useAPI();
@@ -32,6 +33,7 @@ const App = () => {
 				<Route path="/upcoming" element={<Upcoming />} />
 				<Route path="/machinecoding" element={<MachineCoding />} />
 				<Route path="/challenge/:id" element={<ChallengeDetail />} />
+				<Route path="/product" element={<Product />} />
 
 				{/* page not found */}
 				<Route path="*" element={<ErrorPage />} />
