@@ -77,10 +77,10 @@ const Product = () => {
 							</a>
 						</motion.div>
 					</AnimatePresence>
-
+                    
 					<button
 						onClick={prevProduct}
-						className={` ${dark? "bg-slate-700" : "bg-white"} absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-12  rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors`}
+						className={` ${dark? "bg-slate-700" : "bg-white"} absolute -bottom-44 lg:bottom-14 left-1/3 lg:left-0 lg:top-1/2 transform -translate-y-1/2 -translate-x-12  rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors`}
 						aria-label="Previous product"
 					>
 						<ChevronLeft className="h-6 w-6" />
@@ -88,16 +88,16 @@ const Product = () => {
 
 					<button
 						onClick={nextProduct}
-						className={`${dark? "bg-slate-700" : "bg-white"} absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-12  rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors`}
+						className={`${dark? "bg-slate-700" : "bg-white"} absolute -bottom-44 lg:bottom-14 right-1/3 lg:right-0 lg:top-1/2 transform -translate-y-1/2 translate-x-12  rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors`}
 						aria-label="Next product"
 					>
 						<ChevronRight className="h-6 w-6" />
 					</button>
 				</div>
 
-				<div className="mt-12 text-center">
+				<div className="mt-52 lg:mt-12 text-center">
 					<p className="text-gray-600">
-						Swipe or use arrow buttons to explore our products
+						Use arrow buttons to explore our products
 					</p>
 				</div>
 			</main>
