@@ -30,7 +30,7 @@ const ChallengeDetail = () => {
 		<div
 			className={` ${
 				dark ? "" : "bg-gray-100 "
-			} w-full h-full flex flex-col justify-between items-center`}
+			} w-full h-full flex flex-col justify-between items-center `}
 		>
 			<button
 				onClick={() => navigate(-1)}
@@ -39,7 +39,7 @@ const ChallengeDetail = () => {
 				<FaArrowLeftLong />
 				Back
 			</button>
-			<div className=" max-w-[380px] lg:max-w-[1000px] lg:min-h-max space-y-8 lg:flex flex-col lg:items-center justify-center  lg:my-12 py-10  ">
+			<div className=" px-3 lg:px-0 max-w-[380px] lg:max-w-[1000px] lg:min-h-max space-y-8 lg:flex flex-col lg:items-center justify-center  lg:my-12 py-10  ">
 				<h1 className="self-start text-3xl font-bold ">{challenge[0].title}</h1>
 				<p className=" text-lg">{challenge[0].problemStatement}</p>
 

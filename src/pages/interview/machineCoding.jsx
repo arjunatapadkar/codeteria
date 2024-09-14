@@ -59,14 +59,14 @@ const MachineCoding = () => {
 				</h1>
 			</motion.div>
 
-			<div className="flex flex-wrap items-stretch gap-10 justify-center  ">
+			<div className="flex flex-col lg:flex-row flex-wrap items-stretch gap-10 justify-center  ">
 				{problems.allChallenges.map((challenge, index) => (
 					<motion.div
 						key={problems.title}
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5, delay: index * 0.1 }}
-						className={`${dark? "bg-gray-800 " : "bg-white"} rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 w-1/3`}
+						className={`${dark? "bg-gray-800 " : "bg-white"} rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 w-full lg:w-1/3`}
 					>
 						<div
 							className="p-6 space-y-4"
