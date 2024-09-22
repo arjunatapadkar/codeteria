@@ -67,9 +67,10 @@ const Homepage = () => {
 	useEffect(() => {
 		controls.start({
 			background: [
-				"linear-gradient(45deg, #3A1C71, #D76D77)",
-				"linear-gradient(45deg, #D76D77, #FFAF7B)",
-				"linear-gradient(45deg, #FFAF7B, #3A1C71)",
+				// "linear-gradient(45deg, #3A1C71, #D76D77)",
+				// "linear-gradient(45deg, #D76D77, #FFAF7B)",
+				// "linear-gradient(45deg, #FFAF7B, #3A1C71)",
+				"linear-gradient(45deg, #3A1C71, #3A1C71)",
 			],
 			transition: {
 				duration: 5,
