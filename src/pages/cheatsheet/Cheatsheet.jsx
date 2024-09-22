@@ -5,6 +5,7 @@ import { useAPI } from "../../context/apiContext";
 import SpecialFooter from "../../components/core/SpecialFooter";
 
 import Section from "../../components/Section";
+import Navbarm from "../../components/landing page/Navbarm";
 
 const Cheatsheet = () => {
 	const { dark, currentCheat, setCurrentCheat, getAllCheats } = useAPI();
@@ -33,6 +34,7 @@ const Cheatsheet = () => {
 					: "bg-gradient-to-br from-indigo-100 to-purple-100 "
 			} min-h-screen `}
 		>
+			<Navbarm />
 			<Navbar cheats={cheats} />
 
 			{currentCheatData && (

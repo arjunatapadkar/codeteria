@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, ExternalLink } from "lucide-react";
 import SpecialFooter from "../../components/core/SpecialFooter";
 import { useAPI } from "../../context/apiContext";
+import Navbarm from "../../components/landing page/Navbarm";
 
 const Product = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -40,6 +41,7 @@ const Product = () => {
 
 	return (
 		<div className="flex flex-col h-[90vh] justify-between">
+			<Navbarm /> 
 			<main className="flex-grow container mx-auto px-4 py-12">
 				<motion.h2
 					initial={{ opacity: 0, y: 20 }}

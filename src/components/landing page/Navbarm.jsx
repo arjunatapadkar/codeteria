@@ -5,7 +5,7 @@ import { HiMenuAlt1 } from "react-icons/hi";
 import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
 import { useAPI } from "../../context/apiContext";
-const Navbar = () => {
+const Navbarm = () => {
 	const { dark, setDark } = useAPI();
 	return (
 		<div className={`${dark ? "dark" : ""}`}>
@@ -114,11 +114,13 @@ const Navbar = () => {
 					>
 						{dark ? <CiLight className="" size={25} /> : <MdDarkMode className=" " size={25}  />}
 					</button>
+
+
 				</div>
 			</nav>
 		</div>
 	);
 };
 
-export default Navbar;
+export default Navbarm;
 

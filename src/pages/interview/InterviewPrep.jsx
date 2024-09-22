@@ -4,6 +4,7 @@ import IntSection from "../../components/IntSection";
 // import { FaReact } from "react-icons/fa6";
 import { FaReact, FaDatabase, FaCode, FaJava, FaPython, FaCloud } from 'react-icons/fa';
 import { useAPI } from "../../context/apiContext";
+import Navbarm from "../../components/landing page/Navbarm";
 
 const data = [
 	{
@@ -97,6 +98,7 @@ const InterviewPrep = () => {
 
 	return (
 		<div className={`${dark? "": "bg-[#F1F5F9] "} min-h-screen  flex flex-col justify-between `}>
+			<Navbarm />
 			<div className="flex flex-wrap justify-center gap-10 py-16">
 				{data.map((card, index) => (
 					<IntSection card={card} key={index} />
