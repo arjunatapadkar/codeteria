@@ -22,7 +22,7 @@ const App = () => {
 		<div
 			className={`${
 				dark ? "bg-[#0F111D] text-white" : ""
-			} relative min-h-screen  overflow-x-hidden scroll-smooth`}
+			} relative min-h-screen scroll-smooth`}
 		>
 			
 			<Routes>

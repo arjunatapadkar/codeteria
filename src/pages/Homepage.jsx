@@ -102,7 +102,7 @@ const Homepage = () => {
 
 	return (
 		<motion.div
-			className="min-h-screen overflow-hidden text-white  "
+			className="min-h-screen text-white"
 			animate={controls}
 		>
 			<header className="bg-black bg-opacity-30 sticky top-0 z-50 backdrop-blur-md lg:px-36">
