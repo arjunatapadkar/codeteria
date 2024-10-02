@@ -105,8 +105,8 @@ const Homepage = () => {
 			className="min-h-screen overflow-hidden text-white  "
 			animate={controls}
 		>
-			<header className="bg-black bg-opacity-30 sticky top-0 z-50 backdrop-blur-md lg:px-36">
-				<nav className="container mx-auto px-6 py-4">
+			<header className="bg-black bg-opacity-30  top-0 z-50 backdrop-blur-md lg:px-36 w-full fixed ">
+				<nav className="container  mx-auto px-6 py-4">
 					<div className="flex items-center justify-between">
 						<motion.div
 							initial={{ opacity: 0, x: -50 }}
@@ -118,7 +118,7 @@ const Homepage = () => {
 							</Link>
 						</motion.div>
 						<motion.div
-							className="hidden md:flex space-x-6"
+							className="hidden md:flex space-x-6 "
 							initial={{ opacity: 0, y: -50 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -159,7 +159,7 @@ const Homepage = () => {
 
 			<main className="container mx-auto px-5 lg:px-36 py-12">
 				<motion.section
-					className="text-center mb-20"
+					className="text-center mb-20 pt-12"
 					initial={{ opacity: 0, y: 50 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.8, ease: "easeOut" }}
