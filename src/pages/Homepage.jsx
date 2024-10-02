@@ -13,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const codeSnippets = [
 	{
-		language: "Python",
+		language: "python",
 		code: `def fibonacci(n):
 	  if n <= 1:
 		  return n
@@ -23,7 +23,7 @@ const codeSnippets = [
 		output: "55",
 	},
 	{
-		language: "JavaScript",
+		language: "javascript",
 		code: `const quickSort = arr => {
 	if (arr.length <= 1) return arr;
 	const pivot = arr[arr.length - 1];
@@ -36,7 +36,7 @@ const codeSnippets = [
 		output: "[1, 1, 2, 3, 6, 8, 10]",
 	},
 	{
-		language: "Rust",
+		language: "rust",
 		code: `fn is_prime(n: u32) -> bool {
 	  if n <= 1 {
 		  return false;
@@ -196,7 +196,7 @@ const Homepage = () => {
 							</div>
 						</div>
 						<div>
-							<div className="flex justify-center items-center" style="justify-content: space-between; width: 205px;  margin: 2px auto;">
+							<div className="flex justify-center gap-10	 items-center mb-4">
 								<button
 									onClick={prevSnippet}
 									variant="outline"
