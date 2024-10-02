@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
-
 import Upcoming from "./pages/upcoming";
 import ErrorPage from "./pages/ErrorPage";
-
 import InterviewPrep from "./pages/interview/InterviewPrep";
 import Cheatsheet from "./pages/cheatsheet/Cheatsheet";
 import MachineCoding from "./pages/interview/machineCoding";
@@ -22,7 +20,12 @@ const App = () => {
 		<div
 			className={`${
 				dark ? "bg-[#0F111D] text-white" : ""
-			} relative min-h-screen scroll-smooth`}
+			} relative min-h-screen scroll-smooth` } style={{
+				height: '100vh',
+				overflowY: 'scroll',
+				scrollbarWidth: 'thin', // For Firefox
+				scrollbarColor: 'rgba(178, 121, 216, 0.959) #2d1950',
+			  }}
 		>
 			
 			<Routes>
