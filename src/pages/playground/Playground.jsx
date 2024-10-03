@@ -6,6 +6,7 @@ const JUDGE0_API_KEY = import.meta.env.VITE_JUDGE0_API_KEY;
 
 const Playground = () => {
   const [code, setCode] = useState('');
+  const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [languages, setLanguages] = useState([]);
   const [language, setLanguage] = useState(null);
@@ -49,7 +50,7 @@ const Playground = () => {
     setIsRunning(true);
     setOutput('');
     try {
-        if (code == ''){
+        if (code === ''){
             throw Error('Your Code is Empty , Type Something and then try');
         }
 
@@ -63,7 +64,7 @@ const Playground = () => {
         body: JSON.stringify({
           language_id: language.id,
           source_code: code,
-          stdin: '',
+          stdin: input,
         }),
       });
 
@@ -122,7 +123,6 @@ const Playground = () => {
   };
 
   return (
-    <>
     <motion.div
       className="min-h-screen bg-gradient-to-br from-purple-900 to-indigo-900 text-white"
       initial={{ opacity: 0 }}
@@ -182,7 +182,7 @@ const Playground = () => {
                             setLanguage(lang);
                             setIsDropdownOpen(false);
                           }}
-                          className="block  w-full text-left px-4 py-2 text-sm text-white hover:bg-purple-700"
+                          className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-purple-700"
                           role="menuitem"
                         >
                           {lang.name}
@@ -206,10 +206,16 @@ const Playground = () => {
               </button>
             </div>
             <textarea
-              className="w-full h-96 p-4 bg-purple-800 bg-opacity-50 rounded-lg text-white resize-none focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full h-72 p-4 bg-purple-800 bg-opacity-50 rounded-lg text-white resize-none focus:outline-none focus:ring-2 focus:ring-purple-500"
               value={code}
               onChange={(e) => setCode(e.target.value)}
               placeholder="Write your code here..."
+            />
+            <textarea
+              className="w-full h-24 p-4 bg-purple-800 bg-opacity-50 rounded-lg text-white resize-none focus:outline-none focus:ring-2 focus:ring-purple-500"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Enter your program input here..."
             />
           </div>
           <div className="space-y-4">
@@ -227,7 +233,6 @@ const Playground = () => {
         </div>
       </footer>
     </motion.div>
-    </>
   );
 };
 
