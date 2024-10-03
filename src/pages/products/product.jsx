@@ -40,7 +40,7 @@ const Product = () => {
 	};
 
 	return (
-		<div className="flex flex-col h-[90vh] justify-between">
+		<div className="flex flex-col min-h-screen justify-between">
 			<Navbarm /> 
 			<main className="flex-grow container mx-auto px-4 py-12">
 				<motion.h2
