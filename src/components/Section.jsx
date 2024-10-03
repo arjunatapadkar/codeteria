@@ -40,7 +40,7 @@ const Section = ({ title, code, description, index }) => {
 				transition={{ duration: 0.3, ease: "easeInOut" }}
 				className="overflow-hidden"
 			>
-				<div className="bg-white p-6 rounded-b-lg shadow-md">
+				<div className="bg-white p-6 rounded-[20px] shadow-md mt-5">
 					<pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto">
 						<code className="text-sm text-indigo-800">{code}</code>
 					</pre>
