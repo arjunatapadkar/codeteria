@@ -82,7 +82,7 @@ const Navbarm = () => {
           className={`${
             dark
               ? "bg-purple-900"
-              : "bg-purple-900"
+              : "bg-purple-800"
           } hidden lg:flex justify-between items-center p-4 backdrop-blur-md`}
         >
           <Link to="/" className="flex items-center">
