@@ -208,7 +208,7 @@ const Homepage = () => {
           </motion.p>
         </motion.section>
 
-        <motion.section
+        {/* <motion.section
           className="mb-20 "
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -271,9 +271,68 @@ const Homepage = () => {
               </div>
             </div>
           </div>
+        </motion.section> */}
+        <motion.section
+          className="mb-20"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <div className="border rounded-xl p-8 space-y-4 bg-purple-900 bg-opacity-50 text-white overflow-hidden backdrop-blur-lg transition-all duration-500 hover:bg-gradient-to-r hover:from-purple-900 hover:via-purple-800 hover:to-purple-900 hover:shadow-xl hover:border-transparent">
+            <div>
+              <div className="text-2xl font-bold">Interactive Code Playground</div>
+              <div className="text-gray-300">Experience real-time coding with instant feedback</div>
+            </div>
+            <div>
+              <div className="flex justify-center gap-10 items-center mb-4">
+                <button
+                  onClick={prevSnippet}
+                  variant="outline"
+                  size="icon"
+                  className="text-yellow-400 border rounded-lg border-yellow-400 bg-white p-2 transition-all duration-300 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-600 hover:text-purple-900 hover:border-purple-900"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <span className="text-lg font-semibold">{codeSnippets[currentSnippet].language}</span>
+                <button
+                  onClick={nextSnippet}
+                  variant="outline"
+                  size="icon"
+                  className="text-yellow-400 border rounded-lg border-yellow-400 bg-white p-2 transition-all duration-300 hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-600 hover:text-purple-900 hover:border-purple-900"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+              <pre className="bg-purple-800 bg-opacity-50 p-4 rounded-lg overflow-x-auto transition-all duration-500 hover:bg-gradient-to-r hover:from-purple-900 hover:via-purple-900 hover:to-purple-800">
+                <code>{codeSnippets[currentSnippet].code}</code>
+              </pre>
+              <div className="mt-4 flex justify-between items-center">
+                <button
+                  onClick={runCode}
+                  disabled={isRunning}
+                  className="bg-yellow-400 text-purple-900 hover:bg-yellow-300 transition-all font-semibold duration-300 px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105"
+                >
+                  {isRunning ? "Running..." : "Run Code"}
+                </button>
+                <AnimatePresence>
+                  {output && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      className="bg-green-400 text-purple-900 p-2 rounded transition-all duration-500 hover:bg-gradient-to-r hover:from-green-400 hover:to-green-600"
+                    >
+                      Output: {output}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+          </div>
         </motion.section>
 
-        <motion.section
+
+        {/* <motion.section
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -328,6 +387,61 @@ const Homepage = () => {
               </div>
             </motion.div>
           ))}
+        </motion.section> */}
+
+        <motion.section
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          {[
+            {
+              icon: Code,
+              title: "Adaptive Challenges",
+              description:
+                "AI-powered coding challenges that evolve with your skills",
+            },
+            {
+              icon: Book,
+              title: "Interactive Tutorials",
+              description:
+                "Learn by doing with our hands-on, step-by-step guides",
+            },
+            {
+              icon: Users,
+              title: "Global Leaderboards",
+              description: "Compete with coders worldwide and climb the ranks",
+            },
+            {
+              icon: Zap,
+              title: "Real-time Collaboration",
+              description:
+                "Pair program and solve problems with peers in real-time",
+            },
+          ].map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <div className="h-full bg-purple-900 bg-opacity-50 hover:bg-gradient-to-r hover:from-purple-900 hover:via-purple-800 hover:to-purple-900 hover:bg-opacity-70 transition-all duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-xl backdrop-blur-lg border rounded-xl p-6 space-y-8">
+                <div>
+                  <motion.div
+                    whileHover={{ rotate: 360, scale: 1.2 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <feature.icon className="w-12 h-12 mb-4 text-yellow-400" />
+                  </motion.div>
+                  <div className="text-xl font-bold text-white">{feature.title}</div>
+                </div>
+                <div>
+                  <div className="text-gray-300">{feature.description}</div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </motion.section>
 
         <motion.section
@@ -354,7 +468,7 @@ const Homepage = () => {
           </motion.div>
         </motion.section>
 
-        <motion.section
+        {/* <motion.section
           className="bg-purple-900 bg-opacity-50 rounded-lg p-8 mb-20 backdrop-blur-lg"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -397,7 +511,50 @@ const Homepage = () => {
               </motion.div>
             ))}
           </div>
+        </motion.section> */}
+        <motion.section
+          className="bg-purple-900 bg-opacity-50 rounded-lg p-8 mb-20 backdrop-blur-lg"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
+        >
+          <h2 className="text-3xl font-bold mb-6 text-center">What Our Coders Say</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Alex",
+                role: "Full Stack Developer",
+                quote:
+                  "Codeteria's challenges pushed me to new heights. I landed my dream job thanks to the skills I honed here!",
+              },
+              {
+                name: "Samantha",
+                role: "AI Enthusiast",
+                quote:
+                  "The AI-powered adaptive learning on Codeteria is mind-blowing. It's like having a personal coding mentor 24/7.",
+              },
+              {
+                name: "Raj",
+                role: "Student",
+                quote:
+                  "I went from coding newbie to hackathon winner in just 6 months. Codeteria's community is incredibly supportive!",
+              },
+            ].map((testimonial, index) => (
+              <motion.div
+                key={testimonial.name}
+                className="bg-purple-800 bg-opacity-50 p-6 rounded-lg backdrop-blur-sm hover:bg-gradient-to-r hover:from-purple-800 hover:via-purple-700 hover:to-purple-800 hover:bg-opacity-70 transition-all duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-xl"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+              >
+                <p className="text-lg mb-4">"{testimonial.quote}"</p>
+                <p className="font-bold text-yellow-400">{testimonial.name}</p>
+                <p className="text-sm text-gray-300">{testimonial.role}</p>
+              </motion.div>
+            ))}
+          </div>
         </motion.section>
+
       </main>
 
       <footer className="bg-purple-900 bg-opacity-50 py-10  lg:px-36 backdrop-blur-lg">
