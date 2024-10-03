@@ -98,3 +98,35 @@
 .card:hover:after {
   content: "Open";
 }
+.marquee-container {
+  position: relative;
+  height: 160px; /* Adjust based on card height */
+  overflow: hidden; /* Hide overflow to create a clean marquee effect */
+}
+
+.marquee {
+  display: flex;
+  animation: scroll 40s linear infinite; /* Adjust duration to decrease speed */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%); /* Start off-screen right */
+  }
+  100% {
+    transform: translateX(-100%); /* End off-screen left */
+  }
+}
+
+.testimonial-card {
+max-width: 500px;
+max-height: 400px;
+  flex-shrink: 0; 
+  margin-right: 20px; /* Spacing between cards */
+  display: flex; /* Use flexbox for centering content */
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: center; /* Center content vertically */
+  padding: 16px; /* Add padding for spacing within the card */
+  box-sizing: border-box; /* Ensure padding doesn't affect overall height */
+  overflow: visible; /* Ensure content is visible */
+}
