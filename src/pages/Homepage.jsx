@@ -55,7 +55,24 @@ const codeSnippets = [
     output: "true",
   },
 ];
-
+const navs = [
+	{
+		tab: "Playground",
+		page: "/playground",
+	}, 
+	{
+		tab: "Challenges",
+		page:"/",
+	}, 
+	{
+		tab: "Community",
+		page:"/",
+	}, 
+	{
+		tab: "Pro",
+		page:"/",
+	}
+]
 const Homepage = () => {
   const [currentSnippet, setCurrentSnippet] = useState(0);
   const controls = useAnimation();
@@ -128,10 +145,11 @@ const Homepage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
-              {["Playground", "Challenges", "Community", "Pro"].map(
+              {navs.map(
                 (item, index) => (
                   <Link
                     key={item}
+		to={item.page}
                     href="#"
                     className="text-lg font-semibold text-white hover:text-yellow-300 transition-colors" // Change text color to white
                   >
@@ -139,7 +157,7 @@ const Homepage = () => {
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      {item}
+                      {item.tab}
                     </motion.span>
                   </Link>
                 )
