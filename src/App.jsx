@@ -10,6 +10,7 @@ import ChallengeDetail from "./pages/interview/ChallengeDetail";
 import { useAPI } from "./context/apiContext";
 // import Chat from "./components/chatbot/Chat";
 import Product from "./pages/products/product";
+import Playground from "./pages/playground/Playground";
 
 const App = () => {
 	const { dark } = useAPI();
@@ -36,6 +37,7 @@ const App = () => {
 				<Route path="/machinecoding" element={<MachineCoding />} />
 				<Route path="/challenge/:id" element={<ChallengeDetail />} />
 				<Route path="/product" element={<Product />} />
+				<Route path="/playground" element={<Playground />} />
 
 				{/* page not found */}
 				<Route path="*" element={<ErrorPage />} />
