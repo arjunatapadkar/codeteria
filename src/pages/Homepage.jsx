@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import logo from "../assets/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
+import { animateScroll as scroll } from 'react-scroll';
 
 const codeSnippets = [
   {
@@ -56,22 +57,22 @@ const codeSnippets = [
   },
 ];
 const navs = [
-	{
-		tab: "Playground",
-		page: "/playground",
-	}, 
-	{
-		tab: "Challenges",
-		page:"/",
-	}, 
-	{
-		tab: "Community",
-		page:"/",
-	}, 
-	{
-		tab: "Pro",
-		page:"/",
-	}
+  {
+    tab: "Playground",
+    page: "/playground",
+  },
+  {
+    tab: "Challenges",
+    page: "/",
+  },
+  {
+    tab: "Community",
+    page: "/",
+  },
+  {
+    tab: "Pro",
+    page: "/",
+  }
 ]
 const Homepage = () => {
   const [currentSnippet, setCurrentSnippet] = useState(0);
@@ -80,6 +81,10 @@ const Homepage = () => {
   const [output, setOutput] = useState("");
 
   const navigate = useNavigate();
+
+  const scrollToTop = () => {
+    window.location.reload()
+  };
 
   useEffect(() => {
     controls.start({
@@ -149,7 +154,7 @@ const Homepage = () => {
                 (item, index) => (
                   <Link
                     key={item}
-		to={item.page}
+                    to={item.page}
                     href="#"
                     className="text-lg font-semibold text-white hover:text-yellow-300 transition-colors" // Change text color to white
                   >
@@ -455,6 +460,12 @@ const Homepage = () => {
           </div>
         </div>
       </footer>
+      <button
+        onClick={scrollToTop}
+        className="bg-white opacity-60 text-black rounded-full w-12 h-12 fixed right-10 bottom-10 hover:bg-gray-500 hover:text-white transition duration-300"
+      >
+        <i className="fa-solid fa-arrow-up"></i>
+      </button>
     </motion.div>
   );
 };
