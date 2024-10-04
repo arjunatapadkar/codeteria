@@ -69,66 +69,66 @@ const Cheatsheet = () => {
           </div>
         )}
 
-        <footer className="bg-purple-900 bg-opacity-50 py-10 backdrop-blur-lg w-full ">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div>
-                <h3 className="text-xl font-bold mb-4 text-yellow-400">
-                  Codeteria
-                </h3>
-                <p className="text-gray-300">Empowering coders worldwide</p>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-4 text-yellow-400">
-                  Quick Links
-                </h3>
-                <ul className="space-y-2">
-                  {["Playground", "Challenges", "Tutorials", "Leaderboard"].map(
-                    (item) => (
-                      <li key={item}>
-                        <Link
-                          to="#"
-                          className="text-gray-300 hover:text-yellow-400 transition-colors"
-                        >
-                          {item}
-                        </Link>
-                      </li>
-                    )
-                  )}
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-4 text-yellow-400">
-                  Community
-                </h3>
-                <ul className="space-y-2">
-                  {["Forums", "Blog", "Events", "Partnerships"].map((item) => (
+          <footer className="bg-purple-900 bg-opacity-100 py-10  lg:px-36 backdrop-blur-lg">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4 text-yellow-400">
+                Codeteria
+              </h3>
+              <p className="text-gray-300">Empowering coders worldwide</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4 text-yellow-400">
+                Quick Links
+              </h3>
+              <ul className="space-y-2">
+                {["Playground", "Challenges", "Tutorials", "Leaderboard"].map(
+                  (item) => (
                     <li key={item}>
                       <Link
-                        to="#"
+                        href="#"
                         className="text-gray-300 hover:text-yellow-400 transition-colors"
                       >
                         {item}
                       </Link>
                     </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-4 text-yellow-400">
-                  Connect
-                </h3>
-                <p className="text-gray-300 mb-2">support@codeteria.com</p>
-                <div className="flex space-x-4">
-                  {/* Add social media icons here */}
-                </div>
-              </div>
+                  )
+                )}
+              </ul>
             </div>
-            <div className="mt-10 text-center text-gray-300">
-              © 2024 Codeteria. All rights reserved.
+            <div>
+              <h3 className="text-xl font-bold mb-4 text-yellow-400">
+                Community
+              </h3>
+              <ul className="space-y-2">
+                {["Forums", "Blog", "Events", "Partnerships"].map((item) => (
+                  <li key={item}>
+                    <Link
+                      href="#"
+                      className="text-gray-300 hover:text-yellow-400 transition-colors"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4 text-yellow-400">
+                Connect
+              </h3>
+              <p className="text-gray-300 mb-2">support@codeteria.com</p>
+              <div className="flex space-x-4">
+                {/* Add social media icons here */}
+              </div>
             </div>
           </div>
-        </footer>
+          <div className="mt-10 text-center text-gray-300">
+            © 2024 Codeteria. All rights reserved.
+          </div>
+        </div>
+      </footer>
       </div>
     </div>
   );

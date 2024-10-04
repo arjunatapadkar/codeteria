@@ -437,7 +437,7 @@ const Homepage = () => {
 
       </main>
 
-      <footer className="bg-purple-900 bg-opacity-50 py-10  lg:px-36 backdrop-blur-lg">
+      <footer className="bg-purple-900 bg-opacity-100 py-10  lg:px-36 backdrop-blur-lg">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
