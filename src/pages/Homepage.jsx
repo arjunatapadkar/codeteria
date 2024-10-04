@@ -15,6 +15,7 @@ import logo from "../assets/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 import MainNavbar from "../components/MainNavbar";
+import Contact from "../components/Contact";
 
 const codeSnippets = [
   {
@@ -373,6 +374,8 @@ const Homepage = () => {
           </div>
         </motion.section>
       </main>
+
+      <Contact />
 
       <footer className="bg-purple-900 bg-opacity-100 py-10  lg:px-36 backdrop-blur-lg">
         <div className="container mx-auto px-6">
