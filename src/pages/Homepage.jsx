@@ -439,9 +439,9 @@ const Homepage = () => {
       </footer>
       <button
         onClick={scrollToTop}
-        className="bg-white opacity-60 text-black rounded-full w-12 h-12 fixed right-10 bottom-10 hover:bg-gray-500 hover:text-white transition duration-300"
+        className="bg-white opacity-60 text-black rounded-full w-14 h-14 fixed right-12 bottom-24 hover:bg-gray-500 hover:text-white transition duration-300 flex items-center justify-center"
       >
-        <i className="fa-solid fa-arrow-up"></i>
+        <i className="fa-solid fa-arrow-up text-xl"></i>
       </button>
     </motion.div>
   );

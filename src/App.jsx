@@ -43,11 +43,9 @@ const App = () => {
 
           {/* page not found */}
           <Route path="*" element={<ErrorPage />} />
-        </Routes>
-
-        <Chat />
-        
+        </Routes>        
       </div>
+      <Chat />
     </>
   );
 };
