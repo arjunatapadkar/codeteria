@@ -134,13 +134,27 @@ const Playground = () => {
     }
   };
 
+  const [filteredLanguage, setFilteredLanguage] = useState(languages); // State to hold the filtered list
+
+  const handleLanguageSearch = (searchText) => {
+    console.log("searchedText", searchText);
+    searchText = searchText.trim().toLowerCase();
+
+    // Filter the languages based on the search text
+    let filteredLanguages = languages.filter((language) =>
+      language.name.toLowerCase().includes(searchText)
+    );
+
+    // Set the filtered list to the filteredLanguage state
+    setFilteredLanguage(filteredLanguages);
+  };
+
   return (
     <motion.div
-      className="min-h-screen bg-gradient-to-br from-purple-900 to-indigo-900 text-white"
+      className="min-h-screen bg-gradient-to-br from-[#2A1E2F] to-[#3D2E4A] text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
+      transition={{ duration: 0.8 }}>
       <MainNavbar />
 
       <main className="container mx-auto px-6 py-12">
@@ -148,10 +162,11 @@ const Playground = () => {
           className="mb-8"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h1 className="text-4xl font-bold mb-4">Quick Compiler</h1>
-          <p className="text-xl">
+          transition={{ duration: 0.8, delay: 0.2 }}>
+          <h1 className="text-4xl font-bold mb-4 text-[#F1C232]">
+            Quick Compiler
+          </h1>
+          <p className="text-xl text-[#D5A187]">
             Write, compile, and run your code instantly!
           </p>
         </motion.section>
@@ -160,36 +175,39 @@ const Playground = () => {
           className="grid grid-cols-1 lg:grid-cols-2 gap-8"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
+          transition={{ duration: 0.8, delay: 0.4 }}>
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <div className="relative">
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex items-center justify-between w-fit px-4 py-2 text-sm font-medium text-white bg-purple-800 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-purple-500"
-                >
+                  className="flex items-center justify-between w-fit px-4 py-2 text-sm font-medium text-white bg-[#4A3B5D] rounded-md hover:bg-[#5A4B6D] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#2A1E2F] focus:ring-[#F1C232]">
                   {language ? language.name : "Select Language"}
                   <ChevronDown className="ml-2 h-5 w-5" />
                 </button>
                 {isDropdownOpen && (
-                  <div className="absolute z-10 mt-1 w-48 rounded-md shadow-lg bg-purple-800 ring-1 ring-black ring-opacity-5 max-h-60 overflow-auto">
+                  <div className="absolute z-10 mt-1 w-48 rounded-md shadow-lg bg-[#4A3B5D] ring-1 ring-black ring-opacity-5 max-h-60 overflow-auto">
                     <div
-                      className="py-1"
+                      className=""
                       role="menu"
                       aria-orientation="vertical"
-                      aria-labelledby="options-menu"
-                    >
-                      {languages.map((lang) => (
+                      aria-labelledby="options-menu">
+                      <input
+                        type="text"
+                        placeholder="Search..."
+                        className="w-full px-4 py-2 bg-white/30 placeholder:text-white focus:outline-none rounded-t-md"
+                        onChange={(e) => handleLanguageSearch(e.target.value)}
+                      />
+
+                      {filteredLanguage.map((lang) => (
                         <button
                           key={lang.id}
                           onClick={() => {
                             setLanguage(lang);
                             setIsDropdownOpen(false);
                           }}
-                          className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-purple-700"
-                          role="menuitem"
-                        >
+                          className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-[#5A4B6D]"
+                          role="menuitem">
                           {lang.name}
                         </button>
                       ))}
@@ -202,39 +220,38 @@ const Playground = () => {
                 disabled={isRunning || !language}
                 className={`flex items-center px-4 py-2 rounded-md text-sm font-medium ${
                   isRunning || !language
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-yellow-400 text-purple-900 hover:bg-yellow-300"
-                }`}
-              >
+                    ? "bg-gray-600 cursor-not-allowed"
+                    : "bg-[#F1C232] text-[#2A1E2F] hover:bg-[#E1B222]"
+                }`}>
                 {isRunning ? "Running..." : "Run Code"}
                 <Play className="ml-2 h-4 w-4" />
               </button>
             </div>
             <textarea
-              className="w-full h-72 p-4 bg-purple-800 bg-opacity-50 rounded-lg text-white resize-none focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full h-72 p-4 bg-[#3D2E4A] rounded-lg text-white resize-none focus:outline-none focus:ring-2 focus:ring-[#F1C232] placeholder:text-white/50"
               value={code}
               onChange={(e) => setCode(e.target.value)}
               placeholder="Write your code here..."
             />
             <textarea
-              className="w-full h-24 p-4 bg-purple-800 bg-opacity-50 rounded-lg text-white resize-none focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full h-24 p-4 bg-[#3D2E4A] rounded-lg text-white resize-none focus:outline-none focus:ring-2 focus:ring-[#F1C232] placeholder:text-white/50"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Enter your program input here..."
             />
           </div>
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold">Output</h2>
-            <pre className="w-full h-96 p-4 bg-purple-800 bg-opacity-50 rounded-lg overflow-auto text-white">
+            <h2 className="text-2xl font-bold text-[#F1C232]">Output</h2>
+            <pre className="w-full h-96 p-4 bg-[#3D2E4A] rounded-lg overflow-auto text-white ">
               {output || "Your output will appear here..."}
             </pre>
           </div>
         </motion.div>
       </main>
 
-      <footer className="bg-purple-900 bg-opacity-50 py-10 backdrop-blur-lg mt-12">
+      <footer className="bg-[#2A1E2F] py-10 mt-12">
         <div className="container mx-auto px-6 text-center">
-          <p className="text-gray-300">
+          <p className="text-[#D5A187]">
             © 2024 Codeteria. All rights reserved.
           </p>
         </div>
