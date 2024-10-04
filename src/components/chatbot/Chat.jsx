@@ -55,7 +55,7 @@ const Chat = () => {
       if (event.srcElement.innerHTML === "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6 18L18 6M6 6l12 12\"></path>"){
         closeWebchat();
       }
-      else if (webchatRef.current && !webchatRef.current.contains(event.target)) {
+      else if (webchatRef.current && !webchatRef.current.contains(event.target) && !event.target.className == 'bpFabIcon') {
         closeWebchat();
       }
     };
