@@ -5,11 +5,9 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { APIProvider } from "./context/apiContext.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
-	<BrowserRouter>
-		<APIProvider>
-			
-				<App />
-			
-		</APIProvider>
-	</BrowserRouter>
+  <BrowserRouter>
+    <APIProvider>
+      <App />
+    </APIProvider>
+  </BrowserRouter>
 );
