@@ -68,15 +68,15 @@ const navs = [
   },
   {
     tab: "Challenges",
-    page: "/",
+    page: "/Challenges",
   },
   {
     tab: "Community",
-    page: "/",
+    page: "/Community",
   },
   {
     tab: "Pro",
-    page: "/",
+    page: "/Pro",
   },
 ];
 const Homepage = () => {
@@ -403,14 +403,14 @@ const Homepage = () => {
                 Quick Links
               </h3>
               <ul className="space-y-2">
-                {["Playground", "Challenges", "Tutorials", "Leaderboard"].map(
-                  (item) => (
-                    <li key={item}>
+                {navs.map(
+                  (item, index) => (
+                    <li key={index}>
                       <Link
-                        href="#"
+                        to={item.page}
                         className="text-gray-300 hover:text-yellow-400 transition-colors"
                       >
-                        {item}
+                        {item.tab}
                       </Link>
                     </li>
                   )
