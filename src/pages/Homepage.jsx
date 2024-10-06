@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -84,11 +84,12 @@ const Homepage = () => {
   const controls = useAnimation();
   const [isRunning, setIsRunning] = useState(false);
   const [output, setOutput] = useState("");
+  const refScrollUp = useRef();
 
   const navigate = useNavigate();
 
   const scrollToTop = () => {
-    window.location.reload();
+    refScrollUp.current.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -130,6 +131,7 @@ const Homepage = () => {
   return (
     <motion.div className="min-h-screen text-white" animate={controls}>
       <MainNavbar />
+      <div id="top " ref={refScrollUp} ></div>
 
       <main className="container mx-auto px-5 lg:px-36 py-12">
         <motion.section
