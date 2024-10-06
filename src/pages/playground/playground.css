@@ -1,0 +1,31 @@
+/* Custom CodeMirror Styles */
+.cm-editor {
+  background-color: #3D2E4A; /* Light gray background */
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.cm-content {
+  padding: 10px;
+  color: white; /* Change the text color */
+}
+
+.cm-gutters {
+  background-color: #e0e0e0; /* Change gutter background */
+  border-right: 1px solid #ccc;
+}
+
+.cm-line {
+  line-height: 1.6;
+  font-size: 16px; /* Change font size */
+}
+
+/* Example of customizing the selection */
+.cm-selectionBackground {
+  background-color: rgba(238, 220, 154, 0.3); /* Yellowish selection */
+}
+
+/* Customize matching brackets */
+.cm-matchingBracket {
+  background-color: rgba(0, 200, 0, 0.3); /* Greenish matching bracket */
+  border: 1px solid green;
+}

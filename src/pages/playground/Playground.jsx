@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Play, ChevronDown } from "lucide-react";
 import MainNavbar from "../../components/MainNavbar";
+import CodeMirror from "@uiw/react-codemirror";
+import { StreamLanguage } from "@codemirror/language";
+import "./playground.css";
 
 const JUDGE0_API_KEY = import.meta.env.VITE_JUDGE0_API_KEY;
 
@@ -13,6 +16,8 @@ const Playground = () => {
   const [language, setLanguage] = useState(null);
   const [isRunning, setIsRunning] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [languageExtension, setLanguageExtension] = useState(null);
+  const [filteredLanguage, setFilteredLanguage] = useState(languages); // State to hold the filtered list
 
   useEffect(() => {
     const fetchLanguages = async () => {
@@ -28,16 +33,23 @@ const Playground = () => {
           }
         );
 
-        if (!response.ok) {
+        if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
-        }
 
         const data = await response.json();
-        const sortedLanguages = data.sort((a, b) =>
-          a.name.localeCompare(b.name)
-        );
-        setLanguages(sortedLanguages);
-        setLanguage(sortedLanguages[0]); // Set the first language as default
+
+        // Ensure data is an array before sorting
+        if (Array.isArray(data)) {
+          const sortedLanguages = data.sort((a, b) =>
+            a.name.localeCompare(b.name)
+          );
+          setLanguages(sortedLanguages);
+          setFilteredLanguage(sortedLanguages);
+          setLanguage(sortedLanguages[0]);
+        } else {
+          console.error("Fetched data is not an array:", data);
+          throw new Error("Invalid data format received from API");
+        }
       } catch (error) {
         console.error("Error fetching languages:", error);
         setOutput("Error fetching languages. Please try again later.");
@@ -56,9 +68,8 @@ const Playground = () => {
     setIsRunning(true);
     setOutput("");
     try {
-      if (code === "") {
-        throw Error("Your Code is Empty , Type Something and then try");
-      }
+      if (code === "")
+        throw Error("Your Code is Empty, Type Something and then try");
 
       const submissionResponse = await fetch(
         "https://judge0-ce.p.rapidapi.com/submissions",
@@ -77,9 +88,8 @@ const Playground = () => {
         }
       );
 
-      if (!submissionResponse.ok) {
+      if (!submissionResponse.ok)
         throw new Error(`HTTP error! status: ${submissionResponse.status}`);
-      }
 
       const { token } = await submissionResponse.json();
 
@@ -100,26 +110,22 @@ const Playground = () => {
           }
         );
 
-        if (!statusResponse.ok) {
+        if (!statusResponse.ok)
           throw new Error(`HTTP error! status: ${statusResponse.status}`);
-        }
 
         result = await statusResponse.json();
 
-        if (result.status.id > 2) {
-          break;
-        }
-
+        if (result.status.id > 2) break;
         attempts++;
       }
 
-      if (attempts === maxAttempts) {
+      if (attempts === maxAttempts)
         throw new Error("Timed out waiting for code execution");
-      }
 
       if (result.stdout) {
         setOutput(atob(result.stdout));
       } else if (result.stderr) {
+        console.log(atob(result.stderr));
         setOutput(`Error: ${atob(result.stderr)}`);
       } else if (result.compile_output) {
         setOutput(`Compilation Error: ${atob(result.compile_output)}`);
@@ -134,19 +140,133 @@ const Playground = () => {
     }
   };
 
-  const [filteredLanguage, setFilteredLanguage] = useState(languages); // State to hold the filtered list
+  // Dynamically import language modules based on selected language
+  const getLanguageModule = useCallback(async (language) => {
+    console.log("Language 2:", language);
+    if (!language) return null;
+    try {
+      const languageName = language.toLowerCase();
 
-  const handleLanguageSearch = (searchText) => {
-    console.log("searchedText", searchText);
-    searchText = searchText.trim().toLowerCase();
+      if (languageName.includes("c (")) {
+        return (await import("@codemirror/lang-cpp")).cpp();
+      } else if (languageName.includes("c++ (")) {
+        return (await import("@codemirror/lang-cpp")).cpp();
+      } else if (languageName.includes("java")) {
+        return (await import("@codemirror/lang-java")).java();
+      } else if (languageName.includes("python")) {
+        return (await import("@codemirror/lang-python")).python();
+      } else if (languageName.includes("rust")) {
+        return (await import("@codemirror/lang-rust")).rust();
+      } else if (languageName.includes("javascript")) {
+        return (await import("@codemirror/lang-javascript")).javascript();
+      } else if (languageName.includes("typescript")) {
+        return (await import("@codemirror/lang-javascript")).javascript({
+          typescript: true,
+        });
+      } else if (languageName.includes("go")) {
+        return (await import("@codemirror/lang-go")).go();
+      } else if (languageName.includes("php")) {
+        return (await import("@codemirror/lang-php")).php();
+      } else if (languageName.includes("sql")) {
+        return (await import("@codemirror/lang-sql")).sql();
+      } else {
+        // For other languages, we'll use the StreamLanguage with legacy modes
+        const legacyLanguages = [
+          "assembly",
+          "bash",
+          "basic",
+          "clojure",
+          "cobol",
+          "commonlisp",
+          "d",
+          "dart",
+          "elixir",
+          "erlang",
+          "fortran",
+          "fsharp",
+          "groovy",
+          "haskell",
+          "kotlin",
+          "lua",
+          "objectivec",
+          "ocaml",
+          "pascal",
+          "perl",
+          "prolog",
+          "r",
+          "ruby",
+          "scala",
+          "swift",
+          "vb",
+        ];
+        const langKey = legacyLanguages.find((lang) =>
+          languageName.includes(lang)
+        );
+        if (langKey) {
+          const { [langKey]: legacyMode } = await import(
+            /* @vite-ignore */ `@codemirror/legacy-modes/mode/${langKey}`
+          );
+          return StreamLanguage.define(legacyMode);
+        }
+      }
 
-    // Filter the languages based on the search text
-    let filteredLanguages = languages.filter((language) =>
-      language.name.toLowerCase().includes(searchText)
+      // If no matching language is found
+      return null;
+    } catch (error) {
+      // console.error("Error loading language module:", error);
+      return null;
+    }
+  }, []);
+
+  // call getLanguageModule when language changes
+  useEffect(() => {
+    if (language) {
+      getLanguageModule(language.name).then(setLanguageExtension);
+    }
+  }, [language, getLanguageModule]);
+
+  // Filter languages based on search
+  const filterLanguages = (searchTerm) => {
+    const filtered = languages.filter((language) =>
+      language.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    setFilteredLanguage(filtered);
+  };
 
-    // Set the filtered list to the filteredLanguage state
-    setFilteredLanguage(filteredLanguages);
+  // Animation Variants
+  const dropdownVariants = {
+    hidden: {
+      opacity: 0,
+      y: -10,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 24,
+      },
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 24,
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: -10,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 24,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
@@ -173,9 +293,9 @@ const Playground = () => {
 
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}>
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}>
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <div className="relative">
@@ -183,37 +303,55 @@ const Playground = () => {
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className="flex items-center justify-between w-fit px-4 py-2 text-sm font-medium text-white bg-[#4A3B5D] rounded-md hover:bg-[#5A4B6D] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#2A1E2F] focus:ring-[#F1C232]">
                   {language ? language.name : "Select Language"}
-                  <ChevronDown className="ml-2 h-5 w-5" />
+                  <motion.div
+                    animate={{ rotate: isDropdownOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}>
+                    <ChevronDown className="ml-2 h-5 w-5" />
+                  </motion.div>
                 </button>
-                {isDropdownOpen && (
-                  <div className="absolute z-10 mt-1 w-48 rounded-md shadow-lg bg-[#4A3B5D] ring-1 ring-black ring-opacity-5 max-h-60 overflow-auto">
-                    <div
-                      className=""
-                      role="menu"
-                      aria-orientation="vertical"
-                      aria-labelledby="options-menu">
-                      <input
-                        type="text"
-                        placeholder="Search..."
-                        className="w-full px-4 py-2 bg-white/30 placeholder:text-white focus:outline-none rounded-t-md"
-                        onChange={(e) => handleLanguageSearch(e.target.value)}
-                      />
-
-                      {filteredLanguage.map((lang) => (
-                        <button
-                          key={lang.id}
-                          onClick={() => {
-                            setLanguage(lang);
-                            setIsDropdownOpen(false);
+                <AnimatePresence>
+                  {isDropdownOpen && (
+                    <motion.div
+                      variants={dropdownVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      className="absolute z-10 mt-1 w-48 rounded-md shadow-lg bg-[#4A3B5D] ring-1 ring-black ring-opacity-5 max-h-60 overflow-auto">
+                      <div
+                        className=""
+                        role="menu"
+                        aria-orientation="vertical"
+                        aria-labelledby="options-menu">
+                        <input
+                          type="text"
+                          placeholder="Search..."
+                          className="w-full px-4 py-2 bg-white/30 placeholder:text-white focus:outline-none rounded-t-md"
+                          onChange={(e) => filterLanguages(e.target.value)}
+                        />
+                        <motion.div
+                          variants={{
+                            visible: { transition: { staggerChildren: 0.05 } },
                           }}
-                          className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-[#5A4B6D]"
-                          role="menuitem">
-                          {lang.name}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                          initial="hidden"
+                          animate="visible">
+                          {filteredLanguage.map((lang) => (
+                            <motion.button
+                              key={lang.id}
+                              variants={itemVariants}
+                              onClick={() => {
+                                setLanguage(lang);
+                                setIsDropdownOpen(false);
+                              }}
+                              className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-[#5A4B6D]"
+                              role="menuitem">
+                              {lang.name}
+                            </motion.button>
+                          ))}
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
               <button
                 onClick={runCode}
@@ -227,11 +365,15 @@ const Playground = () => {
                 <Play className="ml-2 h-4 w-4" />
               </button>
             </div>
-            <textarea
-              className="w-full h-72 p-4 bg-[#3D2E4A] rounded-lg text-white resize-none focus:outline-none focus:ring-2 focus:ring-[#F1C232] placeholder:text-white/50"
+            {/* Code Editor - CodeMirror */}
+            <CodeMirror
               value={code}
-              onChange={(e) => setCode(e.target.value)}
-              placeholder="Write your code here..."
+              height="300px"
+              extensions={languageExtension ? [languageExtension] : []}
+              onChange={(value) => setCode(value)}
+              className="rounded-lg text-white"
+              placeholder="Enter your program code here..."
+              theme="dark"
             />
             <textarea
               className="w-full h-24 p-4 bg-[#3D2E4A] rounded-lg text-white resize-none focus:outline-none focus:ring-2 focus:ring-[#F1C232] placeholder:text-white/50"
@@ -242,7 +384,7 @@ const Playground = () => {
           </div>
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-[#F1C232]">Output</h2>
-            <pre className="w-full h-96 p-4 bg-[#3D2E4A] rounded-lg overflow-auto text-white ">
+            <pre className="w-full h-96 p-4 bg-[#3D2E4A] rounded-lg overflow-auto text-white">
               {output || "Your output will appear here..."}
             </pre>
           </div>
