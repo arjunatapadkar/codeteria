@@ -372,10 +372,10 @@ const Homepage = () => {
                 },
               ].map((testimonial, index) => (
                 <div
-                  key={testimonial.name}
+                  key={index}
                   className="bg-purple-800 bg-opacity-75 p-6 rounded-lg backdrop-blur-sm mx-2 testimonial-card"
                 >
-                  <p className="text-lg mb-4">"{testimonial.quote}"</p>
+                  <p className="text-lg mb-4">{testimonial.quote}</p>
                   <p className="font-bold text-yellow-400">
                     {testimonial.name}
                   </p>
