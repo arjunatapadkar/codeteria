@@ -24,8 +24,8 @@ const Contact = () => {
     setLoading(true);
     emailjs
       .send(
-        "service_pc7qzlf",
-        "template_2owaqxb",
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
         {
           from_name: form.name,
           to_name: "Codeteria",
@@ -33,7 +33,7 @@ const Contact = () => {
           to_email: "support@codeteria.com",
           message: form.message,
         },
-        "AQYxX3726-TlfhaNm"
+        "YOUR_PUBLIC_KEY"
       )
       .then(
         () => {

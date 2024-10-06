@@ -8,7 +8,7 @@ import Cheatsheet from "./pages/cheatsheet/Cheatsheet";
 import MachineCoding from "./pages/interview/machineCoding";
 import ChallengeDetail from "./pages/interview/ChallengeDetail";
 import { useAPI } from "./context/apiContext";
-// import Chat from "./components/chatbot/Chat";
+import Chat from "./components/chatbot/Chat";
 import Product from "./pages/products/product";
 import Playground from "./pages/playground/Playground";
 import MainNavbar from "./components/MainNavbar";
@@ -43,8 +43,9 @@ const App = () => {
 
           {/* page not found */}
           <Route path="*" element={<ErrorPage />} />
-        </Routes>
+        </Routes>        
       </div>
+      <Chat />
     </>
   );
 };

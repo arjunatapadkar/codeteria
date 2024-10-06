@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -84,11 +84,12 @@ const Homepage = () => {
   const controls = useAnimation();
   const [isRunning, setIsRunning] = useState(false);
   const [output, setOutput] = useState("");
+  const refScrollUp = useRef();
 
   const navigate = useNavigate();
 
   const scrollToTop = () => {
-    window.location.reload();
+    refScrollUp.current.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -106,6 +107,16 @@ const Homepage = () => {
       },
     });
   }, [controls]);
+
+  useEffect(() => {
+    const timeout = setTimeout(()=>{
+      nextSnippet()
+    }, 5000)
+
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [currentSnippet])
 
   const runCode = () => {
     setIsRunning(true);
@@ -130,6 +141,7 @@ const Homepage = () => {
   return (
     <motion.div className="min-h-screen text-white" animate={controls}>
       <MainNavbar />
+      <div id="top " ref={refScrollUp} ></div>
 
       <main className="container mx-auto px-5 lg:px-36 py-12">
         <motion.section
@@ -439,9 +451,9 @@ const Homepage = () => {
       </footer>
       <button
         onClick={scrollToTop}
-        className="bg-white opacity-60 text-black rounded-full w-12 h-12 fixed right-10 bottom-10 hover:bg-gray-500 hover:text-white transition duration-300"
+        className="bg-white opacity-60 text-black rounded-full w-14 h-14 fixed right-12 bottom-24 hover:bg-gray-500 hover:text-white transition duration-300 flex items-center justify-center"
       >
-        <i className="fa-solid fa-arrow-up"></i>
+        <i className="fa-solid fa-arrow-up text-xl"></i>
       </button>
     </motion.div>
   );
