@@ -108,6 +108,16 @@ const Homepage = () => {
     });
   }, [controls]);
 
+  useEffect(() => {
+    const timeout = setTimeout(()=>{
+      nextSnippet()
+    }, 5000)
+
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [currentSnippet])
+
   const runCode = () => {
     setIsRunning(true);
     setTimeout(() => {
