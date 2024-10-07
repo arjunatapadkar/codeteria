@@ -16,6 +16,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 import MainNavbar from "../components/MainNavbar";
 import Contact from "../components/Contact";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faFacebook, faSquareXTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const codeSnippets = [
   {
@@ -446,6 +448,17 @@ const Homepage = () => {
           </div>
           <div className="mt-10 text-center text-gray-300">
             © 2024 Codeteria. All rights reserved.
+	    <div className="icon-container flex justify-center gap-4 mt-4">
+              <div className="instagram">
+                <FontAwesomeIcon icon={faInstagram} size="lg"/>
+              </div>
+              <div className="facebook">
+                <FontAwesomeIcon icon={faFacebook} size="lg"/>
+              </div>
+              <div className="twitter">
+              	<FontAwesomeIcon icon={faSquareXTwitter} size="lg" />
+              </div>
+            </div>
           </div>
         </div>
       </footer>
