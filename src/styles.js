@@ -15,4 +15,3 @@ const styles = {
 };
 
 export { styles };
-
