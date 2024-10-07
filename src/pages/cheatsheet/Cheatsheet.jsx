@@ -29,8 +29,8 @@ const Cheatsheet = () => {
       <div
         className={` ${
           dark
-            ? "bg-[#0F111D]"
-            : "bg-gradient-to-br from-indigo-100 to-purple-100 "
+            ? "bg-[#0F111D] text-white"
+            : "bg-gradient-to-br from-indigo-100 to-purple-100 text-gray-800"
         } min-h-screen `}
       >
         <Navbarm />
@@ -39,18 +39,27 @@ const Cheatsheet = () => {
         {currentCheatData && (
           <div className="py-0 lg:px-12 m-3 lg:m-10">
             <header className="mb-12 text-center">
-              <h1 className="text-4xl font-bold text-indigo-800 mb-4">
+              <h1
+                className={`text-4xl font-bold mb-4 ${
+                  dark ? "text-white" : "text-black"
+                }`}
+              >
                 {currentCheatData[0].name}
               </h1>
-              <p className="text-lg text-indigo-600">
+              <p
+                className={`text-lg ${
+                  dark ? "text-gray-400" : "text-black"
+                }`}
+              >
                 Your quick reference guide to {currentCheatData[0].name} syntax
                 and features
               </p>
             </header>
+
             <div className="max-w-4xl mx-auto">
               {sectionData.length === 0 ? (
                 <div className="text-3xl text-center py-56">
-                  Coming Soon........ Stay Tuned!🚀{" "}
+                  Coming Soon........ Stay Tuned!🚀
                 </div>
               ) : (
                 sectionData &&
@@ -68,8 +77,7 @@ const Cheatsheet = () => {
             </div>
           </div>
         )}
-
-          <footer className="bg-purple-900 bg-opacity-100 py-10  lg:px-36 backdrop-blur-lg">
+<footer className="bg-purple-900 bg-opacity-100 py-10  lg:px-36 backdrop-blur-lg">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
@@ -135,3 +143,5 @@ const Cheatsheet = () => {
 };
 
 export default Cheatsheet;
+
+          
