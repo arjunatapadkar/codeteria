@@ -41,14 +41,14 @@ const Cheatsheet = () => {
             <header className="mb-12 text-center">
               <h1
                 className={`text-4xl font-bold mb-4 ${
-                  dark ? "text-white" : "text-black"
+                  dark ? "text-white" : "text-indigo-800"
                 }`}
               >
                 {currentCheatData[0].name}
               </h1>
               <p
                 className={`text-lg ${
-                  dark ? "text-gray-400" : "text-black"
+                  dark ? "text-gray-400" : "text-indigo-800"
                 }`}
               >
                 Your quick reference guide to {currentCheatData[0].name} syntax
