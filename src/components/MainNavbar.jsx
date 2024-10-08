@@ -30,8 +30,8 @@ const MainNavbar = () => {
 
   return (
     <header className="bg-black sticky bg-opacity-30 top-0 z-50 backdrop-blur-md lg:px-36">
-      <nav className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+      <nav className=" fluid-container mx-auto px-0 py-4">
+        <div className="flex items-center justify-between ">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -51,7 +51,7 @@ const MainNavbar = () => {
 
           {/* Desktop Links */}
           <motion.div
-            className="hidden md:flex space-x-6"
+            className="hidden lg:flex space-x-6"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -77,7 +77,7 @@ const MainNavbar = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="hidden md:block"
+            className="hidden lg:block"
           >
             <button
               onClick={() => navigate("/cheats")}
@@ -89,7 +89,7 @@ const MainNavbar = () => {
           </motion.div>
 
           {/* Hamburger Menu for Mobile */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Hamburger toggled={isOpen} toggle={setIsOpen} />
           </div>
         </div>
