@@ -97,7 +97,7 @@ const MainNavbar = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <motion.div
-            className="flex flex-col space-y-4 mt-4 md:hidden"
+            className="flex flex-col space-y-4 mt-4 lg:hidden"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
