@@ -16,15 +16,15 @@ const MainNavbar = () => {
     },
     {
       tab: "Challenges",
-      page: "/",
+      page: "/upcoming",
     },
     {
       tab: "Community",
-      page: "/",
+      page: "/upcoming",
     },
     {
       tab: "Pro",
-      page: "/",
+      page: "/upcoming",
     },
   ];
 
