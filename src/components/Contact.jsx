@@ -4,6 +4,7 @@ import { styles } from "../styles";
 import { slideIn } from "../utils/motion.js";
 import { useRef, useState } from "react";
 import contactImg from "../assets/contact.svg";
+
 const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
@@ -38,7 +39,7 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          alert("Thanks I will get back to you soon...");
+          alert("Thanks! I will get back to you soon...");
           setForm({
             name: "",
             email: "",
@@ -47,14 +48,14 @@ const Contact = () => {
         },
         (error) => {
           setLoading(false);
-          console.log(error);
+          console.error(error);
           alert("Failed to send message... Please try again later.");
         }
       );
   };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center my-4 mx-20 px-4 lg:px-0">
+    <div className="flex flex-col lg:flex-row justify-center items-center my-4 mx-4 lg:mx-20 px-4 lg:px-0">
       <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
         <img
           className="w-full h-auto object-cover rounded-lg shadow-lg"
@@ -62,19 +63,19 @@ const Contact = () => {
           alt="Contact"
         />
       </div>
-      <div className="w-full relative lg:w-1/2 bg-black/40 rounded-lg shadow-xl p-8 lg:ml-8 lg:static">
+      <div className="w-full lg:w-1/2 bg-black/40 rounded-lg shadow-xl p-6 lg:p-8 lg:ml-8">
         <motion.div
           variants={slideIn("left", "tween", 0.2, 1)}
           className="w-full"
         >
           <p className={`${styles.sectionSubText} text-center`}>Get in touch</p>
-          <h3 className={`${styles.sectionHeadText} text-center mb-8`}>
+          <h3 className={`${styles.sectionHeadText} text-center mb-6`}>
             Contact Us
           </h3>
           <form
             ref={formRef}
             onSubmit={handleSubmit}
-            className="flex flex-col gap-6"
+            className="flex flex-col gap-4"
           >
             <label className="flex flex-col">
               <span className="mb-2 font-medium text-white">Your Name</span>
@@ -85,6 +86,7 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder="John Doe"
                 className="px-4 py-3 text-white bg-tertiary border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300"
+                required
               />
             </label>
 
@@ -97,6 +99,7 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder="johndoe@example.com"
                 className="px-4 py-3 text-white bg-tertiary border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300"
+                required
               />
             </label>
 
@@ -109,6 +112,7 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder="What would you like to say?"
                 className="px-4 py-3 text-white bg-tertiary border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300 resize-none"
+                required
               />
             </label>
             <button
