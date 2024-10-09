@@ -68,15 +68,15 @@ const navs = [
   },
   {
     tab: "Challenges",
-    page: "/Challenges",
+    page: "/upcoming",
   },
   {
     tab: "Community",
-    page: "/Community",
+    page: "/upcoming",
   },
   {
     tab: "Pro",
-    page: "/Pro",
+    page: "/upcoming",
   },
 ];
 const Homepage = () => {
