@@ -71,6 +71,10 @@ const navs = [
     page: "/upcoming",
   },
   {
+    tab: "DS Problems",
+    page: "/dsproblems"
+  },
+  {
     tab: "Community",
     page: "/upcoming",
   },
@@ -288,28 +292,38 @@ const Homepage = () => {
         </motion.section>
 
         <motion.section
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <h2 className="text-4xl font-bold mb-6">
-            Join the Codeteria Revolution
-          </h2>
-          <p className="text-xl mb-10">
-            Unleash your coding potential and become part of a thriving global
-            community
-          </p>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <button
-              onClick={() => navigate("/cheats")}
-              size="lg"
-              className="text-lg px-8 py-2 rounded-lg font-semibold bg-yellow-400 text-purple-900 hover:bg-yellow-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-              Start Your Coding Journey
-            </button>
-          </motion.div>
-        </motion.section>
+        className="text-center mb-20"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+      >
+        <h2 className="text-4xl font-bold mb-6">
+          Join the Codeteria Revolution
+        </h2>
+        <p className="text-xl mb-10">
+          Unleash your coding potential and become part of a thriving global
+          community
+        </p>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mb-4">
+          <button
+            onClick={() => navigate("/cheats")}
+            size="lg"
+            className="text-lg px-8 py-2 rounded-lg font-semibold bg-yellow-400 text-purple-900 hover:bg-yellow-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+          >
+            Start Your Coding Journey
+          </button>
+        </motion.div>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <button
+            onClick={() => navigate("/dsproblem")}
+            size="lg"
+            className="text-lg px-8 py-2 rounded-lg font-semibold bg-yellow-400 text-purple-900 hover:bg-yellow-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+          >
+            Go to DS Problems
+          </button>
+        </motion.div>
+      </motion.section>
+
         <motion.section
           className="bg-purple-900 bg-opacity-50 rounded-lg p-8 mb-20 backdrop-blur-lg"
           initial={{ opacity: 0, scale: 0.8 }}
@@ -385,6 +399,7 @@ const Homepage = () => {
             </div>
           </div>
         </motion.section>
+        
       </main>
 
       <Contact />

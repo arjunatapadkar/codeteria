@@ -12,6 +12,7 @@ import Chat from "./components/chatbot/Chat";
 import Product from "./pages/products/product";
 import Playground from "./pages/playground/Playground";
 import MainNavbar from "./components/MainNavbar";
+import DSProblem from "./pages/dsproblem/DSProblem";
 
 const App = () => {
   const { dark } = useAPI();
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/interview" element={<InterviewPrep />} />
           <Route path="/upcoming" element={<Upcoming />} />
           <Route path="/machinecoding" element={<MachineCoding />} />
+          <Route path="/dsproblem" element={<DSProblem />} />
           <Route path="/challenge/:id" element={<ChallengeDetail />} />
           <Route path="/product" element={<Product />} />
           <Route path="/playground" element={<Playground />} />
