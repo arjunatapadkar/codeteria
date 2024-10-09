@@ -68,15 +68,15 @@ const navs = [
   },
   {
     tab: "Challenges",
-    page: "/",
+    page: "/upcoming",
   },
   {
     tab: "Community",
-    page: "/",
+    page: "/upcoming",
   },
   {
     tab: "Pro",
-    page: "/",
+    page: "/upcoming",
   },
 ];
 const Homepage = () => {
@@ -372,10 +372,10 @@ const Homepage = () => {
                 },
               ].map((testimonial, index) => (
                 <div
-                  key={testimonial.name}
+                  key={index}
                   className="bg-purple-800 bg-opacity-75 p-6 rounded-lg backdrop-blur-sm mx-2 testimonial-card"
                 >
-                  <p className="text-lg mb-4">"{testimonial.quote}"</p>
+                  <p className="text-lg mb-4">{testimonial.quote}</p>
                   <p className="font-bold text-yellow-400">
                     {testimonial.name}
                   </p>
@@ -410,14 +410,14 @@ const Homepage = () => {
                 Quick Links
               </h3>
               <ul className="space-y-2">
-                {["Playground", "Challenges", "Tutorials", "Leaderboard"].map(
-                  (item) => (
-                    <li key={item}>
+                {navs.map(
+                  (item, index) => (
+                    <li key={index}>
                       <Link
-                        href="#"
+                        to={item.page}
                         className="text-gray-300 hover:text-yellow-400 transition-colors"
                       >
-                        {item}
+                        {item.tab}
                       </Link>
                     </li>
                   )
