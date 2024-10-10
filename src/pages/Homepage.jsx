@@ -21,9 +21,9 @@ const codeSnippets = [
   {
     language: "python",
     code: `def fibonacci(n):
-      if n <= 1:
-          return n
-      return fibonacci(n-1) + fibonacci(n-2)
+	  if n <= 1:
+		  return n
+	  return fibonacci(n-1) + fibonacci(n-2)
   
   print(fibonacci(10))`,
     output: "55",
@@ -31,11 +31,11 @@ const codeSnippets = [
   {
     language: "javascript",
     code: `const quickSort = arr => {
-    if (arr.length <= 1) return arr;
-    const pivot = arr[arr.length - 1];
-    const left = arr.filter((x, i) => x <= pivot && i < arr.length - 1);
-    const right = arr.filter(x => x > pivot);
-    return [...quickSort(left), pivot, ...quickSort(right)];
+	if (arr.length <= 1) return arr;
+	const pivot = arr[arr.length - 1];
+	const left = arr.filter((x, i) => x <= pivot && i < arr.length - 1);
+	const right = arr.filter(x => x > pivot);
+	return [...quickSort(left), pivot, ...quickSort(right)];
   };
   
   console.log(quickSort([3, 6, 8, 10, 1, 2, 1]));`,
@@ -44,19 +44,19 @@ const codeSnippets = [
   {
     language: "rust",
     code: `fn is_prime(n: u32) -> bool {
-      if n <= 1 {
-          return false;
-      }
-      for i in 2..=(n as f64).sqrt() as u32 {
-          if n % i == 0 {
-              return false;
-          }
-      }
-      true
+	  if n <= 1 {
+		  return false;
+	  }
+	  for i in 2..=(n as f64).sqrt() as u32 {
+		  if n % i == 0 {
+			  return false;
+		  }
+	  }
+	  true
   }
   
   fn main() {
-      println!("{}", is_prime(17));
+	  println!("{}", is_prime(17));
   }`,
     output: "true",
   },
