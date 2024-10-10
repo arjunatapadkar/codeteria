@@ -23,7 +23,7 @@ const data = [
 		title: "Data Structures & Algorithms",
 		desc: "Master essential data structures and algorithms for technical interviews.",
 		image: <FaCode />,
-        path: "/upcoming"
+        path: "/dsproblem"
 	},
 	{
 		title: "Java",
