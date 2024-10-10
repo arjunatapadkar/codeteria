@@ -44,7 +44,7 @@ cd codeteria
 npm install
 
 # Start the application
-npm start
+npm run dev
 ```
 
 ## 🎯 How to Contribute

@@ -67,12 +67,12 @@ const Chat = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-4 right-10 z-50">
+    <div className="fixed bottom-4 right-4 z-50">
       <style>{style}</style>
       <WebchatProvider theme={theme} client={client} configuration={config}>
         <Fab onClick={toggleWebchat} />
         {isWebchatOpen && (
-          <div ref={webchatRef} className="absolute bottom-16 right-0 h-[500px] w-[400px] bg-white shadow-lg rounded-lg overflow-hidden">
+          <div ref={webchatRef} className="absolute bottom-24 right-0 h-[500px] w-[400px] bg-white shadow-lg rounded-lg overflow-hidden">
             <Webchat/>
           </div>
         )}

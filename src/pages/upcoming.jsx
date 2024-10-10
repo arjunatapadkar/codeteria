@@ -8,7 +8,7 @@ import MainNavbar from "../components/MainNavbar";
 const Upcoming = () => {
   const navigate = useNavigate();
   return (
-    <div className=" ">
+    <div className=" bg-[#3A1C71] text-white ">
       <MainNavbar />
       {/* <div className=" py-5 px-5">
 				<div className="flex items-center gap-2">
@@ -27,7 +27,7 @@ const Upcoming = () => {
 
           <p className=" text-xl">Stay ahead with Codeteria updates</p>
           <button
-            className="bg-[#5039b8] px-8 text-lg py-1 text-white rounded-full"
+            className="bg-[#FACC15] hover:bg-[#b1972f] px-8 text-lg py-1 text-white rounded-full"
             onClick={() => navigate(-1)}
           >
             Back

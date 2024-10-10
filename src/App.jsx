@@ -45,7 +45,11 @@ const App = () => {
           <Route path="*" element={<ErrorPage />} />
         </Routes>        
       </div>
-      <Chat />
+      
+      <div className = "w-4 h-4 lg:w-12 lg:h-12">
+    
+          <Chat width={40} height={40} />
+       </div>
     </>
   );
 };
