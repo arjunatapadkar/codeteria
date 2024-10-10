@@ -474,7 +474,7 @@ const Homepage = () => {
       </footer>
       <button
         onClick={scrollToTop}
-        className="bg-white opacity-60 text-black rounded-full w-14 h-14 fixed right-12 bottom-24 hover:bg-gray-500 hover:text-white transition duration-300 flex items-center justify-center"
+        className="bg-white opacity-60 text-black rounded-full h-8 w-8 lg:w-14 lg:h-14 fixed right-4 bottom-24 hover:bg-gray-500 hover:text-white transition duration-300 flex items-center justify-center"
       >
         <i className="fa-solid fa-arrow-up text-xl"></i>
       </button>
