@@ -46,10 +46,10 @@ const App = () => {
         </Routes>        
       </div>
       
-      <div className = "w-4 h-4 lg:w-12 lg:h-12">
+     
     
-          <Chat width={40} height={40} />
-       </div>
+          <Chat />
+    
     </>
   );
 };
