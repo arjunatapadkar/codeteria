@@ -45,7 +45,7 @@ const App = () => {
           <Route path="*" element={<ErrorPage />} />
         </Routes>        
       </div>
-      <Chat width={200} height={200} />
+      <Chat width={40} height={40} />
     </>
   );
 };
