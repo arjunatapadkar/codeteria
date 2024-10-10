@@ -23,9 +23,9 @@ const App = () => {
       <div
         className={`${
           dark ? "bg-[#0F111D] text-white" : ""
-        } relative overflow-hidden min-h-screen scroll-smooth`}
+        } relative  min-h-screen scroll-smooth`}
         style={{
-          // height: "100vh",
+          height: "100vh",
           overflowY: "scroll",
           scrollbarWidth: "thin", // For Firefox
           scrollbarColor: "rgba(178, 121, 216, 0.959) #2d1950",
