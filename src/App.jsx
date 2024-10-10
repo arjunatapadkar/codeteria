@@ -23,7 +23,7 @@ const App = () => {
       <div
         className={`${
           dark ? "bg-[#0F111D] text-white" : ""
-        } relative min-h-screen scroll-smooth`}
+        } relative overflow-hidden min-h-screen scroll-smooth`}
         style={{
           // height: "100vh",
           overflowY: "scroll",
