@@ -34,7 +34,7 @@ const Homepage = () => {
     return n
   return fibonacci(n-1) + fibonacci(n-2)
   
-print(fibonacci(10))`,
+  print(fibonacci(10))`,
       output: "55",
     },
     {
@@ -45,37 +45,49 @@ print(fibonacci(10))`,
   const left = arr.filter((x, i) => x <= pivot && i < arr.length - 1);
   const right = arr.filter(x => x > pivot);
   return [...quickSort(left), pivot, ...quickSort(right)];
-};
-
-console.log(quickSort([3, 6, 8, 10, 1, 2, 1]));`,
+  };
+  
+  console.log(quickSort([3, 6, 8, 10, 1, 2, 1]));`,
       output: "[1, 1, 2, 3, 6, 8, 10]",
     },
     {
       language: "rust",
       code: `fn is_prime(n: u32) -> bool {
-  if n <= 1 {
-    return false;
-  }
-  for i in 2..=(n as f64).sqrt() as u32 {
-    if n % i == 0 {
+    if n <= 1 {
       return false;
     }
+    for i in 2..=(n as f64).sqrt() as u32 {
+      if n % i == 0 {
+        return false;
+      }
+    }
+    true
   }
-  true
-}
-
-fn main() {
-  println!("{}", is_prime(17));
-}`,
+  
+  fn main() {
+    println!("{}", is_prime(17));
+  }`,
       output: "true",
     },
   ];
 
   const navs = [
-    { tab: "Playground", page: "/playground" },
-    { tab: "Challenges", page: "/" },
-    { tab: "Community", page: "/" },
-    { tab: "Pro", page: "/" },
+    {
+      tab: "Playground",
+      page: "/playground",
+    },
+    {
+      tab: "Challenges",
+      page: "/",
+    },
+    {
+      tab: "Community",
+      page: "/",
+    },
+    {
+      tab: "Pro",
+      page: "/",
+    },
   ];
 
   const scrollToTop = () => {
@@ -271,20 +283,165 @@ fn main() {
           ))}
         </motion.section>
 
-        {/* Contact Section */}
-        <Contact />
+        <motion.section
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
+          <h2 className="text-4xl font-bold mb-6">
+            Join the Codeteria Revolution
+          </h2>
+          <p className="text-xl mb-10">
+            Unleash your coding potential and become part of a thriving global
+            community
+          </p>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <button
+              onClick={() => navigate("/cheats")}
+              size="lg"
+              className="text-lg px-8 py-2 rounded-lg font-semibold bg-yellow-400 text-purple-900 hover:bg-yellow-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              Start Your Coding Journey
+            </button>
+          </motion.div>
+        </motion.section>
+        <motion.section
+          className="bg-purple-900 bg-opacity-50 rounded-lg p-8 mb-20 backdrop-blur-lg"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
+        >
+          <h2 className="text-3xl font-bold mb-6 text-center">
+            What Our Coders Say
+          </h2>
+          <div className="marquee-container overflow-hidden">
+            <div className="marquee">
+              {[
+                {
+                  name: "Alex",
+                  role: "Full Stack Developer",
+                  quote:
+                    "Codeteria's challenges pushed me to new heights. I landed my dream job thanks to the skills I honed here!",
+                },
+                {
+                  name: "Samantha",
+                  role: "AI Enthusiast",
+                  quote:
+                    "The AI-powered adaptive learning on Codeteria is mind-blowing. It's like having a personal coding mentor 24/7.",
+                },
+                {
+                  name: "Raj",
+                  role: "Student",
+                  quote:
+                    "I went from coding newbie to hackathon winner in just 6 months. Codeteria's community is incredibly supportive!",
+                },
+                {
+                  name: "Anika",
+                  role: "Software Engineer",
+                  quote:
+                    "Codeteria’s challenges helped me level up my skills and land my dream job. The platform is a game-changer!",
+                },
+                {
+                  name: "Vikram",
+                  role: "Data Scientist",
+                  quote:
+                    "The AI-powered challenges on Codeteria sharpened my problem-solving skills, making me confident in handling real-world data projects.",
+                },
+                {
+                  name: "Sanya",
+                  role: "Web Developer",
+                  quote:
+                    "Thanks to Codeteria, I was able to build a portfolio that got me noticed by top companies. It’s the perfect platform for learning!",
+                },
+                {
+                  name: "Amit",
+                  role: "UI/UX Designer",
+                  quote:
+                    "The collaborative tools and design challenges on Codeteria pushed my creativity to new heights. Highly recommended!",
+                },
+                {
+                  name: "Neha",
+                  role: "Product Manager",
+                  quote:
+                    "I improved my technical understanding and communication skills, which has been crucial in managing product development teams.",
+                },
+              ].map((testimonial, index) => (
+                <div
+                  key={testimonial.name}
+                  className="bg-purple-800 bg-opacity-75 p-6 rounded-lg backdrop-blur-sm mx-2 testimonial-card"
+                >
+                  <p className="text-lg mb-4">"{testimonial.quote}"</p>
+                  <p className="font-bold text-yellow-400">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-sm text-gray-300">{testimonial.role}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
       </main>
 
-      {/* Footer Section */}
-      <footer className="bg-purple-900 text-white py-6">
-        <div className="container mx-auto px-5 flex justify-between items-center">
-          <Link to="#" className="text-gray-300 hover:text-yellow-400 transition-colors">
-            © Codeteria 2023. All rights reserved.
-          </Link>
-          <div className="flex gap-4">
-            <Link to="#" className="text-gray-300 hover:text-yellow-400 transition-colors"><FaTwitter /></Link>
-            <Link to="#" className="text-gray-300 hover:text-yellow-400 transition-colors"><FaFacebook /></Link>
-            <Link to="#" className="text-gray-300 hover:text-yellow-400 transition-colors"><FaLinkedin /></Link>
+      <Contact />
+
+      <footer className="bg-purple-900 bg-opacity-100 py-10  lg:px-36 backdrop-blur-lg">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4 text-yellow-400">
+                Codeteria
+              </h3>
+              <p className="text-gray-300">Empowering coders worldwide</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4 text-yellow-400">
+                Quick Links
+              </h3>
+              <ul className="space-y-2">
+                {["Playground", "Challenges", "Tutorials", "Leaderboard"].map(
+                  (item) => (
+                    <li key={item}>
+                      <Link
+                        href="#"
+                        className="text-gray-300 hover:text-yellow-400 transition-colors"
+                      >
+                        {item}
+                      </Link>
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4 text-yellow-400">
+                Community
+              </h3>
+              <ul className="space-y-2">
+                {["Forums", "Blog", "Events", "Partnerships"].map((item) => (
+                  <li key={item}>
+                    <Link
+                      href="#"
+                      className="text-gray-300 hover:text-yellow-400 transition-colors"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4 text-yellow-400">
+                Connect
+              </h3>
+              <p className="text-gray-300 mb-2">support@codeteria.com</p>
+              <div className="flex space-x-4">
+                {/* Add social media icons here */}
+              </div>
+            </div>
+          </div>
+          <div className="mt-10 text-center text-gray-300">
+            © 2024 Codeteria. All rights reserved.
           </div>
         </div>
       </footer>
