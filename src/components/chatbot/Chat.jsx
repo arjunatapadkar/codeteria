@@ -72,7 +72,7 @@ const Chat = () => {
       <WebchatProvider theme={theme} client={client} configuration={config}>
         <Fab onClick={toggleWebchat} />
         {isWebchatOpen && (
-          <div ref={webchatRef} className="absolute bottom-24 right-0 lg:h-[300px] lg:w-[300px] h-[200px] w-[200px] bg-white shadow-lg rounded-lg overflow-hidden">
+          <div ref={webchatRef} className="absolute bottom-24 right-0 h-[500px] w-[400px] bg-white shadow-lg rounded-lg overflow-hidden">
             <Webchat/>
           </div>
         )}
