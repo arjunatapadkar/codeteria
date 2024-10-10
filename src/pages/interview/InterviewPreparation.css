@@ -1,0 +1,108 @@
+/* General Container Styling */
+.interview-container {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  /* Header Section */
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .title {
+    font-size: 3rem;
+    color: #3e7fff;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  /* Resources Section */
+  .resources-section, .tools-section {
+    margin-bottom: 50px;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .resources-cards, .tools-cards {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card h3 {
+    font-size: 1.5rem;
+    color: #3e7fff;
+  }
+  
+  .card p {
+    margin: 10px 0 20px;
+    color: #666;
+  }
+  
+  .learn-more {
+    padding: 10px 20px;
+    background-color: #3e7fff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .learn-more:hover {
+    background-color: #305bb5;
+  }
+  
+  /* Footer Section */
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .footer p {
+    color: #555;
+  }
+  
+  .social-icons {
+    margin-top: 10px;
+  }
+  
+  .icon {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #3e7fff;
+    font-weight: bold;
+  }
+  
+  .icon:hover {
+    color: #305bb5;
+  }
+  

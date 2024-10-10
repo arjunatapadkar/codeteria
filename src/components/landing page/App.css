@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .header {
+    background-color: #1c1c1c;
+    color: white;
+    padding: 20px 0;
+  }
+  
+  .header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header .logo {
+    font-size: 24px;
+  }
+  
+  .header .nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+  }
+  
+  .hero {
+    background-color: #5C67F2;
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+  }
+  
+  .hero h2 {
+    font-size: 40px;
+  }
+  
+  .hero p {
+    margin-top: 20px;
+  }
+  
+  .hero .cta-btn {
+    background-color: #ff6b6b;
+    padding: 10px 20px;
+    margin-top: 20px;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .container {
+    width: 80%;
+    margin: auto;
+    padding: 40px 0;
+  }
+  
+  .about,
+  .resources,
+  .tools {
+    margin-bottom: 50px;
+  }
+  
+  .resource-list,
+  .tool-list {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .resource-item,
+  .tool-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 45%;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #5C67F2;
+    color: white;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  
+  .footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
