@@ -71,15 +71,15 @@ const navs = [
   },
   {
     tab: "Challenges",
-    page: "/",
+    page: "/upcoming",
   },
   {
     tab: "Community",
-    page: "/",
+    page: "/upcoming",
   },
   {
     tab: "Pro",
-    page: "/",
+    page: "/upcoming",
   },
 ];
 
@@ -145,6 +145,7 @@ const Homepage = () => {
       <FairyDustCursor />
 
       {/* Navigation Bar */}
+
       <MainNavbar />
       <div id="top" ref={refScrollUp}></div>
 
@@ -391,10 +392,12 @@ const Homepage = () => {
                 },
               ].map((testimonial, index) => (
                 <div
+
                   key={testimonial.name}
                   className="bg-purple-800 bg-opacity-75 p-6 rounded-lg backdrop-blur-sm mx-2 testimonial-card flex-shrink-0 w-80"
+
                 >
-                  <p className="text-lg mb-4">"{testimonial.quote}"</p>
+                  <p className="text-lg mb-4">{testimonial.quote}</p>
                   <p className="font-bold text-yellow-400">
                     {testimonial.name}
                   </p>
@@ -411,27 +414,37 @@ const Homepage = () => {
 
       {/* Footer */}
       <footer className="bg-purple-900 bg-opacity-100 py-10 lg:px-36 backdrop-blur-lg">
+
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-4 py-4">
             <div>
-              <h3 className="text-xl font-bold mb-4 text-yellow-400">
-                Codeteria
-              </h3>
-              <p className="text-gray-300">Empowering coders worldwide</p>
+              <div className="flex">
+            <img
+              src={logo}
+              alt="Codeteria Logo"
+              className="w-[40px] h-[40px] mr-2"
+            />
+            <Link to="/" className="text-2xl font-bold text-white">
+              Codeteria
+            </Link>
+            </div>
+              <p className="text-gray-300 ml-2">Empowering coders worldwide</p>
             </div>
             <div>
               <h3 className="text-xl font-bold mb-4 text-yellow-400">
                 Quick Links
               </h3>
               <ul className="space-y-2">
-                {["Playground", "Challenges", "Tutorials", "Leaderboard"].map(
-                  (item) => (
-                    <li key={item}>
+                {navs.map(
+                  (item, index) => (
+                    <li key={index}>
                       <Link
+
                         to="#"
+
                         className="text-gray-300 hover:text-yellow-400 transition-colors"
                       >
-                        {item}
+                        {item.tab}
                       </Link>
                     </li>
                   )
@@ -459,7 +472,7 @@ const Homepage = () => {
               <h3 className="text-xl font-bold mb-4 text-yellow-400">
                 Connect
               </h3>
-              <p className="text-gray-300 mb-2">support@codeteria.com</p>
+              <p className="text-gray-300 mb-3 ml-1">support@codeteria.com</p>
               <div className="flex space-x-4">
                 {/* Add social media icons here */}
                 {/* Example: */}
@@ -473,9 +486,25 @@ const Homepage = () => {
                   <i className="fab fa-linkedin-in"></i>
                 </a>
               </div>
+              <div className="gap-4">
+              <a href="https://facebook.com" target="_blank" className="m-2">
+              <i className="fa-brands fa-facebook p-2 border border-white rounded-full"></i>
+              </a>
+              <a href="https://twitter.com" target="_blank" className="m-2">
+              <i className="fab fa-twitter p-2 border border-white rounded-full"></i>
+              </a>
+              <a href="https://instagram.com" target="_blank" className="m-2">
+              <i className="fab fa-instagram p-2 border border-white rounded-full"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" className="m-2">
+              <i className="fab fa-linkedin p-2 border border-white rounded-full"></i>
+              </a>
+              </div>
             </div>
+            
           </div>
-          <div className="mt-10 text-center text-gray-300">
+          <hr className="border-gray-400" />
+          <div className="mt-4 text-center text-gray-300">
             © 2024 Codeteria. All rights reserved.
           </div>
         </div>
@@ -484,8 +513,10 @@ const Homepage = () => {
       {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
+
         className="bg-white opacity-60 text-black rounded-full w-14 h-14 fixed right-12 bottom-24 hover:bg-gray-500 hover:text-white transition duration-300 flex items-center justify-center"
         aria-label="Scroll to Top"
+
       >
         <i className="fas fa-arrow-up text-xl"></i>
       </button>

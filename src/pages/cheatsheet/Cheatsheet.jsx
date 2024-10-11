@@ -17,7 +17,7 @@ const Cheatsheet = () => {
       if (!currentCheat) setCurrentCheat(response[0]._id);
     };
     func();
-  }, []);
+  }, [currentCheat, getAllCheats, setCurrentCheat]);
 
   const currentCheatData =
     cheats && cheats.filter((cheat) => cheat._id === currentCheat);

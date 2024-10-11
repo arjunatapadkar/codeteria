@@ -23,7 +23,7 @@ const App = () => {
       <div
         className={`${
           dark ? "bg-[#0F111D] text-white" : ""
-        } relative min-h-screen scroll-smooth`}
+        } relative  min-h-screen scroll-smooth`}
         style={{
           height: "100vh",
           overflowY: "scroll",
@@ -45,7 +45,11 @@ const App = () => {
           <Route path="*" element={<ErrorPage />} />
         </Routes>        
       </div>
-      <Chat />
+      
+     
+    
+          <Chat />
+    
     </>
   );
 };
