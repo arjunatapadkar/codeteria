@@ -19,7 +19,6 @@ import MainNavbar from "../components/MainNavbar";
 import Footer from "../components/core/Footer";
 import Btn from "../components/core/btn";
 import Contact from "../components/Contact";
-import FairyDustCursor from "./FairyDustCursor"; // Import the FairyDustCursor component
 
 const codeSnippets = [
   {
@@ -100,9 +99,7 @@ const Homepage = () => {
 
   useEffect(() => {
     controls.start({
-      background: [
-        "linear-gradient(45deg, #3A1C71, #3A1C71)",
-      ],
+      background: ["linear-gradient(45deg, #3A1C71, #3A1C71)"],
       transition: {
         duration: 5,
         repeat: Infinity,
@@ -144,7 +141,6 @@ const Homepage = () => {
   return (
     <motion.div className="min-h-screen text-white relative" animate={controls}>
       {/* Fairy Dust Cursor Effect */}
-      <FairyDustCursor />
 
       {/* Navigation Bar */}
 
@@ -317,10 +313,7 @@ const Homepage = () => {
             Unleash your coding potential and become part of a thriving global
             community
           </p>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <button
               onClick={() => navigate("/cheats")}
               size="lg"
@@ -394,10 +387,8 @@ const Homepage = () => {
                 },
               ].map((testimonial, index) => (
                 <div
-
                   key={testimonial.name}
                   className="bg-purple-800 bg-opacity-75 p-6 rounded-lg backdrop-blur-sm mx-2 testimonial-card flex-shrink-0 w-80"
-
                 >
                   <p className="text-lg mb-4">{testimonial.quote}</p>
                   <p className="font-bold text-yellow-400">
@@ -414,15 +405,12 @@ const Homepage = () => {
       {/* Contact Section */}
       <Contact />
 
-
       <Footer bg={"#1E2128"} text={"white"} />
 
       <button
         onClick={scrollToTop}
-
         className="bg-white opacity-60 text-black rounded-full w-14 h-14 fixed right-12 bottom-24 hover:bg-gray-500 hover:text-white transition duration-300 flex items-center justify-center"
         aria-label="Scroll to Top"
-
       >
         <i className="fas fa-arrow-up text-xl"></i>
       </button>
