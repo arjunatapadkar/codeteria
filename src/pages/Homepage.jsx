@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+// src/pages/Homepage.jsx
+import React, { useState, useEffect, useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -18,51 +19,53 @@ import MainNavbar from "../components/MainNavbar";
 import Footer from "../components/core/Footer";
 import Btn from "../components/core/btn";
 import Contact from "../components/Contact";
+import FairyDustCursor from "./FairyDustCursor"; // Import the FairyDustCursor component
 
 const codeSnippets = [
   {
     language: "python",
     code: `def fibonacci(n):
-	  if n <= 1:
-		  return n
-	  return fibonacci(n-1) + fibonacci(n-2)
-  
-  print(fibonacci(10))`,
+      if n <= 1:
+        return n
+      return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(10))`,
     output: "55",
   },
   {
     language: "javascript",
     code: `const quickSort = arr => {
-	if (arr.length <= 1) return arr;
-	const pivot = arr[arr.length - 1];
-	const left = arr.filter((x, i) => x <= pivot && i < arr.length - 1);
-	const right = arr.filter(x => x > pivot);
-	return [...quickSort(left), pivot, ...quickSort(right)];
-  };
-  
-  console.log(quickSort([3, 6, 8, 10, 1, 2, 1]));`,
+  if (arr.length <= 1) return arr;
+  const pivot = arr[arr.length - 1];
+  const left = arr.filter((x, i) => x <= pivot && i < arr.length - 1);
+  const right = arr.filter(x => x > pivot);
+  return [...quickSort(left), pivot, ...quickSort(right)];
+};
+
+console.log(quickSort([3, 6, 8, 10, 1, 2, 1]));`,
     output: "[1, 1, 2, 3, 6, 8, 10]",
   },
   {
     language: "rust",
     code: `fn is_prime(n: u32) -> bool {
-	  if n <= 1 {
-		  return false;
-	  }
-	  for i in 2..=(n as f64).sqrt() as u32 {
-		  if n % i == 0 {
-			  return false;
-		  }
-	  }
-	  true
+  if n <= 1 {
+    return false;
   }
-  
-  fn main() {
-	  println!("{}", is_prime(17));
-  }`,
+  for i in 2..=(n as f64).sqrt() as u32 {
+    if n % i == 0 {
+      return false;
+    }
+  }
+  true
+}
+
+fn main() {
+  println!("{}", is_prime(17));
+}`,
     output: "true",
   },
 ];
+
 const navs = [
   {
     tab: "Playground",
@@ -81,6 +84,7 @@ const navs = [
     page: "/upcoming",
   },
 ];
+
 const Homepage = () => {
   const [currentSnippet, setCurrentSnippet] = useState(0);
   const controls = useAnimation();
@@ -97,9 +101,6 @@ const Homepage = () => {
   useEffect(() => {
     controls.start({
       background: [
-        // "linear-gradient(45deg, #3A1C71, #D76D77)",
-        // "linear-gradient(45deg, #D76D77, #FFAF7B)",
-        // "linear-gradient(45deg, #FFAF7B, #3A1C71)",
         "linear-gradient(45deg, #3A1C71, #3A1C71)",
       ],
       transition: {
@@ -111,14 +112,14 @@ const Homepage = () => {
   }, [controls]);
 
   useEffect(() => {
-    const timeout = setTimeout(()=>{
-      nextSnippet()
-    }, 5000)
+    const timeout = setTimeout(() => {
+      nextSnippet();
+    }, 5000);
 
     return () => {
-      clearTimeout(timeout)
-    }
-  }, [currentSnippet])
+      clearTimeout(timeout);
+    };
+  }, [currentSnippet]);
 
   const runCode = () => {
     setIsRunning(true);
@@ -141,11 +142,18 @@ const Homepage = () => {
   };
 
   return (
-    <motion.div className=" min-h-screen text-white" animate={controls}>
-      <MainNavbar />
-      <div id="top " ref={refScrollUp} ></div>
+    <motion.div className="min-h-screen text-white relative" animate={controls}>
+      {/* Fairy Dust Cursor Effect */}
+      <FairyDustCursor />
 
+      {/* Navigation Bar */}
+
+      <MainNavbar />
+      <div id="top" ref={refScrollUp}></div>
+
+      {/* Main Content */}
       <main className="container mx-auto px-5 lg:px-36 py-12">
+        {/* Hero Section */}
         <motion.section
           className="text-center mb-20"
           initial={{ opacity: 0, y: 50 }}
@@ -168,8 +176,9 @@ const Homepage = () => {
           </motion.p>
         </motion.section>
 
+        {/* Interactive Code Playground */}
         <motion.section
-          className="mb-20 "
+          className="mb-20"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -184,12 +193,12 @@ const Homepage = () => {
               </div>
             </div>
             <div>
-              <div className="flex justify-center gap-10	 items-center mb-4">
+              <div className="flex justify-center gap-10 items-center mb-4">
                 <button
                   onClick={prevSnippet}
                   variant="outline"
                   size="icon"
-                  className="text-yellow-400 border rounded-lg border-yellow-400 bg-white p-2 hover:bg-yellow-400 hover:text-purple-900"
+                  className="text-yellow-400 border rounded-lg border-yellow-400 bg-white p-2 hover:bg-yellow-400 hover:text-purple-900 transition-colors"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </button>
@@ -200,7 +209,7 @@ const Homepage = () => {
                   onClick={nextSnippet}
                   variant="outline"
                   size="icon"
-                  className="text-yellow-400 border rounded-lg border-yellow-400 bg-white p-2 hover:bg-yellow-400 hover:text-purple-900"
+                  className="text-yellow-400 border rounded-lg border-yellow-400 bg-white p-2 hover:bg-yellow-400 hover:text-purple-900 transition-colors"
                 >
                   <ChevronRight className="h-4 w-4" />
                 </button>
@@ -212,7 +221,11 @@ const Homepage = () => {
                 <button
                   onClick={runCode}
                   disabled={isRunning}
-                  className="bg-yellow-400 text-purple-900 hover:bg-yellow-300 transition-all font-semibold duration-300 px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className={`${
+                    isRunning
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-yellow-400 hover:bg-yellow-300"
+                  } text-purple-900 transition-all font-semibold duration-300 px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1`}
                 >
                   {isRunning ? "Running..." : "Run Code"}
                 </button>
@@ -233,6 +246,7 @@ const Homepage = () => {
           </div>
         </motion.section>
 
+        {/* Features Section */}
         <motion.section
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
           initial={{ opacity: 0 }}
@@ -268,10 +282,10 @@ const Homepage = () => {
               key={feature.title}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.07 }} // Only scales the card
+              whileHover={{ scale: 1.07 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
             >
-              <div className="h-full bg-purple-900 bg-opacity-50 hover:bg-opacity-70  hover:shadow-xl backdrop-blur-lg border rounded-xl p-6 space-y-8">
+              <div className="h-full bg-purple-900 bg-opacity-50 hover:bg-opacity-70 hover:shadow-xl backdrop-blur-lg border rounded-xl p-6 space-y-8">
                 <div>
                   <motion.div transition={{ duration: 0.5 }}>
                     <feature.icon className="w-12 h-12 mb-4 text-yellow-400" />
@@ -289,6 +303,7 @@ const Homepage = () => {
           ))}
         </motion.section>
 
+        {/* Call to Action Section */}
         <motion.section
           className="text-center mb-20"
           initial={{ opacity: 0, y: 50 }}
@@ -302,7 +317,10 @@ const Homepage = () => {
             Unleash your coding potential and become part of a thriving global
             community
           </p>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <button
               onClick={() => navigate("/cheats")}
               size="lg"
@@ -312,6 +330,8 @@ const Homepage = () => {
             </button>
           </motion.div>
         </motion.section>
+
+        {/* Testimonials Section */}
         <motion.section
           className="bg-purple-900 bg-opacity-50 rounded-lg p-8 mb-20 backdrop-blur-lg"
           initial={{ opacity: 0, scale: 0.8 }}
@@ -322,7 +342,7 @@ const Homepage = () => {
             What Our Coders Say
           </h2>
           <div className="marquee-container overflow-hidden">
-            <div className="marquee">
+            <div className="marquee flex space-x-4">
               {[
                 {
                   name: "Alex",
@@ -374,8 +394,10 @@ const Homepage = () => {
                 },
               ].map((testimonial, index) => (
                 <div
-                  key={index}
-                  className="bg-purple-800 bg-opacity-75 p-6 rounded-lg backdrop-blur-sm mx-2 testimonial-card"
+
+                  key={testimonial.name}
+                  className="bg-purple-800 bg-opacity-75 p-6 rounded-lg backdrop-blur-sm mx-2 testimonial-card flex-shrink-0 w-80"
+
                 >
                   <p className="text-lg mb-4">{testimonial.quote}</p>
                   <p className="font-bold text-yellow-400">
@@ -389,14 +411,20 @@ const Homepage = () => {
         </motion.section>
       </main>
 
+      {/* Contact Section */}
       <Contact />
 
+
       <Footer bg={"#1E2128"} text={"white"} />
+
       <button
         onClick={scrollToTop}
-        className="bg-white opacity-60 text-black  rounded-full h-8 w-8 lg:w-14 lg:h-14 fixed right-6 bottom-24 hover:bg-gray-500 hover:text-white transition duration-300 flex items-center justify-center"
+
+        className="bg-white opacity-60 text-black rounded-full w-14 h-14 fixed right-12 bottom-24 hover:bg-gray-500 hover:text-white transition duration-300 flex items-center justify-center"
+        aria-label="Scroll to Top"
+
       >
-        <i className="fa-solid fa-arrow-up text-xl"></i>
+        <i className="fas fa-arrow-up text-xl"></i>
       </button>
     </motion.div>
   );
