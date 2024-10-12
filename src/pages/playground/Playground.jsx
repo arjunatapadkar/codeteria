@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useRef, createElement } from '
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ChevronDown } from 'lucide-react';
 import MainNavbar from '../../components/MainNavbar';
+import Footer from '../../components/core/Footer';
 import CodeMirror from '@uiw/react-codemirror';
 import { StreamLanguage } from '@codemirror/language';
 import './playground.css';
@@ -445,11 +446,8 @@ const Playground = () => {
 				</motion.div>
 			</main>
 
-			<footer className="bg-[#2A1E2F] py-10 mt-12">
-				<div className="container mx-auto px-6 text-center">
-					<p className="text-[#D5A187]">© 2024 Codeteria. All rights reserved.</p>
-				</div>
-			</footer>
+		<Footer bg={"#1E2128"} text={"white"} />
+
 		</motion.div>
 	);
 };
