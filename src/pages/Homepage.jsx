@@ -408,12 +408,14 @@ const Homepage = () => {
       <Footer bg={"#1E2128"} text={"white"} />
 
       <button
-        onClick={scrollToTop}
-        className="bg-white opacity-60 text-black rounded-full w-14 h-14 fixed right-12 bottom-24 hover:bg-gray-500 hover:text-white transition duration-300 flex items-center justify-center"
-        aria-label="Scroll to Top"
-      >
-        <i className="fas fa-arrow-up text-xl"></i>
-      </button>
+       onClick={scrollToTop}
+       className="bg-white opacity-60 text-black rounded-full w-14 h-14 fixed left-10 bottom-8 
+                  hover:bg-gray-500 hover:text-white transition duration-300 flex items-center justify-center 
+                  transform hover:scale-110" 
+       aria-label="Scroll to Top"
+     >
+       <i className="fas fa-arrow-up text-xl"></i>
+     </button>
     </motion.div>
   );
 };
