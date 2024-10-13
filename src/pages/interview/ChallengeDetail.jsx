@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAPI } from "../../context/apiContext";
 import Loading from "../../components/core/Loading";
-import SpecialFooter from "../../components/core/SpecialFooter";
+import Footer from "../../components/core/Footer";
 import { VscDebugBreakpointLog } from "react-icons/vsc";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { motion } from "framer-motion";
@@ -99,7 +99,7 @@ const ChallengeDetail = () => {
 					</ol>
 				</div>
 			</div>
-			<SpecialFooter />
+			<Footer bg={"#1E2128"} text={"white"} />
 		</div>
 	);
 };

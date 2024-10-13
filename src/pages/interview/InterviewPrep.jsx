@@ -104,7 +104,7 @@ const InterviewPrep = () => {
 					<IntSection card={card} key={index} />
 				))}
 			</div>
-			<Footer />
+			<Footer bg={"#1E2128"} text={"white"} />
 		</div>
 	);
 };

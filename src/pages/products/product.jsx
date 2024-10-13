@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, ExternalLink } from "lucide-react";
-import SpecialFooter from "../../components/core/SpecialFooter";
+import Footer from "../../components/core/Footer";
 import { useAPI } from "../../context/apiContext";
 import Navbarm from "../../components/landing page/Navbarm";
 
@@ -104,7 +104,8 @@ const Product = () => {
 				</div>
 			</main>
 
-            <SpecialFooter />
+			<Footer bg={"#1E2128"} text={"white"} />
+
 		</div>
 	);
 };

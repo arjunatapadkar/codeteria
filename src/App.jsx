@@ -13,6 +13,7 @@ import Product from "./pages/products/product";
 import Playground from "./pages/playground/Playground";
 import MainNavbar from "./components/MainNavbar";
 import DSProblem from "./pages/dsproblem/DSProblem";
+import AnimatedCursor from "react-animated-cursor";
 
 const App = () => {
   const { dark } = useAPI();
@@ -21,10 +22,24 @@ const App = () => {
 
   return (
     <>
+      <AnimatedCursor
+        innerSize={8}
+        outerSize={35}
+        innerScale={1}
+        outerScale={2}
+        outerAlpha={0}
+        hasBlendMode={true}
+        innerStyle={{
+          backgroundColor: "var(--cursor-color)",
+        }}
+        outerStyle={{
+          border: "3px solid var(--cursor-color)",
+        }}
+      />
       <div
         className={`${
           dark ? "bg-[#0F111D] text-white" : ""
-        } relative min-h-screen scroll-smooth`}
+        } relative  min-h-screen scroll-smooth`}
         style={{
           height: "100vh",
           overflowY: "scroll",
@@ -45,8 +60,9 @@ const App = () => {
 
           {/* page not found */}
           <Route path="*" element={<ErrorPage />} />
-        </Routes>        
+        </Routes>
       </div>
+
       <Chat />
     </>
   );

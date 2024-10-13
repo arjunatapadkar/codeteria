@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAPI } from "../../context/apiContext";
 import Loading from "../../components/core/Loading";
-import SpecialFooter from "../../components/core/SpecialFooter";
+import Footer from "../../components/core/Footer";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -96,7 +96,7 @@ const MachineCoding = () => {
 				))}
 			</div>
 
-			{/* <SpecialFooter /> */}
+			<Footer bg={"#1E2128"} text={"white"} />
 		</div>
 	);
 };

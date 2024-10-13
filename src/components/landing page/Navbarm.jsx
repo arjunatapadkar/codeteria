@@ -95,31 +95,31 @@ const Navbarm = () => {
           >
             <Link
               to="/cheats"
-              className="hover:text-purple-600 transition-colors"
+              className="hover:text-yellow-300 transition-colors"
             >
               Cheatsheets
             </Link>
             <Link
               to="/interview"
-              className="hover:text-purple-600 transition-colors"
+              className="hover:text-yellow-300 transition-colors"
             >
               Interview Prep
             </Link>
             <Link
               to="/upcoming"
-              className="hover:text-purple-600 transition-colors"
+              className="hover:text-yellow-300 transition-colors"
             >
               Guides
             </Link>
             <Link
               to="/upcoming"
-              className="hover:text-purple-600 transition-colors"
+              className="hover:text-yellow-300 transition-colors"
             >
               Project Guides
             </Link>
             <Link
               to="/product"
-              className="hover:text-purple-600 transition-colors"
+              className="hover:text-yellow-300 transition-colors"
             >
               Products
             </Link>
