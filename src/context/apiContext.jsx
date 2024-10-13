@@ -80,7 +80,7 @@ export const APIProvider = ({ children }) => {
         try {
             const response = await axios.get(`${url}/dsproblem`);
             setLoading(false);
-            setDsProblems(response.data);
+            setDsProblems(response.data.problems);
             console.log(response.data);
             return response.data;
         } catch (error) {
