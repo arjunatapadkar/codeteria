@@ -15,7 +15,7 @@ const DSProblem = () => {
         };
 
         fetchProblems();
-    }, [getAllDSProblems]);
+    }, []);
 
     const handleCardClick = (id) => {
         navigate(`/dsproblem/${id}`);
