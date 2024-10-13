@@ -75,6 +75,10 @@ const navs = [
     page: "/upcoming",
   },
   {
+    tab: "DS Problems",
+    page: "/dsproblems"
+  },
+  {
     tab: "Community",
     page: "/upcoming",
   },
@@ -400,6 +404,7 @@ const Homepage = () => {
             </div>
           </div>
         </motion.section>
+        
       </main>
 
       {/* Contact Section */}
