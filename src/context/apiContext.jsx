@@ -49,7 +49,7 @@ export const APIProvider = ({ children }) => {
             const response = await axios.get(`${url}/cheat`);
             setLoading(false);
             setAllCheats(response.data);
-            console.log(response.data);
+            
             return response.data.allcheats;
         } catch (error) {
             setLoading(false);
@@ -65,7 +65,7 @@ export const APIProvider = ({ children }) => {
             const response = await axios.get(`${url}/challenge`);
             setLoading(false);
             setAllProblems(response.data);
-            console.log(response.data);
+           
             return response.data;
         } catch (error) {
             setLoading(false);
@@ -81,7 +81,7 @@ export const APIProvider = ({ children }) => {
             const response = await axios.get(`${url}/dsproblem`);
             setLoading(false);
             setDsProblems(response.data.problems);
-            console.log(response.data);
+            
             return response.data;
         } catch (error) {
             setLoading(false);
