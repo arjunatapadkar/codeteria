@@ -124,6 +124,21 @@ html.dark-mode {
   /* Adjust duration to decrease speed */
 }
 
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Your scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
 @keyframes scroll {
   0% {
     transform: translateX(100%);
