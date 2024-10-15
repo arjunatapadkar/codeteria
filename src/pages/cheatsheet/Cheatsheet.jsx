@@ -13,7 +13,7 @@ const Cheatsheet = () => {
   useEffect(() => {
     const func = async () => {
       const response = await getAllCheats();
-      console.log(response);
+      
       setCheats(response);
       if (!currentCheat) setCurrentCheat(response[0]._id);
     };

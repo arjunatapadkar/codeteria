@@ -20,7 +20,7 @@ const ChallengeDetail = () => {
 		problems &&
 		problems.allChallenges.filter((challenge) => challenge._id == id);
 	// const challenge = result[0];
-	console.log(challenge);
+	
 
 
 
