@@ -1,0 +1,561 @@
+[
+  {
+    "topic": {
+      "_id": "ObjectId('6523f3a9dfd5047b3c989f4b')",
+      "title": "Network Protocols",
+      "description": "Network protocols define rules and conventions for communication between network devices. Common network protocols include TCP, UDP, and HTTP, each serving different purposes and performance characteristics in a network environment.",
+      "tags": [
+        "network",
+        "communication",
+        "TCP",
+        "UDP",
+        "protocols"
+      ],
+      "subtopics": [
+        {
+          "title": "TCP vs UDP",
+          "description": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are the two main protocols used for transmitting data over the internet. They differ in their reliability, speed, and use cases.",
+          "tags": [
+            "TCP",
+            "UDP",
+            "reliability",
+            "speed"
+          ],
+          "key_points": [
+            {
+              "point_title": "TCP: Reliability over Speed",
+              "details": "TCP is connection-oriented, ensuring reliable data transfer by establishing a connection between the sender and receiver before data is transmitted. It also handles error checking, retransmissions, and flow control."
+            },
+            {
+              "point_title": "UDP: Speed over Reliability",
+              "details": "UDP is connectionless and focuses on fast transmission. It doesn't guarantee delivery or order, making it ideal for real-time applications like video streaming, where speed is more important than reliability."
+            }
+          ],
+          "examples": [
+            {
+              "title": "Use Case: TCP for File Transfers",
+              "details": "TCP is often used in situations where reliable data transmission is crucial, such as file transfers and email communication.",
+            },
+            {
+              "title": "Use Case: UDP for Video Streaming",
+              "details": "UDP is used for streaming applications like live video and VoIP, where low latency is key and some data loss is acceptable.",
+            }
+          ]
+        },
+        {
+          "title": "HTTP vs HTTPS",
+          "description": "HTTP and HTTPS are application-layer protocols used for transmitting hypertext documents on the web. The key difference lies in the security provided by HTTPS through SSL/TLS encryption.",
+          "tags": [
+            "HTTP",
+            "HTTPS",
+            "security"
+          ],
+          "key_points": [
+            {
+              "point_title": "HTTP: No Encryption",
+              "details": "HTTP is the foundation of any data exchange on the Web and is a protocol used for transmitting hypertext. However, HTTP sends information in plain text, which can be intercepted."
+            },
+            {
+              "point_title": "HTTPS: Secure HTTP",
+              "details": "HTTPS adds a layer of security by encrypting the data being transmitted using SSL/TLS, making it suitable for sensitive data like login credentials and payment information."
+            }
+          ],
+          "examples": [
+            {
+              "title": "Use Case: HTTP for Basic Websites",
+              "details": "HTTP is often used in scenarios where sensitive information is not exchanged, such as in static websites or public web resources.",
+            },
+            {
+              "title": "Use Case: HTTPS for E-commerce",
+              "details": "HTTPS is essential for securing online transactions, protecting login credentials, and ensuring data integrity in online banking and e-commerce.",
+            }
+          ]
+        }
+      ],
+      "created_at": "2024-10-15T10:00:00Z",
+      "updated_at": "2024-10-15T10:00:00Z"
+    }
+  },
+  {
+    "topic": {
+      "_id": "ObjectId('6523f4b7dfd5047b3c989f5c')",
+      "title": "Load Balancing",
+      "description": "Load balancing is a technique used to distribute incoming network traffic across multiple servers or resources to ensure optimal resource utilization, minimize response time, and prevent any single server from being overwhelmed.",
+      "tags": [
+        "load balancing",
+        "scalability",
+        "availability",
+        "performance"
+      ],
+      "subtopics": [
+        {
+          "title": "Types of Load Balancers",
+          "description": "Load balancers can be categorized into different types based on their architecture and operating layers, such as hardware vs software load balancers, and Layer 4 vs Layer 7 load balancers.",
+          "tags": [
+            "load balancer",
+            "types",
+            "L4",
+            "L7"
+          ],
+          "key_points": [
+            {
+              "point_title": "Hardware Load Balancers",
+              "details": "Hardware load balancers are dedicated physical devices designed to handle a large volume of traffic. They offer high performance but are expensive and lack flexibility compared to software solutions."
+            },
+            {
+              "point_title": "Software Load Balancers",
+              "details": "Software load balancers run on commodity hardware or virtual machines and offer more flexibility and lower costs compared to hardware load balancers. Popular examples include HAProxy and NGINX."
+            },
+            {
+              "point_title": "Layer 4 vs Layer 7 Load Balancing",
+              "details": "Layer 4 load balancers route traffic based on IP addresses and ports, while Layer 7 load balancers operate at the application layer and can route traffic based on content, such as HTTP headers."
+            }
+          ],
+          "examples": [
+            {
+              "title": "Use Case: Layer 4 Load Balancing for TCP Traffic",
+              "details": "Layer 4 load balancers are often used for handling large volumes of TCP or UDP traffic efficiently, making them suitable for low-latency, high-performance applications like online gaming or VoIP.",
+            },
+            {
+              "title": "Use Case: Layer 7 Load Balancing for Web Applications",
+              "details": "Layer 7 load balancers are often used for routing HTTP/HTTPS traffic based on URL paths or HTTP headers, which is common in web applications and microservices architectures.",
+            }
+          ]
+        },
+        {
+          "title": "Load Balancing Algorithms",
+          "description": "Various load balancing algorithms determine how traffic is distributed across servers. Some of the most common algorithms include round-robin, least connections, and IP hash.",
+          "tags": [
+            "algorithms",
+            "distribution",
+            "load balancer"
+          ],
+          "key_points": [
+            {
+              "point_title": "Round-Robin",
+              "details": "Round-robin load balancing distributes traffic sequentially across the servers, ensuring even traffic distribution. It's simple but doesn't account for server load or performance."
+            },
+            {
+              "point_title": "Least Connections",
+              "details": "The least connections algorithm directs traffic to the server with the fewest active connections, making it more efficient for systems where some requests may take longer to process."
+            },
+            {
+              "point_title": "IP Hash",
+              "details": "In IP hash load balancing, the client's IP address is hashed to determine which server will handle the request. This ensures that requests from the same IP address are always sent to the same server."
+            }
+          ],
+          "examples": [
+            {
+              "title": "Use Case: Round-Robin for Simple Web Applications",
+              "details": "Round-robin is a good fit for small web applications with roughly equal workloads across servers. It ensures a simple and fair distribution of incoming traffic.",
+            },
+            {
+              "title": "Use Case: Least Connections for High-Load Applications",
+              "details": "Least connections are ideal for dynamic environments where server load may vary significantly, such as databases or applications with long-running processes.",
+            }
+          ]
+        }
+      ],
+      "created_at": "2024-10-15T12:00:00Z",
+      "updated_at": "2024-10-15T12:00:00Z"
+    }
+  },
+  {
+    "_id": "ObjectId('6524a7b8dfd5047b3c989f6d')",
+    "title": "Memcaching",
+    "description": "Memcaching is a memory caching system used to speed up dynamic database-driven websites by caching data and objects in RAM to reduce the number of times an external data source is accessed.",
+    "tags": ["caching", "performance", "scalability", "memcache", "in-memory"],
+    "subtopics": [
+      {
+        "title": "What is Memcaching?",
+        "description": "Memcaching is a distributed memory object caching system that helps in speeding up applications by reducing database load and reusing previously requested data.",
+        "tags": ["memcaching", "distributed cache", "performance"],
+        "key_points": [
+          {
+            "point_title": "How Memcache Works",
+            "details": "Memcache stores data in memory for fast retrieval, reducing database load. It uses a key-value storage mechanism to save and retrieve objects."
+          },
+          {
+            "point_title": "Use Case in Web Applications",
+            "details": "Memcache is commonly used in web applications to cache the results of database queries, API calls, or session data, improving response times and reducing server strain."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Example: Caching Database Queries",
+            "details": "In a web application, Memcache can be used to store the results of complex database queries. If the same query is made again, Memcache will return the cached result instead of querying the database.",
+          },
+          {
+            "title": "Example: Caching API Responses",
+            "details": "Memcache can be used to cache expensive API requests. This reduces the number of times the external API needs to be called, improving the performance of the application.",
+          }
+        ]
+      },
+      {
+        "title": "Advantages of Memcaching",
+        "description": "Memcaching provides several benefits, such as reducing database load, improving performance, and scaling easily for large applications.",
+        "tags": ["memcaching", "performance", "scalability"],
+        "key_points": [
+          {
+            "point_title": "Reduced Database Load",
+            "details": "By caching frequently requested data in memory, Memcache reduces the number of database queries needed, which helps in reducing the overall load on the database."
+          },
+          {
+            "point_title": "Improved Response Times",
+            "details": "Since Memcache stores data in RAM, accessing cached data is much faster compared to querying a database, significantly reducing response times for users."
+          },
+          {
+            "point_title": "Scalability",
+            "details": "Memcache can be easily scaled horizontally by adding more servers to handle increased load, making it suitable for large-scale applications."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Use Case: Memcache in High-Traffic Websites",
+            "details": "High-traffic websites like social media platforms use Memcache to store frequently accessed user data and session information, significantly improving scalability and response times.",
+          }
+        ]
+      }
+    ],
+    "created_at": "2024-10-15T14:00:00Z",
+    "updated_at": "2024-10-15T14:00:00Z"
+  },
+  {
+    "_id": "ObjectId('6524b9c8dfd5047b3c989f7e')",
+    "title": "Performance vs Scalability",
+    "description": "Performance and scalability are two critical factors in software and system design. While performance focuses on the system's speed and efficiency under a given load, scalability addresses the system's ability to handle increasing loads or demand without compromising performance.",
+    "tags": ["performance", "scalability", "system design", "optimization"],
+    "subtopics": [
+      {
+        "title": "What is Performance?",
+        "description": "Performance refers to how efficiently a system processes tasks or handles requests under a given load. It includes metrics such as response time, throughput, and resource utilization.",
+        "tags": ["performance", "speed", "efficiency"],
+        "key_points": [
+          {
+            "point_title": "Response Time and Latency",
+            "details": "Response time measures how quickly a system responds to a request. Lower latency means faster response times, which is critical for user satisfaction in applications like online shopping or gaming."
+          },
+          {
+            "point_title": "Throughput",
+            "details": "Throughput refers to the number of tasks or transactions a system can process within a specific time period. High throughput is important for applications with a large number of users or requests."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Example: Optimizing Database Queries for Performance",
+            "details": "Improving the performance of database queries, such as by indexing or query optimization, can drastically reduce response times and improve user experience.",
+          }
+        ]
+      },
+      {
+        "title": "What is Scalability?",
+        "description": "Scalability is the system’s capability to handle increasing workloads or to expand its capacity without affecting performance. A scalable system can grow efficiently in response to increased demand.",
+        "tags": ["scalability", "growth", "elasticity"],
+        "key_points": [
+          {
+            "point_title": "Horizontal vs Vertical Scaling",
+            "details": "Horizontal scaling involves adding more machines or servers to handle additional load, while vertical scaling refers to adding more resources (like CPU or memory) to an existing machine."
+          },
+          {
+            "point_title": "Elasticity",
+            "details": "Elastic scalability allows systems to automatically scale resources up or down based on current demand, improving cost efficiency and system responsiveness."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Example: Horizontal Scaling in Microservices",
+            "details": "In microservices architecture, horizontal scaling is used to replicate services across multiple servers or containers to handle large traffic loads efficiently.",
+          }
+        ]
+      },
+      {
+        "title": "Key Differences Between Performance and Scalability",
+        "description": "Performance focuses on speed and efficiency under a specific load, while scalability ensures the system can grow or shrink in response to changing demand.",
+        "tags": ["comparison", "performance", "scalability"],
+        "key_points": [
+          {
+            "point_title": "Performance: Efficiency Under a Fixed Load",
+            "details": "Performance optimization is about making a system run faster under a defined or fixed load, focusing on reducing response times and maximizing throughput."
+          },
+          {
+            "point_title": "Scalability: Efficiency Under Variable Load",
+            "details": "Scalability is about designing systems that can grow or shrink based on demand. A highly scalable system maintains performance as load increases."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Use Case: Performance vs Scalability in Cloud Computing",
+            "details": "In cloud environments, performance optimization may involve reducing latency through edge computing, while scalability solutions focus on dynamically scaling resources to meet fluctuating workloads.",
+          }
+        ]
+      }
+    ],
+    "created_at": "2024-10-15T16:00:00Z",
+    "updated_at": "2024-10-15T16:00:00Z"
+  },
+  {
+    "_id": "ObjectId('6524c0e8b7d5047b3c989f7f')",
+    "title": "Latency vs Throughput",
+    "description": "Latency and throughput are two key metrics used to measure system performance. Latency refers to the time it takes for a system to respond to a request, while throughput measures the total number of requests processed over a period of time. Both are important for evaluating the efficiency and responsiveness of systems, especially in networks, databases, and applications.",
+    "tags": ["latency", "throughput", "performance", "system metrics"],
+    "subtopics": [
+      {
+        "title": "What is Latency?",
+        "description": "Latency refers to the delay between the initiation of a request and the completion of the response. It is typically measured in milliseconds (ms) and represents the time taken for a message to travel from the source to the destination and back.",
+        "tags": ["latency", "delay", "response time"],
+        "key_points": [
+          {
+            "point_title": "Round-Trip Time (RTT)",
+            "details": "Round-Trip Time is the time it takes for a request to travel from the client to the server and back. It is one of the most commonly used metrics to measure network latency."
+          },
+          {
+            "point_title": "Importance of Low Latency",
+            "details": "Low latency is critical for applications where real-time responsiveness is required, such as online gaming, financial trading platforms, and video conferencing."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Example: Latency in Web Applications",
+            "details": "In a web application, latency can be reduced by optimizing content delivery through Content Delivery Networks (CDNs), which serve data from a location closer to the user.",
+          }
+        ]
+      },
+      {
+        "title": "What is Throughput?",
+        "description": "Throughput measures the number of operations, tasks, or requests that a system can process in a given period of time, typically measured in transactions per second (TPS) or requests per second (RPS). It reflects the system's capacity to handle load efficiently.",
+        "tags": ["throughput", "capacity", "transactions per second"],
+        "key_points": [
+          {
+            "point_title": "High Throughput Systems",
+            "details": "High throughput is crucial for systems that process large volumes of data or handle high user traffic, such as e-commerce platforms or video streaming services."
+          },
+          {
+            "point_title": "Maximizing Throughput",
+            "details": "Throughput can be maximized by optimizing system resources, improving concurrency, or distributing the load across multiple servers (horizontal scaling)."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Example: Throughput in Database Systems",
+            "details": "In databases, throughput can be improved by optimizing queries, implementing proper indexing, and using load balancing to distribute traffic across multiple database instances.",
+          }
+        ]
+      },
+      {
+        "title": "Key Differences Between Latency and Throughput",
+        "description": "Latency measures the time taken to complete a single request, while throughput refers to the number of requests a system can handle over time. While they are related, optimizing for one often impacts the other.",
+        "tags": ["latency", "throughput", "comparison"],
+        "key_points": [
+          {
+            "point_title": "Latency: Focus on Response Time",
+            "details": "Latency is about minimizing the time it takes for each individual request to complete. A low-latency system is critical for real-time applications but may not necessarily handle a large volume of requests efficiently."
+          },
+          {
+            "point_title": "Throughput: Focus on Volume of Requests",
+            "details": "Throughput focuses on processing as many requests as possible in a given time period. High-throughput systems are ideal for applications handling heavy workloads, but optimizing throughput can sometimes increase latency."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Use Case: Balancing Latency and Throughput in Network Systems",
+            "details": "In networking, reducing latency may require using dedicated high-speed connections, while increasing throughput can involve using parallel connections or increasing bandwidth. Optimizing both requires trade-offs based on the system's needs.",
+          }
+        ]
+      }
+    ],
+    "created_at": "2024-10-15T17:00:00Z",
+    "updated_at": "2024-10-15T17:00:00Z"
+  },
+  {
+    "_id": "ObjectId('6524d1a3b7d5047b3c989f8d')",
+    "title": "Availability vs Consistency",
+    "description": "Availability and consistency are fundamental concepts in distributed systems, particularly in the context of the CAP theorem. Availability refers to a system's ability to ensure that every request receives a response, while consistency ensures that all nodes in the system return the same data at any given time. These two properties often trade off against each other, especially in distributed databases, where maintaining both under network partitioning can be challenging.",
+    "tags": ["availability", "consistency", "CAP theorem", "distributed systems"],
+    "subtopics": [
+      {
+        "title": "What is Availability?",
+        "description": "Availability means that the system continues to operate and respond to requests, even in the presence of failures or partitions. In highly available systems, every request receives a response, whether it’s successful or an error, ensuring minimal downtime.",
+        "tags": ["availability", "system reliability"],
+        "key_points": [
+          {
+            "point_title": "Ensuring High Availability",
+            "details": "High availability is achieved through strategies like replication, redundancy, load balancing, and fault tolerance. This ensures that even if some parts of the system fail, others can take over to maintain service continuity."
+          },
+          {
+            "point_title": "Trade-off with Consistency",
+            "details": "To achieve high availability, a system may allow responses that might not be up-to-date across all nodes, prioritizing responsiveness over data accuracy."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Example: Availability in Distributed Databases",
+            "details": "Systems like Cassandra prioritize availability, allowing data writes and reads even during network partitions, but potentially serving stale data temporarily to ensure uptime.",
+          }
+        ]
+      },
+      {
+        "title": "What is Consistency?",
+        "description": "Consistency refers to the guarantee that all nodes in a distributed system see the same data at the same time. Every read request must return the most recent write, ensuring that no stale or incorrect data is served to clients.",
+        "tags": ["consistency", "data integrity", "strong consistency"],
+        "key_points": [
+          {
+            "point_title": "Strong vs Eventual Consistency",
+            "details": "In strong consistency, all nodes immediately reflect the most recent updates, whereas eventual consistency allows a delay in synchronization across nodes but ensures that eventually all nodes will have the same data."
+          },
+          {
+            "point_title": "Trade-off with Availability",
+            "details": "To maintain strong consistency, a system may sacrifice availability during network partitions by rejecting requests that would otherwise cause inconsistencies, leading to potential downtime in distributed systems."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Example: Consistency in Distributed Systems",
+            "details": "Databases like HBase prioritize strong consistency, ensuring that all reads reflect the most recent write, even if it means reducing availability during network disruptions.",
+          }
+        ]
+      },
+      {
+        "title": "Key Differences Between Availability and Consistency",
+        "description": "Availability ensures that the system remains responsive, while consistency guarantees that data remains synchronized across nodes. In distributed systems, these two properties often trade off against each other, particularly under network partitioning (as described by the CAP theorem).",
+        "tags": ["availability", "consistency", "trade-offs"],
+        "key_points": [
+          {
+            "point_title": "Availability: Focus on Uptime",
+            "details": "High availability prioritizes ensuring that the system continues to function and respond to user requests, even at the cost of serving inconsistent data temporarily."
+          },
+          {
+            "point_title": "Consistency: Focus on Correct Data",
+            "details": "Strong consistency ensures that every node in a distributed system has the same data at all times, but this may reduce system availability, particularly in the face of network issues."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Use Case: CAP Theorem in Distributed Systems",
+            "details": "The CAP theorem states that in a distributed system, you can achieve at most two out of three: consistency, availability, or partition tolerance. Systems must often choose between availability and consistency based on their use case.",
+          }
+        ]
+      }
+    ],
+    "created_at": "2024-10-15T18:30:00Z",
+    "updated_at": "2024-10-15T18:30:00Z"
+  },
+  {
+    "_id": "ObjectId('6524e3f7b7d5047b3c98a1c7')",
+    "title": "CAP Theorem",
+    "description": "The CAP theorem, also known as Brewer’s theorem, is a fundamental principle in distributed systems that states a distributed database can only guarantee two out of three properties: Consistency, Availability, and Partition Tolerance. The theorem highlights the trade-offs developers must consider when designing distributed systems and how no system can provide all three guarantees simultaneously in the presence of a network partition.",
+    "tags": ["CAP theorem", "distributed systems", "consistency", "availability", "partition tolerance"],
+    "subtopics": [
+      {
+        "title": "What is the CAP Theorem?",
+        "description": "The CAP theorem asserts that it is impossible for a distributed system to achieve all three of the following properties simultaneously: Consistency (C), Availability (A), and Partition Tolerance (P). In the event of a network partition, a system must choose between providing consistency or availability but cannot guarantee both.",
+        "tags": ["CAP theorem", "distributed systems"],
+        "key_points": [
+          {
+            "point_title": "Consistency (C)",
+            "details": "Every read receives the most recent write, ensuring that all nodes in the system return the same data. This guarantees that clients get accurate, up-to-date information."
+          },
+          {
+            "point_title": "Availability (A)",
+            "details": "Every request (read or write) receives a response, even if the data might not be the most recent. The system remains operational even in case of failures, ensuring minimal downtime."
+          },
+          {
+            "point_title": "Partition Tolerance (P)",
+            "details": "The system continues to operate despite network partitions. Partition tolerance means the system can handle failures or disconnections between nodes without losing data or crashing."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Example: CAP Theorem in Action",
+            "details": "Consider a distributed database spread across multiple nodes. If a network partition occurs (i.e., nodes cannot communicate), the system must choose between consistency (serving accurate data across all nodes) and availability (serving requests even if some nodes are out of sync)."
+          }
+        ]
+      },
+      {
+        "title": "Consistency (C)",
+        "description": "In distributed systems, consistency means that every read reflects the most recent write. All nodes should return the same, up-to-date data, and there is no stale or outdated data served to users. Achieving strong consistency often requires sacrificing availability or partition tolerance during network issues.",
+        "tags": ["consistency", "CAP theorem"],
+        "key_points": [
+          {
+            "point_title": "Strong Consistency",
+            "details": "A strong consistency model guarantees that after a write completes, all subsequent reads will return the latest write, ensuring no node serves outdated data."
+          },
+          {
+            "point_title": "Eventual Consistency",
+            "details": "In some distributed systems, eventual consistency allows for a temporary period where nodes may return stale data, but eventually, all nodes will converge to the latest data state."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Example: Consistency in Databases",
+            "details": "Databases like HBase and Google Spanner prioritize strong consistency, ensuring all nodes reflect the most recent write, even if it means delaying responses under certain conditions."
+          }
+        ]
+      },
+      {
+        "title": "Availability (A)",
+        "description": "Availability means that every request receives a response, regardless of whether the data is the most recent. In distributed systems prioritizing availability, the system remains operational even during failures, though it may sacrifice consistency temporarily.",
+        "tags": ["availability", "CAP theorem"],
+        "key_points": [
+          {
+            "point_title": "High Availability Systems",
+            "details": "Highly available systems ensure that every request (read or write) is processed, even in the face of failures. This approach often sacrifices consistency, particularly during network partitions."
+          },
+          {
+            "point_title": "Trade-offs with Consistency",
+            "details": "To maintain availability, a system might allow reads to serve stale data or writes to be temporarily inconsistent across different nodes."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Example: Availability in NoSQL Databases",
+            "details": "Databases like Cassandra and DynamoDB prioritize availability, allowing operations to continue during network partitions but potentially serving outdated data to ensure uptime."
+          }
+        ]
+      },
+      {
+        "title": "Partition Tolerance (P)",
+        "description": "Partition tolerance means that the system continues to operate despite network failures or partitions. This property is critical in distributed systems, as networks are inherently unreliable, and nodes might get disconnected. Partition tolerance is usually non-negotiable in distributed systems, meaning systems must often choose between availability and consistency.",
+        "tags": ["partition tolerance", "CAP theorem"],
+        "key_points": [
+          {
+            "point_title": "Importance of Partition Tolerance",
+            "details": "Partition tolerance is vital for distributed systems to ensure the system continues to function even if some nodes cannot communicate due to network failures."
+          },
+          {
+            "point_title": "Partition Tolerance in Distributed Systems",
+            "details": "When a network partition occurs, the system must still be able to process requests, potentially sacrificing consistency (serving stale data) or availability (rejecting requests) to handle the partition."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Example: Partition Tolerance in Distributed Databases",
+            "details": "Systems like Apache Cassandra prioritize partition tolerance, ensuring they remain operational during network splits while making trade-offs between availability and consistency."
+          }
+        ]
+      },
+      {
+        "title": "Trade-offs Between Consistency, Availability, and Partition Tolerance",
+        "description": "The CAP theorem forces system designers to make trade-offs between consistency, availability, and partition tolerance. In practice, most distributed systems choose partition tolerance, as network failures are inevitable, and then decide whether to favor consistency or availability.",
+        "tags": ["trade-offs", "CAP theorem", "distributed systems"],
+        "key_points": [
+          {
+            "point_title": "Choosing Between Availability and Consistency",
+            "details": "During a partition, a system must decide between maintaining availability (allowing operations but risking inconsistent data) or ensuring consistency (delaying operations until partition recovery)."
+          },
+          {
+            "point_title": "Different System Architectures",
+            "details": "System architects typically make trade-offs based on the application’s requirements. Systems like Cassandra prioritize availability, while others like HBase favor consistency."
+          }
+        ],
+        "examples": [
+          {
+            "title": "Example: Real-World Use of CAP Theorem",
+            "details": "In a large-scale distributed system like Amazon DynamoDB, availability is prioritized to ensure the system stays operational during network issues, even if data might be temporarily inconsistent."
+          }
+        ]
+      }
+    ],
+    "created_at": "2024-10-15T20:00:00Z",
+    "updated_at": "2024-10-15T20:00:00Z"
+  }       
+]
