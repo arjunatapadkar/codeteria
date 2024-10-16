@@ -22,6 +22,11 @@ const Footer = () => {
               </Link>
             </div>
             <p className="text-gray-300 ml-2">Empowering coders worldwide</p>
+            <div className="mt-4 ml-2">
+          <Link to="/terms">
+            Terms and Conditions
+          </Link>
+        </div>
           </div>
 
           {/* Quick Links */}
@@ -81,6 +86,7 @@ const Footer = () => {
         </div>
 
         <hr className="border-gray-400" />
+        
         <div className="mt-4 text-center text-gray-300">
           © 2024 Codeteria. All rights reserved.
         </div>
