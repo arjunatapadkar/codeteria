@@ -125,7 +125,7 @@ const Navbarm = () => {
             </Link>
             <button
               onClick={() => setDark(!dark)}
-              className={`text-xl rounded-full ${
+              className={`text-xl p-2 bg-amber-400 rounded-full ${
                 dark ? "text-white" : "text-gray-800"
               }`}
             >
