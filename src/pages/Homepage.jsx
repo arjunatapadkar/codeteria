@@ -1,17 +1,8 @@
-// src/pages/Homepage.jsx
 import React, { useState, useEffect, useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
-import {
-  Code,
-  Book,
-  Users,
-  Zap,
-  ChevronRight,
-  ChevronLeft,
-} from "lucide-react";
+import { Code, Book, Users, Zap, ChevronRight, ChevronLeft } from "lucide-react";
 import logo from "../assets/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
@@ -19,7 +10,7 @@ import MainNavbar from "../components/MainNavbar";
 import Footer from "../components/core/Footer";
 import Btn from "../components/core/btn";
 import Contact from "../components/Contact";
-
+import StarRating from "../components/StarRating"; // Correct import statement
 
 const codeSnippets = [
   {
@@ -143,6 +134,11 @@ const Homepage = () => {
     setOutput("");
   };
 
+  const handleRating = (newRating) => {
+    console.log("New Rating: ", newRating);
+    // You can handle the rating (e.g., send to an API or state)
+  };
+
   return (
     <motion.div className="min-h-screen text-white relative" animate={controls}>
       {/* Fairy Dust Cursor Effect */}
@@ -222,10 +218,11 @@ const Homepage = () => {
                 <button
                   onClick={runCode}
                   disabled={isRunning}
-                  className={`${isRunning
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-yellow-400 hover:bg-yellow-300"
-                    } text-purple-900 transition-all font-semibold duration-300 px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1`}
+                  className={`${
+                    isRunning
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-yellow-400 hover:bg-yellow-300"
+                  } text-purple-900 transition-all font-semibold duration-300 px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1`}
                 >
                   {isRunning ? "Running..." : "Run Code"}
                 </button>
@@ -330,7 +327,7 @@ const Homepage = () => {
 
         {/* Testimonials Section */}
         <motion.section
-          className="bg-purple-900 bg-opacity-50 rounded-lg p-8 mb-20 backdrop-blur-lg lg:h-[450px] sm:h-[500px]"
+          className="bg-purple-900 bg-opacity-50 rounded-lg p-8 mb-20 backdrop-blur-lg"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
@@ -338,8 +335,8 @@ const Homepage = () => {
           <h2 className="text-3xl font-bold mb-6 text-center">
             What Our Coders Say
           </h2>
-          <div className="flex overflow-hidden">
-            <div className=" h-full w-full flex justify-center gap-8 marquee">
+          <div className="marquee-container overflow-hidden">
+            <div className="marquee flex space-x-4">
               {[
                 {
                   name: "Alex",
@@ -390,29 +387,27 @@ const Homepage = () => {
                     "I improved my technical understanding and communication skills, which has been crucial in managing product development teams.",
                 },
               ].map((testimonial, index) => (
-                <div key={index} className="group [perspective:1000px] m-5">
-                  <div className="border-solid border-white border-2 h-80 w-64 rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                    {/* Front Face */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#433FD7]/30 to-[#8D8BD3]/30 flex flex-col items-center justify-center rounded-xl [backface-visibility:hidden]">
-                      <p className="font-outfit font-semibold text-[22px]  text-yellow-400 text-center px-4">
-                        {testimonial.name}
-                      </p>
-                      <p className="font-outfit mt-2 text-[18px] text-yellow-400 text-center px-4">
-                        {testimonial.role}
-                      </p>
-                    </div>
-                    {/* Back Face */}
-                    <div className="absolute inset-0 h-full w-full rounded-xl bg-gradient-to-br from-[#433FD7]/30 to-[#8D8BD3]/30 px-6 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                      <div className="h-full flex flex-col justify-center items-center">
-                        <p className="font-tillana text-lg  text-yellow-400">{testimonial.quote}</p>
-                      </div>
-                    </div>
-                  </div>
+                <div
+                  key={testimonial.name}
+                  className="bg-purple-800 bg-opacity-75 p-6 rounded-lg backdrop-blur-sm mx-2 testimonial-card flex-shrink-0 w-80"
+                >
+                  <p className="text-lg mb-4">{testimonial.quote}</p>
+                  <p className="font-bold text-yellow-400">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-sm text-gray-300">{testimonial.role}</p>
                 </div>
               ))}
             </div>
           </div>
         </motion.section>
+        
+        {/* Feedback Star Section */}
+        <div className="my-8 flex flex-col items-center">
+          <h2 className="text-4xl font-bold mb-6">Rate Us</h2> {/* Added Rate Us text */}
+          <p className="text-xl mb-10">Your feedback helps us improve!</p>
+          <StarRating onRating={handleRating} />
+        </div>
 
       </main>
 
@@ -423,9 +418,7 @@ const Homepage = () => {
 
       <button
         onClick={scrollToTop}
-        className="bg-white opacity-60 text-black rounded-full w-14 h-14 fixed left-10 bottom-8 
-                  hover:bg-gray-500 hover:text-white transition duration-300 flex items-center justify-center 
-                  transform hover:scale-110"
+        className="bg-white opacity-60 text-black rounded-full w-14 h-14 fixed right-12 bottom-24 hover:bg-gray-500 hover:text-white transition duration-300 flex items-center justify-center"
         aria-label="Scroll to Top"
       >
         <i className="fas fa-arrow-up text-xl"></i>
