@@ -1,17 +1,8 @@
-// src/pages/Homepage.jsx
 import React, { useState, useEffect, useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
-import {
-  Code,
-  Book,
-  Users,
-  Zap,
-  ChevronRight,
-  ChevronLeft,
-} from "lucide-react";
+import { Code, Book, Users, Zap, ChevronRight, ChevronLeft } from "lucide-react";
 import logo from "../assets/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
@@ -19,6 +10,7 @@ import MainNavbar from "../components/MainNavbar";
 import Footer from "../components/core/Footer";
 import Btn from "../components/core/btn";
 import Contact from "../components/Contact";
+import StarRating from "../components/StarRating"; // Correct import statement
 
 const codeSnippets = [
   {
@@ -140,6 +132,11 @@ const Homepage = () => {
       (prev) => (prev - 1 + codeSnippets.length) % codeSnippets.length
     );
     setOutput("");
+  };
+
+  const handleRating = (newRating) => {
+    console.log("New Rating: ", newRating);
+    // You can handle the rating (e.g., send to an API or state)
   };
 
   return (
@@ -405,6 +402,13 @@ const Homepage = () => {
           </div>
         </motion.section>
         
+        {/* Feedback Star Section */}
+        <div className="my-8 flex flex-col items-center">
+          <h2 className="text-4xl font-bold mb-6">Rate Us</h2> {/* Added Rate Us text */}
+          <p className="text-xl mb-10">Your feedback helps us improve!</p>
+          <StarRating onRating={handleRating} />
+        </div>
+
       </main>
 
       {/* Contact Section */}
