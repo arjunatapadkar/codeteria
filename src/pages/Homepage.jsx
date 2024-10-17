@@ -80,6 +80,10 @@ const navs = [
     page: "/dsproblems"
   },
   {
+    tab: "Quiz",
+    page: "/quiz"
+  },
+  {
     tab: "Community",
     page: "/upcoming",
   },
@@ -324,6 +328,15 @@ const Homepage = () => {
               className="text-lg px-8 py-2 rounded-lg font-semibold bg-yellow-400 text-purple-900 hover:bg-yellow-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               Start Your Coding Journey
+            </button>
+          </motion.div><br></br>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <button
+              onClick={() => navigate("/quizes")}
+              size="lg"
+              className="text-lg px-8 py-2 rounded-lg font-semibold bg-yellow-400 text-purple-900 hover:bg-yellow-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              Quiz
             </button>
           </motion.div>
         </motion.section>
