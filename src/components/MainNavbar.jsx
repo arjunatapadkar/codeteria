@@ -20,11 +20,11 @@ const MainNavbar = () => {
     },
     {
       tab: "Community",
-      page: "/upcoming",
+      page: "/error",
     },
     {
       tab: "Pro",
-      page: "/upcoming",
+      page: "/error",
     },
   ];
 
