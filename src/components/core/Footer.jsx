@@ -64,7 +64,7 @@ const Footer = () => {
           {/* Connect */}
           <div>
             <h3 className="text-xl font-bold mb-4 text-yellow-400">Connect</h3>
-            <p className="text-gray-300 mb-3 ml-1">support@codeteria.com</p>
+            <p className="text-gray-300 mb-3 ml-1 hover:text-yellow-400">support@codeteria.com</p>
             <div className="flex space-x-4">
               {/* Social Media Links */}
               <a
