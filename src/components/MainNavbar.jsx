@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate(); // Make sure to import useNavigate
+  const navigate = useNavigate(); 
   const navs = [
     {
       tab: "Playground",
