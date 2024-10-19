@@ -48,6 +48,7 @@
     "react-router-dom": "^6.26.0",
     "react-scroll": "^1.9.0",
     "react-slick": "^0.30.2",
+    "react-toastify": "^10.0.6",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {

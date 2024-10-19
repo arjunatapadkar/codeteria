@@ -80,6 +80,10 @@ const navs = [
     page: "/dsproblems"
   },
   {
+    tab: "Quiz",
+    page: "/quiz"
+  },
+  {
     tab: "Community",
     page: "/upcoming",
   },
@@ -325,8 +329,18 @@ const Homepage = () => {
             >
               Start Your Coding Journey
             </button>
+          </motion.div><br></br>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <button
+              onClick={() => navigate("/quizes")}
+              size="lg"
+              className="text-lg px-8 py-2 rounded-lg font-semibold bg-yellow-400 text-purple-900 hover:bg-yellow-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              Quiz
+            </button>
           </motion.div>
         </motion.section>
+
 
         {/* Testimonials Section */}
         <motion.section
@@ -413,6 +427,31 @@ const Homepage = () => {
             </div>
           </div>
         </motion.section>
+        <motion.section
+  className="bg-purple-900 bg-opacity-50 rounded-lg p-8 mb-10 backdrop-blur-lg"
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.5 }}
+>
+  <h2 className="text-3xl font-bold mb-6 text-center">
+    Subscribe to Our Newsletter
+  </h2>
+  <p className="text-center text-lg mb-8">
+    Get the latest coding challenges, tutorials, and updates delivered to your inbox!
+  </p>
+  <div className="flex justify-center items-center">
+    <input
+      type="email"
+      placeholder="Enter your email"
+      className="text-white p-3 w-full max-w-md rounded-l-lg border-none focus:ring-2 focus:ring-yellow-400"
+    />
+    <button
+      className="bg-yellow-400 text-purple-900 px-6 py-3 font-semibold rounded-r-lg hover:bg-yellow-300 transition-all duration-300 shadow-lg hover:shadow-xl"
+    >
+      Subscribe
+    </button>
+  </div>
+</motion.section>
 
       </main>
 

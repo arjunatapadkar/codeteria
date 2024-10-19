@@ -23,10 +23,8 @@ const Footer = () => {
             </div>
             <p className="text-gray-300 ml-2">Empowering coders worldwide</p>
             <div className="mt-4 ml-2">
-          <Link to="/terms">
-            Terms and Conditions
-          </Link>
-        </div>
+              <Link to="/terms">Terms and Conditions</Link>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -66,19 +64,39 @@ const Footer = () => {
           {/* Connect */}
           <div>
             <h3 className="text-xl font-bold mb-4 text-yellow-400">Connect</h3>
-            <p className="text-gray-300 mb-3 ml-1">support@codeteria.com</p>
+            <p className="text-gray-300 mb-3 ml-1 hover:text-yellow-400">support@codeteria.com</p>
             <div className="flex space-x-4">
               {/* Social Media Links */}
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="m-2">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="m-2 hover:scale-125 transform transition-transform duration-200 hover:text-yellow-400"
+              >
                 <i className="fa-brands fa-facebook p-2 border border-white rounded-full"></i>
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="m-2">
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="m-2 hover:scale-125 transform transition-transform duration-200 hover:text-yellow-400"
+              >
                 <i className="fab fa-twitter p-2 border border-white rounded-full"></i>
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="m-2">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="m-2 hover:scale-125 transform transition-transform duration-200 hover:text-yellow-400"
+              >
                 <i className="fab fa-instagram p-2 border border-white rounded-full"></i>
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="m-2">
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="m-2 hover:scale-125 transform transition-transform duration-200 hover:text-yellow-400"
+              >
                 <i className="fab fa-linkedin p-2 border border-white rounded-full"></i>
               </a>
             </div>
@@ -86,7 +104,7 @@ const Footer = () => {
         </div>
 
         <hr className="border-gray-400" />
-        
+
         <div className="mt-4 text-center text-gray-300">
           © 2024 Codeteria. All rights reserved.
         </div>
