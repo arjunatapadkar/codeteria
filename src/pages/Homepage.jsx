@@ -85,7 +85,7 @@ const navs = [
   },
   {
     tab: "Pro",
-    page: "/Pro",
+    page: "./pro/Pro.jsx",
   },
 ];
 

@@ -15,7 +15,7 @@ import MainNavbar from "./components/MainNavbar";
 import DSProblem from "./pages/dsproblem/DSProblem";
 import AnimatedCursor from "react-animated-cursor";
 import Terms from "./pages/terms/terms";
-import Pro from "./pages/Pro";
+import Pro from "./pages/pro/Pro";
 const App = () => {
   const { dark } = useAPI();
 
@@ -61,7 +61,7 @@ const App = () => {
           <Route path="/terms" element={<Terms />} />
           {/* page not found */}
           <Route path="*" element={<ErrorPage />} />
-          <Route path="/pro" element={<Pro />} /> 
+          <Route path="./pages/pro/Pro" element={<Pro />} /> 
         </Routes>
       </div>
 

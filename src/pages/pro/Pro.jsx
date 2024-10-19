@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "../components/core/Footer";
-import MainNavbar from "../components/MainNavbar";
+import Footer from "../../components/core/Footer";
+import MainNavbar from "../../components/MainNavbar";
 import { useNavigate } from "react-router-dom";
 
 const Pro = () => {
