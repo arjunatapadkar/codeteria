@@ -1,6 +1,8 @@
 import React from "react";
-import {Link} from 'react-router-dom';
 import Footer from "../components/core/Footer";
+const handleGoHome = () => {
+	history.push("/"); // Navigate to the home page
+};
 const ErrorPage = () => {
 	return (
 		<div>
@@ -13,13 +15,12 @@ const ErrorPage = () => {
             alt="404 error " 
             style={{ width: '100%', maxWidth: '400px', height: 'auto', marginBottom: '20px' }} 
 			/>
-			<Link to="/">
 		  <button 
+				onClick={handleGoHome} 
 				className="mt-4 px-4 py-2 bg-grey text-white rounded hover:bg-slate-700 border:50px rounded-xl transition"
 				>
-						Back to home
+				Return to Home
 			</button>
-			</Link>
             </h1>
 			</div>
 			<div>
