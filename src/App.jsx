@@ -15,9 +15,11 @@ import MainNavbar from "./components/MainNavbar";
 import DSProblem from "./pages/dsproblem/DSProblem";
 import AnimatedCursor from "react-animated-cursor";
 
+import Terms from "./pages/terms/Terms";
+import Faqs from './pages/FAQS/Faqs';
+
 import Quiz from "./pages/quizes/Quiz"; 
 
-import Terms from "./pages/terms/Terms";
 
 
 const App = () => {
@@ -64,6 +66,7 @@ const App = () => {
           <Route path="/challenge/:id" element={<ChallengeDetail />} />
           <Route path="/product" element={<Product />} />
           <Route path="/playground" element={<Playground />} />
+          <Route path="/faqs" element={<Faqs />} />
           <Route path="/terms" element={<Terms />} />
           {/* page not found */}
           <Route path="*" element={<ErrorPage />} />
