@@ -14,7 +14,11 @@ import Playground from "./pages/playground/Playground";
 import MainNavbar from "./components/MainNavbar";
 import DSProblem from "./pages/dsproblem/DSProblem";
 import AnimatedCursor from "react-animated-cursor";
+<main>
+import Quiz from "./pages/Quizes/Quiz"; 
+
 import Terms from "./pages/terms/terms";
+</main>
 
 const App = () => {
   const { dark } = useAPI();
@@ -55,6 +59,8 @@ const App = () => {
           <Route path="/upcoming" element={<Upcoming />} />
           <Route path="/machinecoding" element={<MachineCoding />} />
           <Route path="/dsproblem" element={<DSProblem />} />
+          <Route path="/Quizes" element={<Quiz />} />
+         
           <Route path="/challenge/:id" element={<ChallengeDetail />} />
           <Route path="/product" element={<Product />} />
           <Route path="/playground" element={<Playground />} />
