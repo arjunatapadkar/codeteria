@@ -85,7 +85,7 @@ const navs = [
   },
   {
     tab: "Pro",
-    page: "/upcoming",
+    page: "/Pro",
   },
 ];
 
