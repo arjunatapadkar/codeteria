@@ -14,8 +14,8 @@ import Playground from "./pages/playground/Playground";
 import MainNavbar from "./components/MainNavbar";
 import DSProblem from "./pages/dsproblem/DSProblem";
 import AnimatedCursor from "react-animated-cursor";
-import Terms from "./pages/terms/terms";
-import Faqs from './pages/FAQS/faqs';
+import Terms from "./pages/terms/Terms";
+import Faqs from './pages/FAQS/Faqs';
 
 const App = () => {
   const { dark } = useAPI();
