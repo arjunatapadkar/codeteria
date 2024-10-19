@@ -15,7 +15,7 @@ import MainNavbar from "./components/MainNavbar";
 import DSProblem from "./pages/dsproblem/DSProblem";
 import AnimatedCursor from "react-animated-cursor";
 
-import Quiz from "./pages/Quizes/Quiz"; 
+import Quiz from "./pages/quizes/Quiz"; 
 
 import Terms from "./pages/terms/terms";
 
