@@ -341,6 +341,7 @@ const Homepage = () => {
           </motion.div>
         </motion.section>
 
+
         {/* Testimonials Section */}
         <motion.section
           className="bg-purple-900 bg-opacity-50 rounded-lg p-8 mb-20 backdrop-blur-lg lg:h-[450px] sm:h-[500px]"
@@ -426,6 +427,31 @@ const Homepage = () => {
             </div>
           </div>
         </motion.section>
+        <motion.section
+  className="bg-purple-900 bg-opacity-50 rounded-lg p-8 mb-10 backdrop-blur-lg"
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.5 }}
+>
+  <h2 className="text-3xl font-bold mb-6 text-center">
+    Subscribe to Our Newsletter
+  </h2>
+  <p className="text-center text-lg mb-8">
+    Get the latest coding challenges, tutorials, and updates delivered to your inbox!
+  </p>
+  <div className="flex justify-center items-center">
+    <input
+      type="email"
+      placeholder="Enter your email"
+      className="text-white p-3 w-full max-w-md rounded-l-lg border-none focus:ring-2 focus:ring-yellow-400"
+    />
+    <button
+      className="bg-yellow-400 text-purple-900 px-6 py-3 font-semibold rounded-r-lg hover:bg-yellow-300 transition-all duration-300 shadow-lg hover:shadow-xl"
+    >
+      Subscribe
+    </button>
+  </div>
+</motion.section>
 
       </main>
 
