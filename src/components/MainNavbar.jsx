@@ -23,9 +23,14 @@ const MainNavbar = () => {
       page: "/upcoming",
     },
     {
+      tab: "FAQ",
+      page: "/faqs",
+    },
+    {
       tab: "Pro",
       page: "/upcoming",
     },
+    
   ];
 
   return (
