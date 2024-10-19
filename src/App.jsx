@@ -17,7 +17,7 @@ import AnimatedCursor from "react-animated-cursor";
 
 import Quiz from "./pages/quizes/Quiz"; 
 
-import Terms from "./pages/terms/terms";
+import Terms from "./pages/terms/TermsAndConditions";
 
 
 const App = () => {
