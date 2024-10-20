@@ -29,6 +29,7 @@ const App = () => {
         innerScale={1}
         outerScale={2}
         outerAlpha={0}
+        trailingSpeed={1}
         hasBlendMode={true}
         innerStyle={{
           backgroundColor: "var(--cursor-color)",
