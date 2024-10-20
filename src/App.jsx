@@ -19,6 +19,14 @@ import Pro from "./pages/pro/Pro"; // Path corrected to import the Pro component
 import Faqs from './pages/FAQS/Faqs';
 import Quiz from "./pages/quizes/Quiz"; 
 
+
+
+import Roadmap from "./pages/roadmaps/Roadmap"; 
+
+
+
+
+
 const App = () => {
   const { dark } = useAPI();
 
@@ -58,7 +66,13 @@ const App = () => {
           <Route path="/upcoming" element={<Upcoming />} />
           <Route path="/machinecoding" element={<MachineCoding />} />
           <Route path="/dsproblem" element={<DSProblem />} />
+
+          <Route path="/Quizes" element={<Quiz />} />
+          <Route path="/roadmaps" element={<Roadmap />} />
+         
+
           <Route path="/quizes" element={<Quiz />} /> {/* Make sure the path matches the intended route */}
+
           <Route path="/challenge/:id" element={<ChallengeDetail />} />
           <Route path="/product" element={<Product />} />
           <Route path="/playground" element={<Playground />} />

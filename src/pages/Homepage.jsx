@@ -84,6 +84,10 @@ const navs = [
     page: "/quiz"
   },
   {
+    tab: "roadmap",
+    page: "/Roadmap"
+  },
+  {
     tab: "Community",
     page: "/upcoming",
   },
@@ -91,7 +95,12 @@ const navs = [
     tab: "Pro",
     page: "/pro",
   },
+  {
+    tab: "roadmap",
+    page: "/roadmap",
+  },
 ];
+
 
 const Homepage = () => {
   const [currentSnippet, setCurrentSnippet] = useState(0);
@@ -339,9 +348,17 @@ const Homepage = () => {
               Quiz
             </button>
           </motion.div>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <br></br>  <button
+              onClick={() => navigate("/roadmaps")}
+              size="lg"
+              className="text-lg px-8 py-2 rounded-lg font-semibold bg-yellow-400 text-purple-900 hover:bg-yellow-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              Roadmap
+            </button>
+          </motion.div>
+          
         </motion.section>
-
-
         {/* Testimonials Section */}
         <motion.section
           className="bg-purple-900 bg-opacity-50 rounded-lg p-8 mb-20 backdrop-blur-lg lg:h-[450px] sm:h-[500px]"
