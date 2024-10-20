@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useCallback, useRef, createElement } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ChevronDown } from 'lucide-react';
 import MainNavbar from '../../components/MainNavbar';
 import Footer from '../../components/core/Footer';
 import CodeMirror from '@uiw/react-codemirror';
-import { StreamLanguage } from '@codemirror/language';
+import { Language, StreamLanguage } from '@codemirror/language';
 import './playground.css';
 import { toPng } from 'html-to-image';
 import * as clipboard from 'clipboard-polyfill';
@@ -15,16 +16,19 @@ import { FaRegShareFromSquare } from 'react-icons/fa6';
 const JUDGE0_API_KEY = import.meta.env.VITE_JUDGE0_API_KEY;
 
 const Playground = () => {
-	const [code, setCode] = useState('');
-	const [input, setInput] = useState('');
-	const [output, setOutput] = useState('');
-	const [languages, setLanguages] = useState([]);
-	const [language, setLanguage] = useState(null);
-	const [isRunning, setIsRunning] = useState(false);
-	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-	const [languageExtension, setLanguageExtension] = useState(null);
-	const [filteredLanguage, setFilteredLanguage] = useState(languages); // State to hold the filtered list
-	const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
+  const location = useLocation();
+  const initialCode = location.state?.code || '';
+
+  const [code, setCode] = useState(initialCode);
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+  const [languages, setLanguages] = useState([]);
+  const [language, setLanguage] = useState(null);
+  const [isRunning, setIsRunning] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [languageExtension, setLanguageExtension] = useState(null);
+  const [filteredLanguage, setFilteredLanguage] = useState(languages);
+  const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
 
 	useEffect(() => {
 		const fetchLanguages = async () => {
@@ -56,8 +60,14 @@ const Playground = () => {
 				setOutput('Error fetching languages. Please try again later.');
 			}
 		};
-
-		fetchLanguages();
+		if (initialCode) {
+			setCode(initialCode);
+			setLanguage({"id": 105,"name": "C++ (GCC 14.1.0)"});
+			setLanguages([{"id": 105,"name": "C++ (GCC 14.1.0)"}]);
+		}
+		else{
+			fetchLanguages();
+		}
 	}, []);
 
 	const runCode = async () => {
@@ -84,7 +94,6 @@ const Playground = () => {
 					stdin: input,
 				}),
 			});
-
 			if (!submissionResponse.ok)
 				throw new Error(`HTTP error! status: ${submissionResponse.status}`);
 
