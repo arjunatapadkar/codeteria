@@ -18,7 +18,7 @@ import AnimatedCursor from "react-animated-cursor";
 import Terms from "./pages/terms/Terms";
 import Faqs from './pages/FAQS/Faqs';
 
-import Quiz from "./pages/quizes/Quiz"; 
+import Quiz from "./pages/quizzes/Quiz"; 
 
 
 
@@ -61,7 +61,7 @@ const App = () => {
           <Route path="/upcoming" element={<Upcoming />} />
           <Route path="/machinecoding" element={<MachineCoding />} />
           <Route path="/dsproblem" element={<DSProblem />} />
-          <Route path="/Quizes" element={<Quiz />} />
+          <Route path="/Quizzes" element={<Quiz />} />
          
           <Route path="/challenge/:id" element={<ChallengeDetail />} />
           <Route path="/product" element={<Product />} />

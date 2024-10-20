@@ -1,4 +1,6 @@
 import React from "react";
+import MainNavbar from '../../components/MainNavbar';
+import Footer from '../../components/core/Footer';
 
 const Quiz = () => {
   const handleStartQuiz = (quizNumber) => {
@@ -7,7 +9,9 @@ const Quiz = () => {
   };
 
   return (
-    <div className="container mx-auto p-5 text-white">
+    <div>
+      <MainNavbar />
+    <div className="container mx-auto p-5 text-white mb-60">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="p-4 bg-purple-900 rounded-lg shadow-lg cursor-pointer transition-transform transform hover:scale-105">
           <h2 className="text-xl font-bold">Quiz 1</h2>
@@ -37,6 +41,8 @@ const Quiz = () => {
           </button>
         </div>
       </div>
+    </div>
+    <Footer />
     </div>
   );
 };
