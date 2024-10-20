@@ -89,7 +89,7 @@ const navs = [
   },
   {
     tab: "Pro",
-    page: "/pro",
+    page: "/upcoming",
   },
 ];
 

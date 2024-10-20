@@ -14,10 +14,13 @@ import Playground from "./pages/playground/Playground";
 import MainNavbar from "./components/MainNavbar";
 import DSProblem from "./pages/dsproblem/DSProblem";
 import AnimatedCursor from "react-animated-cursor";
-import Terms from "./pages/terms/Terms"; // Ensure the casing matches the actual file
-import Pro from "./pages/pro/Pro"; // Path corrected to import the Pro component
+
+import Terms from "./pages/terms/Terms";
 import Faqs from './pages/FAQS/Faqs';
+
 import Quiz from "./pages/quizes/Quiz"; 
+
+
 
 const App = () => {
   const { dark } = useAPI();
@@ -43,7 +46,7 @@ const App = () => {
       <div
         className={`${
           dark ? "bg-[#0F111D] text-white" : ""
-        } relative min-h-screen scroll-smooth`}
+        } relative  min-h-screen scroll-smooth`}
         style={{
           height: "100vh",
           overflowY: "scroll",
@@ -58,14 +61,14 @@ const App = () => {
           <Route path="/upcoming" element={<Upcoming />} />
           <Route path="/machinecoding" element={<MachineCoding />} />
           <Route path="/dsproblem" element={<DSProblem />} />
-          <Route path="/quizes" element={<Quiz />} /> {/* Make sure the path matches the intended route */}
+          <Route path="/Quizes" element={<Quiz />} />
+         
           <Route path="/challenge/:id" element={<ChallengeDetail />} />
           <Route path="/product" element={<Product />} />
           <Route path="/playground" element={<Playground />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/terms" element={<Terms />} />
-          <Route path="/pro" element={<Pro />} /> {/* Fixed the path for Pro */}
-          {/* Page not found */}
+          {/* page not found */}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
