@@ -21,6 +21,9 @@ import Faqs from './pages/FAQS/Faqs';
 import Quiz from "./pages/quizes/Quiz"; 
 
 
+import Roadmap from "./pages/roadmaps/Roadmap"; 
+
+
 
 const App = () => {
   const { dark } = useAPI();
@@ -62,6 +65,7 @@ const App = () => {
           <Route path="/machinecoding" element={<MachineCoding />} />
           <Route path="/dsproblem" element={<DSProblem />} />
           <Route path="/Quizes" element={<Quiz />} />
+          <Route path="/roadmaps" element={<Roadmap />} />
          
           <Route path="/challenge/:id" element={<ChallengeDetail />} />
           <Route path="/product" element={<Product />} />
