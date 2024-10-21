@@ -299,16 +299,16 @@ const Playground = () => {
 
 	return (
 		<motion.div
-			className="min-h-screen bg-gradient-to-br from-[#2A1E2F] to-[#3D2E4A] text-white"
+			className="min-h-screen  bg-gradient-to-br from-[#151B23] to-[#151B23] text-white"
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{ duration: 0.8 }}
 		>
 			<MainNavbar />
 
-			<main className="container mx-auto px-6 py-12">
-				<motion.section
-					className="mb-8"
+			<main className="container mx-auto py-0 w-full h-full">
+				{/* <motion.section
+					className="my-2 flex items-center border-b"
 					initial={{ opacity: 0, y: 50 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.8, delay: 0.2 }}
@@ -317,16 +317,9 @@ const Playground = () => {
 					<p className="text-xl text-[#D5A187]">
 						Write, compile, and run your code instantly!
 					</p>
-				</motion.section>
+				</motion.section> */}
 
-				<motion.div
-					className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5, delay: 0.2 }}
-				>
-					<div className="space-y-4">
-						<div className="flex justify-between items-center gap-2">
+						<div className="flex justify-between items-center gap-2 md:px-10 py-4 border-b">
 							<div className="relative">
 								<button
 									onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -392,7 +385,20 @@ const Playground = () => {
 									)}
 								</AnimatePresence>
 							</div>
-							<div className="flex gap-4">
+							{/* <div className="flex gap-4"> */}
+							<button
+									onClick={runCode}
+									disabled={isRunning || !language}
+									className={`flex items-center px-4 py-2 rounded-md text-sm font-medium ${
+										isRunning || !language
+											? 'bg-gray-600 cursor-not-allowed'
+											: 'bg-[#F1C232] text-[#2A1E2F] hover:bg-[#E1B222]'
+									}`}
+								>
+									{isRunning ? 'Running...' : 'Run Code'}
+									<Play className="ml-2 h-4 w-4" />
+								</button>
+								
 								<div className="relative">
 									<button
 										onClick={() => setIsShareDialogOpen((prev) => !prev)}
@@ -412,50 +418,47 @@ const Playground = () => {
 										</div>
 									)}
 								</div>
+								
 
-								<button
-									onClick={runCode}
-									disabled={isRunning || !language}
-									className={`flex items-center px-4 py-2 rounded-md text-sm font-medium ${
-										isRunning || !language
-											? 'bg-gray-600 cursor-not-allowed'
-											: 'bg-[#F1C232] text-[#2A1E2F] hover:bg-[#E1B222]'
-									}`}
-								>
-									{isRunning ? 'Running...' : 'Run Code'}
-									<Play className="ml-2 h-4 w-4" />
-								</button>
-							</div>
+							{/* </div> */}
 						</div>
+				<motion.div
+					className=" flex flex-col md:flex-row items-center w-full flex-wrap "
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5, delay: 0.2 }}
+				>
+					<div className="space-y-4 w-full md:w-2/3 border-r pr-1">
 						{/* Code Editor - CodeMirror */}
 						<div ref={codeMirrorRef}>
 							<CodeMirror
 								value={code}
-								height="300px"
+								height="589px"
 								extensions={languageExtension ? [languageExtension] : []}
 								onChange={(value) => setCode(value)}
-								className="rounded-lg text-white"
+								className="rounded-lg text-white "
 								placeholder="Enter your program code here..."
 								theme="dark"
 							/>
 						</div>
-						<textarea
-							className="w-full h-24 p-4 bg-[#3D2E4A] rounded-lg text-white resize-none focus:outline-none focus:ring-2 focus:ring-[#F1C232] placeholder:text-white/50"
+						
+					</div>
+					<div className="space-y-4 w-full flex flex-col md:w-1/3 px-1 h-fit">
+					<textarea
+							className="w-full  p-4 bg-[#151B23] border-b h-[200px]  text-white resize-none focus:outline-none  placeholder:text-white/50"
 							value={input}
 							onChange={(e) => setInput(e.target.value)}
 							placeholder="Enter your program input here..."
 						/>
-					</div>
-					<div className="space-y-4">
-						<h2 className="text-2xl font-bold text-[#F1C232]">Output</h2>
-						<pre className="w-full h-96 p-4 bg-[#3D2E4A] rounded-lg overflow-auto text-white">
+						{/* <h2 className="text-2xl font-bold text-[#F1C232]">Output</h2> */}
+						<pre className="w-full h-[360px] p-4  rounded-lg overflow-auto text-white">
 							{output || 'Your output will appear here...'}
 						</pre>
 					</div>
 				</motion.div>
 			</main>
 
-		<Footer bg={"#1E2128"} text={"white"} />
+		{/* <Footer bg={"#1E2128"} text={"white"} /> */}
 
 		</motion.div>
 	);
