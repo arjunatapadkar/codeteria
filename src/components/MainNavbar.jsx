@@ -14,10 +14,10 @@ const MainNavbar = () => {
       tab: "Playground",
       page: "/playground",
     },
-    {
-      tab: "Challenges",
-      page: "/upcoming",
-    },
+    // {
+    //   tab: "Challenges",
+    //   page: "/upcoming",
+    // },
     {
       tab: "Community",
       page: "/upcoming",
