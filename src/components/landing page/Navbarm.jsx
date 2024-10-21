@@ -85,7 +85,7 @@ const Navbarm = () => {
             dark
               ? "bg-purple-900"
               : "bg-purple-800"
-          } hidden lg:flex justify-between items-center p-4 backdrop-blur-md`}
+          } hidden lg:flex fixed top-0 w-full z-50 justify-between items-center p-4 backdrop-blur-md`}
         >
           <Link to="/" className="flex items-center">
             <img src={logo} loading="lazy" className="w-[40px]" />

@@ -32,7 +32,7 @@ const Cheatsheet = () => {
           dark
             ? "bg-[#0F111D]"
             : "bg-gradient-to-br from-indigo-100 to-purple-100 "
-        } min-h-screen `}
+        } min-h-screen  pt-16`}
       >
         <Navbarm />
         <Navbar cheats={cheats} />
