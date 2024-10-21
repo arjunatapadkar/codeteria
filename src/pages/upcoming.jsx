@@ -8,14 +8,9 @@ import MainNavbar from "../components/MainNavbar";
 const Upcoming = () => {
   const navigate = useNavigate();
   return (
-    <div className=" bg-[#3A1C71] text-white ">
+    <div className=" bg-[#3A1C71] text-white h-full">
       <MainNavbar />
-      {/* <div className=" py-5 px-5">
-				<div className="flex items-center gap-2">
-					<img className="w-[35px]" src={logo} />
-					<h2 className="text-4xl font-bold">Codeteria</h2>
-				</div>
-			</div> */}
+
       <div className="relative h-[600px] overflow-hidden ">
         <img
           src={logo}
@@ -35,7 +30,6 @@ const Upcoming = () => {
         </div>
       </div>
 
-      <Footer bg={"#1E2128"} text={"white"} />
     </div>
   );
 };
