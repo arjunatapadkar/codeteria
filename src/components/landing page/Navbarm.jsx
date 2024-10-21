@@ -65,16 +65,18 @@ const Navbarm = () => {
             </ul>
           </details>
 
-          <button onClick={() => setDark(!dark)} className="text-3xl">
-            {dark ? <CiLight className="" /> : <MdDarkMode />}
-          </button>
-
           <Link to="/" className="flex items-center">
             <img src={logo} loading="lazy" className="w-[50px]" />
             <span className="text-3xl pl-2 font-bold text-white">
               Codeteria
             </span>
-          </Link>
+          </Link>.
+
+          <button onClick={() => setDark(!dark)} className="text-3xl">
+            {dark ? <CiLight className="" /> : <MdDarkMode />}
+          </button>
+
+ 
         </div>
 
         {/* Desktop Navbar */}
