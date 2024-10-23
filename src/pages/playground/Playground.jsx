@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, ChevronDown } from "lucide-react";
+import { Play, ChevronDown,Upload } from "lucide-react";
 import MainNavbar from "../../components/MainNavbar";
 import Footer from "../../components/core/Footer";
 import CodeMirror from "@uiw/react-codemirror";
@@ -18,6 +18,8 @@ const JUDGE0_API_KEY = import.meta.env.VITE_JUDGE0_API_KEY;
 const Playground = () => {
 	const location = useLocation();
 	const initialCode = location.state?.code || "";
+	const fileInputRef = useRef(null);
+
 
 	const [code, setCode] = useState(initialCode);
 	const [input, setInput] = useState("");
@@ -74,6 +76,26 @@ const Playground = () => {
 			fetchLanguages();
 		}
 	}, []);
+
+	// Handle file upload
+	const handleFileUpload = (event) => {
+		const file = event.target.files[0];
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = (e) => {
+				setCode(e.target.result);
+			};
+			reader.onerror = (error) => {
+				setOutput(`Error reading file: ${error.message}`);
+			};
+			reader.readAsText(file);
+		}
+	};
+
+	// Trigger file input click
+	const handleUploadClick = () => {
+		fileInputRef.current?.click();
+	};
 
 	const runCode = async () => {
 		if (!language) {
@@ -320,7 +342,9 @@ const Playground = () => {
 
 			<main className="container mx-auto py-0 w-full h-full">
 				<div className="flex justify-between items-center gap-2 md:px-10 py-4 border-b">
-					<div className="relative">
+					<div className="relative flex space-x-4">
+						<div>
+
 						<button
 							onClick={() => setIsDropdownOpen(!isDropdownOpen)}
 							className="flex items-center justify-between w-fit px-4 py-2 text-sm font-medium text-white bg-[#4A3B5D] rounded-md hover:bg-[#5A4B6D] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#2A1E2F] focus:ring-[#F1C232]"
@@ -329,7 +353,7 @@ const Playground = () => {
 							<motion.div
 								animate={{ rotate: isDropdownOpen ? 180 : 0 }}
 								transition={{ duration: 0.3 }}
-							>
+								>
 								<ChevronDown className="ml-2 h-5 w-5" />
 							</motion.div>
 						</button>
@@ -341,19 +365,19 @@ const Playground = () => {
 									animate="visible"
 									exit="exit"
 									className="absolute z-10 mt-1 w-48 rounded-md shadow-lg bg-[#4A3B5D] ring-1 ring-black ring-opacity-5 max-h-60 overflow-auto"
-								>
+									>
 									<div
 										className=""
 										role="menu"
 										aria-orientation="vertical"
 										aria-labelledby="options-menu"
-									>
+										>
 										<input
 											type="text"
 											placeholder="Search..."
 											className="w-full px-4 py-2 bg-white/30 placeholder:text-white focus:outline-none rounded-t-md"
 											onChange={(e) => filterLanguages(e.target.value)}
-										/>
+											/>
 										<motion.div
 											variants={{
 												visible: {
@@ -373,7 +397,7 @@ const Playground = () => {
 													}}
 													className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-[#5A4B6D]"
 													role="menuitem"
-												>
+													>
 													{lang.name}
 												</motion.button>
 											))}
@@ -382,6 +406,23 @@ const Playground = () => {
 								</motion.div>
 							)}
 						</AnimatePresence>
+						</div>
+						<div>
+							<input
+								type="file"
+								ref={fileInputRef}
+								onChange={handleFileUpload}
+								className="hidden"
+								accept=".txt,.js,.py,.cpp,.c,.java,.rb,.php,.cs,.go,.rs,.swift"
+								/>
+							<button
+								onClick={handleUploadClick}
+								className="flex items-center px-4 py-2 text-sm font-medium text-white bg-[#4A3B5D] rounded-md hover:bg-[#5A4B6D] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#2A1E2F] focus:ring-[#F1C232]"
+							>
+								Upload File
+								<Upload className="ml-2 h-4 w-4" />
+							</button>
+						</div>
 					</div>
 
 					<button
