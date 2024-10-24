@@ -21,7 +21,7 @@ const Footer = () => {
                 Codeteria
               </Link>
             </div>
-            <p className="text-gray-300 ml-2">Empowering coders worldwide</p>
+            <p className="ml-2">Empowering coders worldwide</p>
             <div className="mt-4 ml-2">
               <Link to="/terms">Terms and Conditions</Link>
             </div>
@@ -35,7 +35,7 @@ const Footer = () => {
                 <li key={index}>
                   <Link
                     to={item.page}
-                    className="text-gray-300 hover:text-yellow-400 transition-colors"
+                    className="hover:text-yellow-400 transition-colors"
                   >
                     {item.tab}
                   </Link>
@@ -52,7 +52,7 @@ const Footer = () => {
                 <li key={index}>
                   <Link
                     to="#"
-                    className="text-gray-300 hover:text-yellow-400 transition-colors"
+                    className="hover:text-yellow-400 transition-colors"
                   >
                     {item}
                   </Link>
@@ -64,7 +64,7 @@ const Footer = () => {
           {/* Connect */}
           <div>
             <h3 className="text-xl font-bold mb-4 text-yellow-400">Connect</h3>
-            <p className="text-gray-300 mb-3 ml-1 hover:text-yellow-400">support@codeteria.com</p>
+            <p className="mb-3 ml-1 hover:text-yellow-400">support@codeteria.com</p>
             <div className="flex space-x-4">
               {/* Social Media Links */}
               <a
@@ -105,7 +105,7 @@ const Footer = () => {
 
         <hr className="border-gray-400" />
 
-        <div className="mt-4 text-center text-gray-300">
+        <div className="mt-4 text-center">
           © 2024 Codeteria. All rights reserved.
         </div>
       </div>
