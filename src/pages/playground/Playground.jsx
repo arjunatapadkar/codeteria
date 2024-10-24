@@ -24,6 +24,7 @@ const Playground = () => {
 	const [code, setCode] = useState(initialCode);
 	const [input, setInput] = useState("");
 	const [output, setOutput] = useState("");
+	const [executionMetrics, setExecutionMetrics] = useState(null);
 	const [languages, setLanguages] = useState([]);
 	const [language, setLanguage] = useState(null);
 	const [isRunning, setIsRunning] = useState(false);
@@ -98,84 +99,115 @@ const Playground = () => {
 	};
 
 	const runCode = async () => {
-		if (!language) {
-			setOutput("Please select a language first.");
-			return;
-		}
+        if (!language) {
+            setOutput("Please select a language first.");
+            return;
+        }
 
-		setIsRunning(true);
-		setOutput("");
-		try {
-			if (code === "")
-				throw Error("Your Code is Empty, Type Something and then try");
+        setIsRunning(true);
+        setOutput("");
+        setExecutionMetrics(null);
+        try {
+            if (code === "")
+                throw Error("Your Code is Empty, Type Something and then try");
 
-			const submissionResponse = await fetch(
-				"https://judge0-ce.p.rapidapi.com/submissions",
-				{
-					method: "POST",
-					headers: {
-						"content-type": "application/json",
-						"X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
-						"X-RapidAPI-Key": JUDGE0_API_KEY,
-					},
-					body: JSON.stringify({
-						language_id: language.id,
-						source_code: code,
-						stdin: input,
-					}),
-				}
-			);
-			if (!submissionResponse.ok)
-				throw new Error(`HTTP error! status: ${submissionResponse.status}`);
+            const submissionResponse = await fetch(
+                "https://judge0-ce.p.rapidapi.com/submissions",
+                {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                        "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
+                        "X-RapidAPI-Key": JUDGE0_API_KEY,
+                    },
+                    body: JSON.stringify({
+                        language_id: language.id,
+                        source_code: code,
+                        stdin: input,
+                    }),
+                }
+            );
+            if (!submissionResponse.ok)
+                throw new Error(`HTTP error! status: ${submissionResponse.status}`);
 
-			const { token } = await submissionResponse.json();
+            const { token } = await submissionResponse.json();
 
-			let result;
-			let attempts = 0;
-			const maxAttempts = 10;
+            let result;
+            let attempts = 0;
+            const maxAttempts = 10;
 
-			while (attempts < maxAttempts) {
-				await new Promise((resolve) => setTimeout(resolve, 2000));
-				const statusResponse = await fetch(
-					`https://judge0-ce.p.rapidapi.com/submissions/${token}?base64_encoded=true`,
-					{
-						method: "GET",
-						headers: {
-							"X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
-							"X-RapidAPI-Key": JUDGE0_API_KEY,
-						},
-					}
-				);
+            while (attempts < maxAttempts) {
+                await new Promise((resolve) => setTimeout(resolve, 2000));
+                const statusResponse = await fetch(
+                    `https://judge0-ce.p.rapidapi.com/submissions/${token}?base64_encoded=true`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
+                            "X-RapidAPI-Key": JUDGE0_API_KEY,
+                        },
+                    }
+                );
 
-				if (!statusResponse.ok)
-					throw new Error(`HTTP error! status: ${statusResponse.status}`);
+                if (!statusResponse.ok)
+                    throw new Error(`HTTP error! status: ${statusResponse.status}`);
 
-				result = await statusResponse.json();
+                result = await statusResponse.json();
 
-				if (result.status.id > 2) break;
-				attempts++;
-			}
+                if (result.status.id > 2) break;
+                attempts++;
+            }
 
-			if (attempts === maxAttempts)
-				throw new Error("Timed out waiting for code execution");
+            if (attempts === maxAttempts)
+                throw new Error("Timed out waiting for code execution");
 
-			if (result.stdout) {
-				setOutput(atob(result.stdout));
-			} else if (result.stderr) {
-				console.log(atob(result.stderr));
-				setOutput(`Error: ${atob(result.stderr)}`);
-			} else if (result.compile_output) {
-				setOutput(`Compilation Error: ${atob(result.compile_output)}`);
-			} else {
-				setOutput("No output generated.");
-			}
-		} catch (error) {
-			console.error("Error:", error);
-			setOutput(`Error: ${error.message}`);
-		} finally {
-			setIsRunning(false);
-		}
-	};
+            let outputContent = '';
+            let metricsDiv = '';
+            
+            if (result.stdout) {
+                outputContent = atob(result.stdout);
+            } else if (result.stderr) {
+                outputContent = `Error: ${atob(result.stderr)}`;
+            } else if (result.compile_output) {
+                outputContent = `Compilation Error: ${atob(result.compile_output)}`;
+            } else {
+                outputContent = "No output generated.";
+            }
+
+            // Create metrics HTML if execution was successful
+            if (result.status.id === 3) {
+                const metrics = {
+                    time: result.time || 0,
+                    memory: result.memory || 0
+                };
+                setExecutionMetrics(metrics);
+                
+                metricsDiv = `
+                <div class="mt-4 space-y-2 border-t border-gray-700 pt-4 font-mono">
+                    <div class="flex items-center">
+                        <span class="text-green-400 font-semibold">✓ Execution Successful</span>
+                    </div>
+                    <div class="flex flex-col space-y-1 text-sm text-gray-300">
+                        <div class="flex items-center">
+                            <span class="w-24 text-gray-400">Time:</span>
+                            <span>${metrics.time} sec</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-24 text-gray-400">Memory:</span>
+                            <span>${metrics.memory} KB</span>
+                        </div>
+                    </div>
+                </div>`;
+            }
+
+            setOutput(outputContent + metricsDiv);
+        } catch (error) {
+            console.error("Error:", error);
+            setOutput(`Error: ${error.message}`);
+        } finally {
+            setIsRunning(false);
+        }
+    };
 
 	// Dynamically import language modules based on selected language
 	const getLanguageModule = useCallback(async (language) => {
@@ -459,40 +491,39 @@ const Playground = () => {
 					</div>
 				</div>
 				<motion.div
-					className=" flex flex-col md:flex-row items-center w-full flex-wrap "
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5, delay: 0.2 }}
-				>
-					<div className="space-y-4 w-full md:w-2/3 border-r pr-1">
-						{/* Code Editor - CodeMirror */}
-						<div ref={codeMirrorRef}>
-							<CodeMirror
-								value={code}
-								height="589px"
-								extensions={languageExtension ? [languageExtension] : []}
-								onChange={(value) => setCode(value)}
-								className="rounded-lg text-white "
-								placeholder="Enter your program code here..."
-								theme="dark"
-							/>
-						</div>
-					</div>
-					<div className="space-y-4 w-full flex flex-col md:w-1/3 px-1 h-fit">
-						<textarea
-							className="w-full  p-4 bg-[#151B23] border-b h-[200px]  text-white resize-none focus:outline-none  placeholder:text-white/50"
-							value={input}
-							onChange={(e) => setInput(e.target.value)}
-							placeholder="Enter your program input here..."
-						/>
-						{/* <h2 className="text-2xl font-bold text-[#F1C232]">Output</h2> */}
-						<pre className="w-full h-[360px] p-4  rounded-lg overflow-auto text-white">
-							{output || "Your output will appear here..."}
-						</pre>
-					</div>
-				</motion.div>
-			</main>
-		</motion.div>
+                    className="flex flex-col md:flex-row items-center w-full flex-wrap"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                    <div className="space-y-4 w-full md:w-2/3 border-r pr-1">
+                        <div ref={codeMirrorRef}>
+                            <CodeMirror
+                                value={code}
+                                height="589px"
+                                extensions={languageExtension ? [languageExtension] : []}
+                                onChange={(value) => setCode(value)}
+                                className="rounded-lg text-white"
+                                placeholder="Enter your program code here..."
+                                theme="dark"
+                            />
+                        </div>
+                    </div>
+                    <div className="space-y-4 w-full flex flex-col md:w-1/3 px-1 h-fit">
+                        <textarea
+                            className="w-full p-4 bg-[#151B23] border-b h-[200px] text-white resize-none focus:outline-none placeholder:text-white/50"
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                            placeholder="Enter your program input here..."
+                        />
+                        <div 
+                            className="w-full h-[360px] p-4 rounded-lg overflow-auto text-white  font-mono"
+                            dangerouslySetInnerHTML={{ __html: output || "Your output will appear here..." }}
+                        />
+                    </div>
+                </motion.div>
+            </main>
+        </motion.div>
 	);
 };
 
