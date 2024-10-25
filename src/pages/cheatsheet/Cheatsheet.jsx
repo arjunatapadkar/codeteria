@@ -58,7 +58,7 @@ const Cheatsheet = () => {
                 sectionData.map((section, index) => (
                   <div key={index}>
                     <Section
-                      currentCheat={currentCheat}
+                      currentCheat={currentCheatData[0].name  }
                       title={section.title}
                       code={section.code}
                       description={section.description}

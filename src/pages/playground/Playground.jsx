@@ -15,68 +15,98 @@ import { FaRegShareFromSquare } from "react-icons/fa6";
 
 const JUDGE0_API_KEY = import.meta.env.VITE_JUDGE0_API_KEY;
 
+// Language mapping object
+const LANGUAGE_ID_MAP = {
+	"C++ Basics": 54,      // C++ (GCC 9.2.0)
+	"C++ Intermediate": 54,
+	"C++ OOPs": 54,
+	"C Programming": 50,   // C (GCC 9.2.0)
+	"Python Basics": 71,   // Python (3.8.1)
+	"JavaScript": 63,      // JavaScript (Node.js 12.14.0)
+	"Java": 62,           // Java (OpenJDK 13.0.1)
+	"GO": 60,            // Go (1.13.5)
+	"Kotlin": 78,        // Kotlin (1.3.70)
+	"PHP": 68,           // PHP (7.4.1)
+	"R": 80,             // R (4.0.0)
+	"Ruby": 72,          // Ruby (2.7.0)
+	"Rust": 73,          // Rust (1.40.0)
+	"SQL": 82,           // SQL (SQLite 3.27.2)
+	"TypeScript": 74,    // TypeScript (3.7.4)
+	"Swift": 83,         // Swift (5.2.3)
+	"Scala": 81         // Scala (2.13.2)
+  };
+
 const Playground = () => {
-	const location = useLocation();
-	const initialCode = location.state?.code || "";
-	const fileInputRef = useRef(null);
+	 const location = useLocation();
+  const initialCode = location.state?.code || "";
+  const initialLanguage = location.state?.language || "";
+  const fileInputRef = useRef(null);
 
+  const [code, setCode] = useState(initialCode);
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
+  const [executionMetrics, setExecutionMetrics] = useState(null);
+  const [languages, setLanguages] = useState([]);
+  const [language, setLanguage] = useState(null);
+  const [isRunning, setIsRunning] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [languageExtension, setLanguageExtension] = useState(null);
+  const [filteredLanguage, setFilteredLanguage] = useState(languages);
+  const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
 
-	const [code, setCode] = useState(initialCode);
-	const [input, setInput] = useState("");
-	const [output, setOutput] = useState("");
-	const [executionMetrics, setExecutionMetrics] = useState(null);
-	const [languages, setLanguages] = useState([]);
-	const [language, setLanguage] = useState(null);
-	const [isRunning, setIsRunning] = useState(false);
-	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-	const [languageExtension, setLanguageExtension] = useState(null);
-	const [filteredLanguage, setFilteredLanguage] = useState(languages);
-	const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
+  useEffect(() => {
+    const fetchLanguages = async () => {
+      try {
+        const response = await fetch(
+          "https://judge0-ce.p.rapidapi.com/languages",
+          {
+            method: "GET",
+            headers: {
+              "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
+              "X-RapidAPI-Key": JUDGE0_API_KEY,
+            },
+          }
+        );
 
-	useEffect(() => {
-		const fetchLanguages = async () => {
-			try {
-				const response = await fetch(
-					"https://judge0-ce.p.rapidapi.com/languages",
-					{
-						method: "GET",
-						headers: {
-							"X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
-							"X-RapidAPI-Key": JUDGE0_API_KEY,
-						},
-					}
-				);
+        if (!response.ok)
+          throw new Error(`HTTP error! status: ${response.status}`);
 
-				if (!response.ok)
-					throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
 
-				const data = await response.json();
+        if (Array.isArray(data)) {
+          const sortedLanguages = data.sort((a, b) =>
+            a.name.localeCompare(b.name)
+          );
+          setLanguages(sortedLanguages);
+          setFilteredLanguage(sortedLanguages);
 
-				// Ensure data is an array before sorting
-				if (Array.isArray(data)) {
-					const sortedLanguages = data.sort((a, b) =>
-						a.name.localeCompare(b.name)
-					);
-					setLanguages(sortedLanguages);
-					setFilteredLanguage(sortedLanguages);
-					setLanguage(sortedLanguages[0]);
-				} else {
-					console.error("Fetched data is not an array:", data);
-					throw new Error("Invalid data format received from API");
-				}
-			} catch (error) {
-				console.error("Error fetching languages:", error);
-				setOutput("Error fetching languages. Please try again later.");
-			}
-		};
-		if (initialCode) {
-			setCode(initialCode);
-			setLanguage({ id: 105, name: "C++ (GCC 14.1.0)" });
-			setLanguages([{ id: 105, name: "C++ (GCC 14.1.0)" }]);
-		} else {
-			fetchLanguages();
-		}
-	}, []);
+          // Set initial language based on the cheatsheet type
+          if (initialLanguage) {
+            const languageId = LANGUAGE_ID_MAP[initialLanguage];
+			console.log("1",initialLanguage);
+            const matchingLanguage = sortedLanguages.find(
+              (lang) => lang.id === languageId
+            );
+            if (matchingLanguage) {
+              setLanguage(matchingLanguage);
+            } else {
+              setLanguage(sortedLanguages[0]);
+            }
+          } else {
+            setLanguage(sortedLanguages[0]);
+          }
+        } else {
+          console.error("Fetched data is not an array:", data);
+          throw new Error("Invalid data format received from API");
+        }
+      } catch (error) {
+        console.error("Error fetching languages:", error);
+        setOutput("Error fetching languages. Please try again later.");
+      }
+    };
+
+    fetchLanguages();
+  }, [initialLanguage]);
 
 	// Handle file upload
 	const handleFileUpload = (event) => {
@@ -109,9 +139,7 @@ const Playground = () => {
         setExecutionMetrics(null);
         try {
             if (code === "")
-                throw Error("Your Code is Empty, Type Something and then try");
-
-            const submissionResponse = await fetch(
+                throw Error("Your Code is Empty, Type Something and then try");            const submissionResponse = await fetch(
                 "https://judge0-ce.p.rapidapi.com/submissions",
                 {
                     method: "POST",
