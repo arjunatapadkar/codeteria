@@ -4,33 +4,38 @@ import { useAPI } from "../context/apiContext";
 import { motion } from 'framer-motion'
 import { ChevronDown, ChevronUp, Code2, ExternalLink } from 'lucide-react'
 
-const Section = ({ title, code, description, index }) => {
+const Section = ({ title, code, description, index,currentCheat}) => {
   const [isOpen, setIsOpen] = useState(false);
   const { dark } = useAPI();
   const navigate = useNavigate();
 
   const handleTryItYourself = () => {
-	code = ensureRunnableCode(code);
-    navigate("/playground", { state: { code } });
+	code = ensureRunnableCode(code,currentCheat);
+    navigate("/playground", { state: { code , language : currentCheat } });
   };
 
-  const ensureRunnableCode = (code) => {
-		const hasInclude = code.includes("#include");
-		const hasMain = code.includes("int main()");
-
-		let runnableCode = '';
-		if (!hasInclude) {
-			runnableCode += "#include<iostream>\nusing namespace std;\n\n";
-		}
-
-		if (hasMain) {
-			runnableCode += code;
-		} else {
-			runnableCode += "int main() {\n";
-			runnableCode += code + "\nreturn 0;\n}\n";
-		}
-
-		return runnableCode;
+  const ensureRunnableCode = (code , language) => {
+		// Handle different language boilerplate
+    switch(language) {
+      case "C++ Basics":
+      case "C++ Intermediate":
+      case "C++ OOPs":
+        const hasInclude = code.includes("#include");
+        const hasMain = code.includes("int main()");
+        let runnableCode = '';
+        if (!hasInclude) {
+          runnableCode += "#include<iostream>\nusing namespace std;\n\n";
+        }
+        if (hasMain) {
+          runnableCode += code;
+        } else {
+          runnableCode += "int main() {\n";
+          runnableCode += code + "\nreturn 0;\n}\n";
+        }
+        return runnableCode;
+      default:
+        return code;
+    }
 	}
 
 
@@ -69,7 +74,7 @@ const Section = ({ title, code, description, index }) => {
             <code className="text-sm text-indigo-800">{code}</code>
           </pre>
           <p className="mt-4 text-indigo-700">{description}</p>
-          <motion.button
+          {(currentCheat !== "HTML" || currentCheat !== "CSS" )&& <motion.button
             onClick={handleTryItYourself}
             className="mt-4 flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
@@ -77,7 +82,7 @@ const Section = ({ title, code, description, index }) => {
           >
             Try it Yourself
             <ExternalLink className="ml-2 h-4 w-4" />
-          </motion.button>
+          </motion.button>}
         </div>
       </motion.div>
     </motion.div>
