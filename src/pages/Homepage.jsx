@@ -529,7 +529,7 @@ const Homepage = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="text-white p-3 w-full max-w-md rounded-l-lg border-none focus:ring-2 focus:ring-yellow-400"
+              className="text-white p-3 w-full max-w-md rounded-l-lg border border-white focus:ring-2 focus:ring-yellow-400 "
             />
             <button className="bg-yellow-400 text-purple-900 px-6 py-3 font-semibold rounded-r-lg hover:bg-yellow-300 transition-all duration-300 shadow-lg hover:shadow-xl">
               Subscribe
