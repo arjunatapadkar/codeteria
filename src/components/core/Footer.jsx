@@ -10,7 +10,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-purple-900 bg-opacity-100 py-6 lg:px-32 backdrop-blur-lg">
+    <footer className="bg-purple-900 bg-opacity-100 py-6 lg:px-32 backdrop-blur-lg w-full">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-4 py-4">
           {/* Logo and description */}

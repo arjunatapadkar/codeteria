@@ -27,12 +27,13 @@ const MachineCoding = () => {
 	if (!problems) return <Loading />;
 
 	return (
+		<>
 		<div
 			className={` ${
 				dark
 					? "bg-[#0F111D]"
 					: "bg-gradient-to-br from-purple-100 to-indigo-200 "
-			} container mx-auto px-4 py-8 flex flex-col justify-between w-full  min-h-screen`}
+			}  mx-auto px-4 py-8 flex flex-col justify-between w-full  min-h-screen`}
 		>
 			<motion.div
 				initial={{ opacity: 0, y: -20 }}
@@ -96,8 +97,9 @@ const MachineCoding = () => {
 				))}
 			</div>
 
-			<Footer bg={"#1E2128"} text={"white"} />
 		</div>
+		<Footer bg={"#1E2128"} text={"white"} />
+		</>
 	);
 };
 
