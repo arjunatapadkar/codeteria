@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
+import GoogleTranslator from "./GoogleTranslator";
 
 const Footer = () => {
   const navs = [
@@ -100,6 +101,7 @@ const Footer = () => {
                 <i className="fab fa-linkedin p-2 border border-white rounded-full"></i>
               </a>
             </div>
+            <GoogleTranslator />
           </div>
         </div>
 
