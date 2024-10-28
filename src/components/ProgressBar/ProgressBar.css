@@ -1,0 +1,10 @@
+.progressbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 5px;
+  background: #eec847;
+  transform-origin: 0%;
+  z-index: 100;
+}
