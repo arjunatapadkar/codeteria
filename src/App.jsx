@@ -18,7 +18,8 @@ import AnimatedCursor from "react-animated-cursor";
 import Terms from "./pages/terms/Terms";
 import Faqs from './pages/FAQS/Faqs';
 
-import Quiz from "./pages/quizzes/Quiz"; 
+import Quiz from "./pages/quizzes/Quiz";
+import Challenges from "./pages/challenges/Challenges";
 
 
 
@@ -65,6 +66,7 @@ const App = () => {
           <Route path="/Quizzes" element={<Quiz />} />
          
           <Route path="/challenge/:id" element={<ChallengeDetail />} />
+          <Route path="/challenges" element={<Challenges />} />
           <Route path="/product" element={<Product />} />
           <Route path="/playground" element={<Playground />} />
           <Route path="/faqs" element={<Faqs />} />
