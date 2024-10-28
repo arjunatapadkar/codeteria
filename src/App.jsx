@@ -16,11 +16,11 @@ import DSProblem from "./pages/dsproblem/DSProblem";
 import AnimatedCursor from "react-animated-cursor";
 
 import Terms from "./pages/terms/Terms";
-import Faqs from './pages/FAQS/Faqs';
+import Faqs from "./pages/FAQS/Faqs";
 
-import Quiz from "./pages/quizzes/Quiz"; 
-
-
+import Quiz from "./pages/quizzes/Quiz";
+import ProgressBar from "./components/ProgressBar/ProgressBar";
+import "./components/ProgressBar/ProgressBar.css";
 
 const App = () => {
   const { dark } = useAPI();
@@ -29,6 +29,7 @@ const App = () => {
 
   return (
     <>
+      <ProgressBar />
       <AnimatedCursor
         innerSize={8}
         outerSize={35}
@@ -49,7 +50,6 @@ const App = () => {
           dark ? "bg-[#0F111D] text-white" : ""
         } relative  min-h-screen scroll-smooth`}
         style={{
-          height: "100vh",
           overflowY: "scroll",
           scrollbarWidth: "thin", // For Firefox
           scrollbarColor: "rgba(178, 121, 216, 0.959) #2d1950",
@@ -63,7 +63,7 @@ const App = () => {
           <Route path="/machinecoding" element={<MachineCoding />} />
           <Route path="/dsproblem" element={<DSProblem />} />
           <Route path="/Quizzes" element={<Quiz />} />
-         
+
           <Route path="/challenge/:id" element={<ChallengeDetail />} />
           <Route path="/product" element={<Product />} />
           <Route path="/playground" element={<Playground />} />
