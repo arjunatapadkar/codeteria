@@ -1,0 +1,201 @@
+.intro-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #5d0999, #3d0068); /* Purple to Dark Purple */
+    color: white;
+    text-align: center;
+    overflow: hidden; /* Prevent overflow from animations */
+    position: relative;
+}
+
+.light-bulb-container {
+    position: absolute;
+    top: 50%;
+    left: -100px; /* Start off the screen */
+    animation: moveLightBulb 4s forwards; /* Move the light bulb */
+}
+
+.light-bulb {
+    width: 50px; /* Adjust size as needed */
+}
+
+.intro-big-welcome, .intro-logo, .intro-title, .intro-subtitle {
+    opacity: 0; /* Start invisible */
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+/* Reveal content when light bulb animation completes */
+.reveal {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
+}
+
+@keyframes moveLightBulb {
+    0% {
+        left: -100px; /* Start off the screen */
+    }
+    50% {
+        left: 50%; /* Move to the middle */
+        transform: translateX(-50%); /* Center the bulb */
+    }
+    100% {
+        left: 100%; /* Move off the screen */
+    }
+}
+
+/* Show content after the light bulb passes */
+.light-bulb-container {
+    animation-fill-mode: forwards;
+}
+
+.light-bulb-container {
+    animation: moveLightBulb 4s forwards;
+    animation-delay: 1s; /* Delay before the light bulb starts */
+}
+
+/* Show elements once the light bulb reaches them */
+.light-bulb-container:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none; /* Ignore mouse events */
+    animation: revealContent 4s forwards;
+}
+
+@keyframes revealContent {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1; /* Fully visible when the light bulb moves */
+    }
+}
+/* Intro.css */
+.intro-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #4d077e, #38015f); /* Purple to Dark Purple */
+    color: white;
+    text-align: center;
+    animation: fadeIn 2s ease; /* Container fade-in animation */
+  }
+  @keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0); /* Original position */
+    }
+    100% {
+        opacity: 0; /* Fully transparent */
+        transform: translateY(30px) scale(1.1); /* Move down and slightly scale up */
+    }
+}
+
+.reveal {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+.fade-out {
+    animation: fadeOut 0.5s forwards; /* Fade-out animation */
+}
+
+  .intro-big-welcome {
+    font-size: 4rem; /* Size for the big welcome message */
+    font-weight: bold; /* Make the text bold */
+    color: white; /* Set text color to white */
+    margin: 20px 0; /* Space above and below the big welcome message */
+    opacity: 0; /* Start invisible */
+    animation: bigWelcomeFadeIn 1.5s forwards; /* Big welcome fade-in animation */
+    animation-delay: 0s; /* No delay for big welcome */
+  }
+  
+  .spinning-logo {
+    width: 100px; /* Adjust the size as needed */
+    margin: 20px 0; /* Space between logo and text */
+    opacity: 0; /* Start invisible */
+    animation: spin 2s linear infinite; /* Logo spin animation */
+    animation-delay: 0.5s; /* Delay before the logo appears */
+  }
+  
+  .intro-title {
+    font-size: 3rem; /* Size for the website name */
+    font-weight: bold; /* Make the text bold */
+    color: white; /* Set text color to white */
+    margin: 20px 0; /* Space above and below the title */
+    opacity: 0; /* Start invisible */
+    animation: titleFadeIn 1s forwards; /* Title fade-in animation */
+    animation-delay: 1s; /* Delay before the title appears */
+  }
+  
+  .intro-subtitle {
+    font-size: 1.5rem; /* Adjust subtitle size */
+    margin: 1rem 0; /* Space above and below the subtitle */
+    opacity: 0; /* Start invisible */
+    animation: subtitleFadeIn 1s forwards; /* Subtitle fade-in animation */
+    animation-delay: 1.5s; /* Delay before the subtitle appears */
+  }
+  
+  /* Keyframe animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes bigWelcomeFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-50px); /* Start from above */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0); /* Move to original position */
+    }
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg); /* Start rotation */
+    }
+    to {
+      transform: rotate(360deg); /* Complete rotation */
+    }
+  }
+  
+  @keyframes titleFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px); /* Start from above */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0); /* Move to original position */
+    }
+  }
+  
+  @keyframes subtitleFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px); /* Start from above */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0); /* Move to original position */
+    }
+  }
+  

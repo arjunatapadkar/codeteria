@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Upcoming from "./pages/upcoming";
 import ErrorPage from "./pages/ErrorPage";
@@ -15,18 +15,22 @@ import Community from './pages/community/Community'
 import MainNavbar from "./components/MainNavbar";
 import DSProblem from "./pages/dsproblem/DSProblem";
 import AnimatedCursor from "react-animated-cursor";
-
 import Terms from "./pages/terms/Terms";
 import Faqs from './pages/FAQS/Faqs';
-
 import Quiz from "./pages/quizzes/Quiz"; 
-
-
+import Intro from "./components/Intro"; // Import the Intro component
 
 const App = () => {
   const { dark } = useAPI();
+  const [display, setDisplay] = useState(true); // Set initial state to true
 
-  const [display, setDisplay] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDisplay(false); // Hide intro after a delay
+    }, 3000); // Change duration if needed
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -48,7 +52,7 @@ const App = () => {
       <div
         className={`${
           dark ? "bg-[#0F111D] text-white" : ""
-        } relative  min-h-screen scroll-smooth`}
+        } relative min-h-screen scroll-smooth`}
         style={{
           height: "100vh",
           overflowY: "scroll",
@@ -56,26 +60,31 @@ const App = () => {
           scrollbarColor: "rgba(178, 121, 216, 0.959) #2d1950",
         }}
       >
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/cheats" element={<Cheatsheet />} />
-          <Route path="/interview" element={<InterviewPrep />} />
-          <Route path="/upcoming" element={<Upcoming />} />
-          <Route path="/machinecoding" element={<MachineCoding />} />
-          <Route path="/dsproblem" element={<DSProblem />} />
-          <Route path="/Quizzes" element={<Quiz />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/challenge/:id" element={<ChallengeDetail />} />
-          <Route path="/product" element={<Product />} />
-          <Route path="/playground" element={<Playground />} />
-          <Route path="/faqs" element={<Faqs />} />
-          <Route path="/terms" element={<Terms />} />
-          {/* page not found */}
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
+
+        {display ? (
+          <Intro /> // Show intro component
+        ) : (
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/cheats" element={<Cheatsheet />} />
+            <Route path="/interview" element={<InterviewPrep />} />
+            <Route path="/upcoming" element={<Upcoming />} />
+            <Route path="/machinecoding" element={<MachineCoding />} />
+            <Route path="/dsproblem" element={<DSProblem />} />
+            <Route path="/quizzes" element={<Quiz />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/challenge/:id" element={<ChallengeDetail />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/playground" element={<Playground />} />
+            <Route path="/faqs" element={<Faqs />} />
+            <Route path="/terms" element={<Terms />} />
+            {/* Page not found */}
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        )}
       </div>
 
-      <Chat />
+      {!display && <Chat />} {/* Show Chat only after intro is hidden */}
     </>
   );
 };
