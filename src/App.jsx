@@ -11,6 +11,7 @@ import { useAPI } from "./context/apiContext";
 import Chat from "./components/chatbot/Chat";
 import Product from "./pages/products/product";
 import Playground from "./pages/playground/Playground";
+import Community from './pages/community/Community'
 import MainNavbar from "./components/MainNavbar";
 import DSProblem from "./pages/dsproblem/DSProblem";
 import AnimatedCursor from "react-animated-cursor";
@@ -63,7 +64,7 @@ const App = () => {
           <Route path="/machinecoding" element={<MachineCoding />} />
           <Route path="/dsproblem" element={<DSProblem />} />
           <Route path="/Quizzes" element={<Quiz />} />
-         
+          <Route path="/community" element={<Community />} />
           <Route path="/challenge/:id" element={<ChallengeDetail />} />
           <Route path="/product" element={<Product />} />
           <Route path="/playground" element={<Playground />} />
