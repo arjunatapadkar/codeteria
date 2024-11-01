@@ -8,24 +8,29 @@ import { useState } from "react";
 
 const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate(); // Make sure to import useNavigate
+  const navigate = useNavigate(); 
   const navs = [
     {
       tab: "Playground",
       page: "/playground",
     },
-    {
-      tab: "Challenges",
-      page: "/upcoming",
-    },
+    // {
+    //   tab: "Challenges",
+    //   page: "/upcoming",
+    // },
     {
       tab: "Community",
       page: "/upcoming",
     },
     {
+      tab: "FAQ",
+      page: "/faqs",
+    },
+    {
       tab: "Pro",
       page: "/upcoming",
     },
+    
   ];
 
   return (
@@ -44,7 +49,7 @@ const MainNavbar = () => {
               alt="Codeteria Logo"
               className="w-[40px] h-[40px] mr-2"
             />
-            <Link to="/" className="text-3xl font-bold text-white">
+            <Link to="/" className="text-3xl font-bold text-white ">
               Codeteria
             </Link>
           </motion.div>
@@ -60,7 +65,8 @@ const MainNavbar = () => {
               <Link
                 key={index}
                 to={item.page}
-                className="text-lg font-semibold text-white hover:text-yellow-300 transition-colors"
+                className="text-lg font-semibold text-white hover:underline ease-in-out underline-offset-8 transform transition-all duration-1000 hover:scale-125 hover:text-yellow-300"
+
               >
                 <motion.span
                   whileHover={{ scale: 1.1 }}
@@ -82,7 +88,7 @@ const MainNavbar = () => {
             <button
               onClick={() => navigate("/cheats")}
               size="lg"
-              className="bg-yellow-400 px-6 py-2 rounded text-purple-900 hover:bg-yellow-300 font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="bg-yellow-400 px-6 py-2 rounded text-purple-900 hover:bg-purple-500 font-semibold transition-all duration-1000 shadow-lg hover:shadow-xl transform hover:scale-110 hover:text-gray-50"
             >
               Start Coding
             </button>
@@ -129,3 +135,4 @@ const MainNavbar = () => {
 };
 
 export default MainNavbar;
+

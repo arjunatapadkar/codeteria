@@ -65,16 +65,18 @@ const Navbarm = () => {
             </ul>
           </details>
 
-          <button onClick={() => setDark(!dark)} className="text-3xl">
-            {dark ? <CiLight className="" /> : <MdDarkMode />}
-          </button>
-
           <Link to="/" className="flex items-center">
             <img src={logo} loading="lazy" className="w-[50px]" />
             <span className="text-3xl pl-2 font-bold text-white">
               Codeteria
             </span>
-          </Link>
+          </Link>.
+
+          <button onClick={() => setDark(!dark)} className="text-3xl">
+            {dark ? <CiLight className="" /> : <MdDarkMode />}
+          </button>
+
+ 
         </div>
 
         {/* Desktop Navbar */}
@@ -83,7 +85,7 @@ const Navbarm = () => {
             dark
               ? "bg-purple-900"
               : "bg-purple-800"
-          } hidden lg:flex justify-between items-center p-4 backdrop-blur-md`}
+          } hidden lg:flex fixed top-0 w-full z-50 justify-between items-center p-4 backdrop-blur-md`}
         >
           <Link to="/" className="flex items-center">
             <img src={logo} loading="lazy" className="w-[40px]" />
@@ -95,37 +97,37 @@ const Navbarm = () => {
           >
             <Link
               to="/cheats"
-              className="hover:text-purple-600 transition-colors"
+              className="hover:text-yellow-300 transition-colors"
             >
               Cheatsheets
             </Link>
             <Link
               to="/interview"
-              className="hover:text-purple-600 transition-colors"
+              className="hover:text-yellow-300 transition-colors"
             >
               Interview Prep
             </Link>
             <Link
               to="/upcoming"
-              className="hover:text-purple-600 transition-colors"
+              className="hover:text-yellow-300 transition-colors"
             >
               Guides
             </Link>
             <Link
               to="/upcoming"
-              className="hover:text-purple-600 transition-colors"
+              className="hover:text-yellow-300 transition-colors"
             >
               Project Guides
             </Link>
             <Link
               to="/product"
-              className="hover:text-purple-600 transition-colors"
+              className="hover:text-yellow-300 transition-colors"
             >
               Products
             </Link>
             <button
               onClick={() => setDark(!dark)}
-              className={`text-xl rounded-full ${
+              className={`text-xl p-2 bg-amber-400 rounded-full ${
                 dark ? "text-white" : "text-gray-800"
               }`}
             >

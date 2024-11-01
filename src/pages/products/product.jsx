@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, ExternalLink } from "lucide-react";
-import SpecialFooter from "../../components/core/SpecialFooter";
+import Footer from "../../components/core/Footer";
 import { useAPI } from "../../context/apiContext";
 import Navbarm from "../../components/landing page/Navbarm";
 
@@ -42,7 +42,7 @@ const Product = () => {
 	return (
 		<div className="flex flex-col min-h-screen justify-between">
 			<Navbarm /> 
-			<main className="flex-grow container mx-auto px-4 py-12">
+			<main className="flex-grow container mx-auto px-4 py-12 mt-16 lg:mt-20">
 				<motion.h2
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -51,7 +51,6 @@ const Product = () => {
 				>
 					Our Innovative Solutions
 				</motion.h2>
-
 				<div className="relative max-w-4xl mx-auto">
 					<AnimatePresence mode="wait">
 						<motion.div
@@ -103,8 +102,7 @@ const Product = () => {
 					</p>
 				</div>
 			</main>
-
-            <SpecialFooter />
+			<Footer bg={"#1E2128"} text={"white"} />
 		</div>
 	);
 };

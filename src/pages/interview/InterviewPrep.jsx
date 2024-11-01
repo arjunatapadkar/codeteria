@@ -23,7 +23,7 @@ const data = [
 		title: "Data Structures & Algorithms",
 		desc: "Master essential data structures and algorithms for technical interviews.",
 		image: <FaCode />,
-        path: "/upcoming"
+        path: "/dsproblem"
 	},
 	{
 		title: "Java",
@@ -104,7 +104,7 @@ const InterviewPrep = () => {
 					<IntSection card={card} key={index} />
 				))}
 			</div>
-			<Footer />
+			<Footer bg={"#1E2128"} text={"white"} />
 		</div>
 	);
 };

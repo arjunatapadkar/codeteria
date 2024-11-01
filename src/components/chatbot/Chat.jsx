@@ -1,6 +1,7 @@
 import { Webchat, WebchatProvider, Fab, getClient } from "@botpress/webchat";
 import { buildTheme } from "@botpress/webchat-generator";
 import React, { useState, useRef, useEffect } from "react";
+import AnimatedCursor from "react-animated-cursor";
 
 const { theme, style } = buildTheme({
   themeName: "prism",
@@ -39,8 +40,8 @@ const config = {
 const Chat = () => {
   const client = getClient({ clientId }); 
   const [isWebchatOpen, setIsWebchatOpen] = useState(false);
+  const [isActive , setActive] = useState(false);
   const webchatRef = useRef(null);
-
   const toggleWebchat = () => {
     setIsWebchatOpen((prevState) => !prevState);
   };
@@ -67,17 +68,40 @@ const Chat = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-4 right-10 z-50">
-      <style>{style}</style>
-      <WebchatProvider theme={theme} client={client} configuration={config}>
-        <Fab onClick={toggleWebchat} />
-        {isWebchatOpen && (
-          <div ref={webchatRef} className="absolute bottom-16 right-0 h-[500px] w-[400px] bg-white shadow-lg rounded-lg overflow-hidden">
-            <Webchat/>
-          </div>
-        )}
-      </WebchatProvider>
-    </div>
+    <>
+      {" "}
+      {isActive ? (
+        <AnimatedCursor
+          innerSize={8}
+          outerSize={35}
+          innerScale={1}
+          outerScale={2}
+          outerAlpha={0}
+          trailingSpeed={1}
+          hasBlendMode={true}
+          innerStyle={{
+            backgroundColor: "rgb(107,33,168)",
+          }}
+          outerStyle={{
+            border: "3px solid rgb(107,33,168)",
+          }}
+        />
+      ) : null}
+      <div className={`fixed bottom-4 right-4 z-50`} onMouseEnter={() => setActive(() => true)} onMouseLeave={()=> setActive(()=> false)}>
+        <style>{style}</style>
+        <WebchatProvider theme={theme} client={client} configuration={config}>
+          <Fab onClick={toggleWebchat} />
+          {isWebchatOpen && (
+            <div
+              ref={webchatRef}
+              className={`absolute bottom-24 right-0 h-[500px] w-[400px] bg-white shadow-lg rounded-lg overflow-hidden`} //
+            >
+              <Webchat />
+            </div>
+          )}
+        </WebchatProvider>
+      </div>
+    </>
   );
 };
 

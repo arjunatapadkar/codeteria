@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAPI } from "../../context/apiContext";
 import Loading from "../../components/core/Loading";
-import SpecialFooter from "../../components/core/SpecialFooter";
+import Footer from "../../components/core/Footer";
 import { VscDebugBreakpointLog } from "react-icons/vsc";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { motion } from "framer-motion";
@@ -20,7 +20,7 @@ const ChallengeDetail = () => {
 		problems &&
 		problems.allChallenges.filter((challenge) => challenge._id == id);
 	// const challenge = result[0];
-	console.log(challenge);
+	
 
 
 
@@ -30,7 +30,7 @@ const ChallengeDetail = () => {
 		<div
 			className={` ${
 				dark ? "" : "bg-gray-100 "
-			} w-full h-full flex flex-col justify-between items-center `}
+			} flex flex-col justify-between items-center `}
 		>
 			<button
 				onClick={() => navigate(-1)}
@@ -39,7 +39,7 @@ const ChallengeDetail = () => {
 				<FaArrowLeftLong />
 				Back
 			</button>
-			<div className=" px-3 lg:px-0 max-w-[380px] lg:max-w-[1000px] lg:min-h-max space-y-8 lg:flex flex-col lg:items-center justify-center  lg:my-12 py-10  ">
+			<div className=" px-3 lg:px-0 max-w-[380px] lg:max-w-[1000px] lg:min-h-max space-y-8 lg:flex flex-col lg:items-center justify-center  lg:my-12 py-5">
 				<h1 className="self-start text-3xl font-bold ">{challenge[0].title}</h1>
 				<p className=" text-lg">{challenge[0].problemStatement}</p>
 
@@ -99,7 +99,7 @@ const ChallengeDetail = () => {
 					</ol>
 				</div>
 			</div>
-			<SpecialFooter />
+			<Footer bg={"#1E2128"} text={"white"}/>
 		</div>
 	);
 };

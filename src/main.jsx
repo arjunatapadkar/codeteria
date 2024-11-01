@@ -7,7 +7,7 @@ import { APIProvider } from "./context/apiContext.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <APIProvider>
-      <App />
+      <App /> 
     </APIProvider>
   </BrowserRouter>
 );
