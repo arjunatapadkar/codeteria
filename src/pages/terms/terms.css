@@ -1,0 +1,32 @@
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+.terms-content {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.vertical-line {
+    width: 4px; /* Adjust width as needed */
+    background-color: #5A2D91; /* Dark purple color */
+    height: 50px; /* Adjust height based on your layout */
+    margin: 0 15px; /* Adjust spacing as needed */
+    display: inline-block; /* To allow the line to be inline with text */
+    vertical-align: middle; /* Align with text */
+}
+
+.term-heading {
+    background: linear-gradient(135deg, #C71585, #8A2BE2, #4B0082, #FF1493); /* Dark pink, violet, purple, pink */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    animation: fadeIn 0.6s ease-in-out; /* Optional fade-in effect for headings */
+}
