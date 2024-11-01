@@ -1,10 +1,13 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const APIContext = createContext();
 
 export const APIProvider = ({ children }) => {
-    const [token, setToken] = useState(localStorage.getItem("token"));
+
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const navigate = useNavigate();
     const [dark, setDark] = useState(false);
     const [count, setCount] = useState(0);
     const [loading, setLoading] = useState(false);
@@ -17,29 +20,36 @@ export const APIProvider = ({ children }) => {
 
     // ################################ USER Authentication ############################
 
-    const registerUser = async (userData) => {
+    const signup = async (payload) => {
         setLoading(true);
-        try {
-            const response = await axios.post(`${url}/auth/register`, userData);
-            setLoading(false);
-        } catch (error) {
-            setLoading(false);
-            setError(error);
-        }
-    };
+		try {
+			const response = await axios.post(`${url}/auth/register`, payload);
+			setLoading(false);
 
-    const loginUser = async (userData) => {
-        setLoading(true);
-        try {
-            const response = await axios.post(`${url}/auth/login`, userData);
-            setToken(response.data.token);
-            localStorage.setItem("token", response.data.token);
+			return response.data;
+		} catch (error) {
+			setLoading(false);
+			setError(error);
+		}
+    }
+
+    
+	const login = async ( userData) => {
+		setLoading(true);
+		try {
+			const response = await axios.post(`${url}/auth/login`, userData);
+			setIsAuthenticated(true);
+            console.log(response);
             setLoading(false);
-        } catch (error) {
+            localStorage.setItem("token", JSON.stringify(response.data.token));
+            navigate("/cheats");
+			
+		} catch (error) {
             setLoading(false);
-            setError(error);
-        }
-    };
+			alert("Login failed");
+		}
+	};
+
 
     // ################################### for cheats api ####################################
 
@@ -94,6 +104,10 @@ export const APIProvider = ({ children }) => {
     return (
         <APIContext.Provider
             value={{
+                login, signup,
+
+                isAuthenticated, setIsAuthenticated,
+
                 loading,
                 error,
                 currentCheat,
@@ -112,9 +126,9 @@ export const APIProvider = ({ children }) => {
                 setDsProblems,
                 dark,
                 setDark,
-                token, setToken,
-                loginUser,
-                registerUser,
+                // token, setToken,
+                // loginUser,
+                // registerUser,
                 getAllDSProblems
             }}
         >
