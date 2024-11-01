@@ -21,6 +21,7 @@ import Faqs from "./pages/FAQS/Faqs";
 import Quiz from "./pages/quizzes/Quiz";
 import Login from "./pages/Auth/Login";
 import ProtectedRoute from "./pages/Auth/ProtectedRoute";
+import Signup from "./pages/Auth/Signup";
 
 const App = () => {
 	const { dark } = useAPI();
@@ -59,6 +60,7 @@ const App = () => {
 
 
           <Route path="/login" element={<Login/>} />
+		  <Route path="/signup" element={<Signup/>} />
 
 					<Route path="/" element={<Homepage />} />
 					<Route path="/upcoming" element={<Upcoming />} />
@@ -66,6 +68,9 @@ const App = () => {
 					<Route path="/playground" element={<Playground />} />
 					<Route path="/faqs" element={<Faqs />} />
 					<Route path="/terms" element={<Terms />} />
+					<Route path="/community" element={<Community />} />
+
+
 					{/* page not found */}
 					<Route path="*" element={<ErrorPage />} />
 

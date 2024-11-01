@@ -1,13 +1,11 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const APIContext = createContext();
 
 export const APIProvider = ({ children }) => {
-
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const navigate = useNavigate();
     const [dark, setDark] = useState(false);
     const [count, setCount] = useState(0);
     const [loading, setLoading] = useState(false);
@@ -16,42 +14,48 @@ export const APIProvider = ({ children }) => {
     const [allCheats, setAllCheats] = useState();
     const [problems, setAllProblems] = useState();
     const [dsProblems, setDsProblems] = useState([]);
+    const navigate = useNavigate();
     const url = import.meta.env.VITE_BASE_URL;
+
+    // Check if user is authenticated on initial load
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            setIsAuthenticated(true);
+        }
+    }, []);
 
     // ################################ USER Authentication ############################
 
     const signup = async (payload) => {
         setLoading(true);
-		try {
-			const response = await axios.post(`${url}/auth/register`, payload);
-			setLoading(false);
+        try {
+            const response = await axios.post(`${url}/auth/register`, payload);
+            setLoading(false);
+            return response.data;
+        } catch (error) {
+            setLoading(false);
+            setError(error.response ? error.response.data.message : "Signup failed");
+            console.error(error);
+        }
+    };
 
-			return response.data;
-		} catch (error) {
-			setLoading(false);
-			setError(error);
-		}
-    }
-
-    
-	const login = async ( userData) => {
-		setLoading(true);
-		try {
-			const response = await axios.post(`${url}/auth/login`, userData);
-			setIsAuthenticated(true);
-            console.log(response);
+    const login = async (userData) => {
+        setLoading(true);
+        try {
+            const response = await axios.post(`${url}/auth/login`, userData);
+            setIsAuthenticated(true);
             setLoading(false);
             localStorage.setItem("token", JSON.stringify(response.data.token));
             navigate("/cheats");
-			
-		} catch (error) {
+        } catch (error) {
             setLoading(false);
-			alert("Login failed");
-		}
-	};
+            setError(error.response ? error.response.data.message : "Login failed");
+            alert(error.response ? error.response.data.message : "Login failed");
+        }
+    };
 
-
-    // ################################### for cheats api ####################################
+    // ################################### for cheats API ####################################
 
     const getAllCheats = async () => {
         setLoading(true);
@@ -59,15 +63,15 @@ export const APIProvider = ({ children }) => {
             const response = await axios.get(`${url}/cheat`);
             setLoading(false);
             setAllCheats(response.data);
-            
             return response.data.allcheats;
         } catch (error) {
             setLoading(false);
-            setError(error);
+            setError(error.response ? error.response.data.message : "Failed to fetch cheats");
+            console.error(error);
         }
     };
 
-    // ##################################  for machine coding round ###########################
+    // ################################## for machine coding round ###########################
 
     const getAllProblems = async () => {
         setLoading(true);
@@ -75,11 +79,11 @@ export const APIProvider = ({ children }) => {
             const response = await axios.get(`${url}/challenge`);
             setLoading(false);
             setAllProblems(response.data);
-           
             return response.data;
         } catch (error) {
             setLoading(false);
-            setError(error);
+            setError(error.response ? error.response.data.message : "Failed to fetch problems");
+            console.error(error);
         }
     };
 
@@ -91,11 +95,11 @@ export const APIProvider = ({ children }) => {
             const response = await axios.get(`${url}/dsproblem`);
             setLoading(false);
             setDsProblems(response.data.problems);
-            
             return response.data;
         } catch (error) {
             setLoading(false);
-            setError(error);
+            setError(error.response ? error.response.data.message : "Failed to fetch DS problems");
+            console.error(error);
         }
     };
 
@@ -104,20 +108,18 @@ export const APIProvider = ({ children }) => {
     return (
         <APIContext.Provider
             value={{
-                login, signup,
-
-                isAuthenticated, setIsAuthenticated,
-
+                login,
+                signup,
+                isAuthenticated,
+                setIsAuthenticated,
                 loading,
                 error,
                 currentCheat,
                 setCurrentCheat,
                 setCount,
                 count,
-
                 allCheats,
                 setAllCheats,
-
                 getAllCheats,
                 getAllProblems,
                 problems,
@@ -126,9 +128,6 @@ export const APIProvider = ({ children }) => {
                 setDsProblems,
                 dark,
                 setDark,
-                // token, setToken,
-                // loginUser,
-                // registerUser,
                 getAllDSProblems
             }}
         >
