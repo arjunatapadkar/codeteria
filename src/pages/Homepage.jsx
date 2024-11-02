@@ -2,7 +2,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import "./Homepage.css";
+import "./login";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import {
   Code,
@@ -19,6 +20,7 @@ import MainNavbar from "../components/MainNavbar";
 import Footer from "../components/core/Footer";
 import Btn from "../components/core/btn";
 import Contact from "../components/Contact";
+import Login from "./login";
 
 const codeSnippets = [
   {
@@ -111,7 +113,6 @@ const Homepage = () => {
   const refScrollUp = useRef();
 
   const navigate = useNavigate();
-
   const scrollToTop = () => {
     refScrollUp.current.scrollIntoView({ behavior: "smooth" });
   };
@@ -168,6 +169,11 @@ const Homepage = () => {
 
       {/* Main Content */}
       <main className="container mx-auto px-5 lg:px-36 py-12">
+      <div className="home-container">
+      <button className="login-button" onClick={() => navigate("/login")}>
+        Login/Sign Up 
+      </button>
+    </div>
         {/* Hero Section */}
         <motion.section
           className="text-center mb-20"
@@ -175,6 +181,7 @@ const Homepage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
+          
           <motion.h1
             className="text-5xl md:text-7xl font-bold mb-6"
             animate={{ scale: [1, 1.05, 1] }}
