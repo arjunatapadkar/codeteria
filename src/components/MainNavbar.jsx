@@ -20,7 +20,7 @@ const MainNavbar = () => {
     // },
     {
       tab: "Community",
-      page: "/upcoming",
+      page: "/community",
     },
     {
       tab: "FAQ",
@@ -135,4 +135,3 @@ const MainNavbar = () => {
 };
 
 export default MainNavbar;
-

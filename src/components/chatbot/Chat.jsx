@@ -92,13 +92,14 @@ const Chat = () => {
         <WebchatProvider theme={theme} client={client} configuration={config}>
           <Fab onClick={toggleWebchat} />
           {isWebchatOpen && (
-            <div
-              ref={webchatRef}
-              className={`absolute bottom-24 right-0 h-[500px] w-[400px] bg-white shadow-lg rounded-lg overflow-hidden`} //
-            >
-              <Webchat />
-            </div>
-          )}
+  <div
+    ref={webchatRef}
+    className={`absolute bottom-20 right-0 h-[400px] w-[300px] bg-white shadow-lg rounded-lg overflow-hidden`}
+  >
+    <Webchat />
+  </div>
+)}
+
         </WebchatProvider>
       </div>
     </>
