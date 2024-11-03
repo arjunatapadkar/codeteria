@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const APIContext = createContext();
 
 export const APIProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(true);
     const [dark, setDark] = useState(false);
     const [count, setCount] = useState(0);
     const [loading, setLoading] = useState(false);
