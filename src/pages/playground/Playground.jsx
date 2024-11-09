@@ -21,7 +21,7 @@ const LANGUAGE_ID_MAP = {
 	"C++ Intermediate": 54,
 	"C++ OOPs": 54,
 	"C Programming": 50,   // C (GCC 9.2.0)
-	"Python Basics": 71,   // Python (3.8.1)
+	"Python": 71,   // Python (3.8.1)
 	"JavaScript": 63,      // JavaScript (Node.js 12.14.0)
 	"Java": 62,           // Java (OpenJDK 13.0.1)
 	"GO": 60,            // Go (1.13.5)
