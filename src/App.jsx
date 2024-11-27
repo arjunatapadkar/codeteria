@@ -11,17 +11,17 @@ import { useAPI } from "./context/apiContext";
 import Chat from "./components/chatbot/Chat";
 import Product from "./pages/products/product";
 import Playground from "./pages/playground/Playground";
-import Community from './pages/community/Community'
-import MainNavbar from "./components/MainNavbar";
+import Community from "./pages/community/Community";
+
 import DSProblem from "./pages/dsproblem/DSProblem";
-import AnimatedCursor from "react-animated-cursor";
+
 import Terms from "./pages/terms/Terms";
 import Faqs from "./pages/FAQS/Faqs";
 
 import Quiz from "./pages/quizzes/Quiz";
-import Login from "./pages/Auth/Login";
-import ProtectedRoute from "./pages/Auth/ProtectedRoute";
-import Signup from "./pages/Auth/Signup";
+
+
+import { SignedIn } from "@clerk/clerk-react";
 
 const App = () => {
 	const { dark } = useAPI();
@@ -30,21 +30,7 @@ const App = () => {
 
 	return (
 		<>
-			<AnimatedCursor
-				innerSize={8}
-				outerSize={35}
-				innerScale={1}
-				outerScale={2}
-				outerAlpha={0}
-				trailingSpeed={1}
-				hasBlendMode={true}
-				innerStyle={{
-					backgroundColor: "var(--cursor-color)",
-				}}
-				outerStyle={{
-					border: "3px solid var(--cursor-color)",
-				}}
-			/>
+			
 			<div
 				className={`${
 					dark ? "bg-[#0F111D] text-white" : ""
@@ -58,10 +44,6 @@ const App = () => {
 			>
 				<Routes>
 
-
-          <Route path="/login" element={<Login/>} />
-		  <Route path="/signup" element={<Signup/>} />
-
 					<Route path="/" element={<Homepage />} />
 					<Route path="/upcoming" element={<Upcoming />} />
 
@@ -70,21 +52,15 @@ const App = () => {
 					<Route path="/terms" element={<Terms />} />
 					<Route path="/community" element={<Community />} />
 
-
-					{/* page not found */}
 					<Route path="*" element={<ErrorPage />} />
 
-					{/* Protected routes */}
-					<Route element={<ProtectedRoute />}>
-						<Route path="/cheats" element={<Cheatsheet />} />
-						<Route path="/interview" element={<InterviewPrep />} />
-						<Route path="/machinecoding" element={<MachineCoding />} />
-						<Route path="/dsproblem" element={<DSProblem />} />
-						<Route path="/Quizzes" element={<Quiz />} />
-						<Route path="/challenge/:id" element={<ChallengeDetail />} />
-						<Route path="/product" element={<Product />} />
-						{/* <Route path="/dashboard" element={<Dashboard />} /> */}
-					</Route>
+					<Route path="/cheats" element={<SignedIn><Cheatsheet /></SignedIn>} />
+					<Route path="/interview" element={<SignedIn><InterviewPrep /></SignedIn>} />
+					<Route path="/machinecoding" element={<SignedIn><MachineCoding /></SignedIn>} />
+					<Route path="/dsproblem" element={<SignedIn><DSProblem /></SignedIn>} />
+					<Route path="/Quizzes" element={<SignedIn><Quiz /></SignedIn>} />
+					<Route path="/challenge/:id" element={<SignedIn><ChallengeDetail /></SignedIn>} />
+					<Route path="/product" element={<SignedIn><Product /></SignedIn>} />
 				</Routes>
 			</div>
 

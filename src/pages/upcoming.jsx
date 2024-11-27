@@ -1,15 +1,16 @@
 import React from "react";
-import Footer from "../components/core/Footer";
+
 import logo from "../assets/logo.svg";
-import Btn from "../components/core/btn";
+
 import { useNavigate } from "react-router-dom";
-import MainNavbar from "../components/MainNavbar";
+
+import Navbarm from "../components/landing page/Navbarm";
 
 const Upcoming = () => {
   const navigate = useNavigate();
   return (
     <div className=" bg-[#3A1C71] text-white h-full">
-      <MainNavbar />
+      <Navbarm />
 
       <div className="relative h-[600px] overflow-hidden ">
         <img

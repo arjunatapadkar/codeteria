@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { styles } from "../styles";
-import { slideIn } from "../utils/motion.js";
+
 import { useRef, useState } from "react";
 import contactImg from "../assets/contact.svg";
 
@@ -65,7 +65,6 @@ const Contact = () => {
       </div>
       <div className="w-full lg:w-1/2 bg-black/40 rounded-lg shadow-xl p-6 lg:p-8 lg:ml-8">
         <motion.div
-          variants={slideIn("left", "tween", 0.2, 1)}
           className="w-full"
         >
           <p className={`${styles.sectionSubText} text-center`}>Get in touch</p>
