@@ -4,9 +4,11 @@ import { styles } from "../styles";
 
 import { useRef, useState } from "react";
 import contactImg from "../assets/contact.svg";
+import { useAPI } from "../context/apiContext";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
+  const {dark} = useAPI()
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -58,17 +60,17 @@ const Contact = () => {
     <div className="flex flex-col lg:flex-row justify-center items-center my-4 mx-4 lg:mx-20 px-4 lg:px-0">
       <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
         <img
-          className="w-full h-auto object-cover rounded-lg shadow-lg"
+          className={` bg-transparent w-full h-auto object-cover rounded-lg `}
           src={contactImg}
           alt="Contact"
         />
       </div>
-      <div className="w-full lg:w-1/2 bg-black/40 rounded-lg shadow-xl p-6 lg:p-8 lg:ml-8">
+      <div className={`${dark? "bg-slate-800" : "bg-slate-300 text-slate-700"} w-full lg:w-1/2  rounded-lg shadow-xl p-6 lg:p-8 lg:ml-8`}>
         <motion.div
           className="w-full"
         >
           <p className={`${styles.sectionSubText} text-center`}>Get in touch</p>
-          <h3 className={`${styles.sectionHeadText} text-center mb-6`}>
+          <h3 className={`text-4xl font-bold text-center mb-6`}>
             Contact Us
           </h3>
           <form
@@ -77,40 +79,40 @@ const Contact = () => {
             className="flex flex-col gap-4"
           >
             <label className="flex flex-col">
-              <span className="mb-2 font-medium text-white">Your Name</span>
+              <span className="mb-2 font-medium ">Your Name</span>
               <input
                 type="text"
                 name="name"
                 value={form.name}
                 onChange={handleChange}
                 placeholder="John Doe"
-                className="px-4 py-3 text-white bg-tertiary border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300"
+                className={`${dark? "border border-white/10" : "border border-slate-400"} px-4 py-3   bg-tertiary   rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300`}
                 required
               />
             </label>
 
             <label className="flex flex-col">
-              <span className="mb-2 font-medium text-white">Your Email</span>
+              <span className="mb-2 font-medium ">Your Email</span>
               <input
                 type="email"
                 name="email"
                 value={form.email}
                 onChange={handleChange}
                 placeholder="johndoe@example.com"
-                className="px-4 py-3 text-white bg-tertiary border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300"
+                className={`px-4 py-3  bg-tertiary ${dark? "border border-white/10" : "border border-slate-400"}  rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300`}
                 required
               />
             </label>
 
             <label className="flex flex-col">
-              <span className="mb-2 font-medium text-white">Your Message</span>
+              <span className="mb-2 font-medium ">Your Message</span>
               <textarea
                 rows={5}
                 name="message"
                 value={form.message}
                 onChange={handleChange}
                 placeholder="What would you like to say?"
-                className="px-4 py-3 text-white bg-tertiary border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300 resize-none"
+                className={`px-4 py-3 text-white bg-tertiary ${dark? "border border-white/10" : "border border-slate-400"}  rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300 resize-none`}
                 required
               />
             </label>

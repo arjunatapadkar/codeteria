@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
+import { useAPI } from "../../context/apiContext";
 
 const Footer = () => {
   const navs = [
@@ -9,15 +10,17 @@ const Footer = () => {
     { tab: "Pro", page: "/pro" },
   ];
 
+  const {dark} = useAPI();
+
   return (
-    <footer className="bg-purple-900 bg-opacity-100 py-6 lg:px-32 backdrop-blur-lg w-full">
+    <footer className={`${dark? "bg-slate-700":"bg-slate-300"} bg-opacity-100 py-6 lg:px-32 backdrop-blur-lg w-full`}>
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-4 py-4">
           {/* Logo and description */}
           <div>
             <div className="flex">
               <img src={logo} alt="Codeteria Logo" className="w-[40px] h-[40px] mr-2" />
-              <Link to="/" className="text-2xl font-bold text-white">
+              <Link to="/" className="text-2xl font-bold ">
                 Codeteria
               </Link>
             </div>
@@ -29,7 +32,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-yellow-400">Quick Links</h3>
+            <h3 className={`${dark? "text-yellow-400": "text-yellow-700"} text-xl font-bold mb-4 `}>Quick Links</h3>
             <ul className="space-y-2">
               {navs.map((item, index) => (
                 <li key={index}>
@@ -46,7 +49,7 @@ const Footer = () => {
 
           {/* Community */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-yellow-400">Community</h3>
+            <h3 className={`${dark? "text-yellow-400": "text-yellow-700"} text-xl font-bold mb-4 `}>Community</h3>
             <ul className="space-y-2">
               {["Forums", "Blog", "Events", "Partnerships"].map((item, index) => (
                 <li key={index}>
@@ -63,7 +66,7 @@ const Footer = () => {
 
           {/* Connect */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-yellow-400">Connect</h3>
+            <h3 className={`${dark? "text-yellow-400": "text-yellow-700"} text-xl font-bold mb-4 `}>Connect</h3>
             <p className="mb-3 ml-1 hover:text-yellow-400">support@codeteria.com</p>
             <div className="flex space-x-4">
               {/* Social Media Links */}

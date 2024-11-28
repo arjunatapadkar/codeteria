@@ -4,16 +4,20 @@ import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
 import logo from "../assets/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
+import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
+
 import { useState } from "react";
 import {
 	SignedIn,
 	SignedOut,
-	SignIn,
 	SignInButton,
 	UserButton,
 } from "@clerk/clerk-react";
+import { useAPI } from "../context/apiContext";
 
 const MainNavbar = () => {
+	const { dark, setDark } = useAPI();
+
 	const [isOpen, setIsOpen] = useState(false);
 	const navigate = useNavigate();
 	const navs = [
@@ -21,10 +25,6 @@ const MainNavbar = () => {
 			tab: "Playground",
 			page: "/playground",
 		},
-		// {
-		//   tab: "Challenges",
-		//   page: "/upcoming",
-		// },
 		{
 			tab: "Community",
 			page: "/community",
@@ -40,7 +40,11 @@ const MainNavbar = () => {
 	];
 
 	return (
-		<header className="bg-black sticky bg-opacity-30 top-0 z-50 backdrop-blur-md lg:px-36">
+		<header
+			className={` ${
+				dark ? "bg-black" : "bg-white"
+			}  sticky bg-opacity-30 top-0 z-50 backdrop-blur-md lg:px-36`}
+		>
 			<nav className=" fluid-container mx-auto px-0 py-4">
 				<div className="flex items-center justify-between ">
 					{/* Logo */}
@@ -50,12 +54,12 @@ const MainNavbar = () => {
 						transition={{ duration: 0.8, ease: "easeOut" }}
 						className="flex items-center"
 					>
+						<Link to="/" className={`${dark?"text-white ":"text-black"} text-3xl flex font-bold `}>
 						<img
 							src={logo}
 							alt="Codeteria Logo"
-							className="w-[40px] h-[40px] mr-2"
+							className="hidden md:block w-[40px] h-[40px] mr-2"
 						/>
-						<Link to="/" className="text-3xl font-bold text-white ">
 							Codeteria
 						</Link>
 					</motion.div>
@@ -71,7 +75,7 @@ const MainNavbar = () => {
 							<Link
 								key={index}
 								to={item.page}
-								className="text-lg font-semibold text-white hover:underline ease-in-out underline-offset-8 transform transition-all duration-1000 hover:scale-125 hover:text-yellow-300"
+								className={`${dark? "text-white": "text-slate-800"} text-lg font-semibold  hover:underline ease-in-out underline-offset-8 transform transition-all duration-1000 hover:scale-125 hover:text-yellow-300`}
 							>
 								<motion.span
 									whileHover={{ scale: 1.1 }}
@@ -85,11 +89,10 @@ const MainNavbar = () => {
 
 					<div className="flex gap-2">
 						<SignedOut>
-							<SignInButton className="border px-3 text-xs lg:text-lg lg:px-5 lg:py-2 rounded-lg" />
+							<SignInButton className={`${dark?"":"text-black border-black"} border px-3 text-xs lg:text-lg lg:px-5 lg:py-2 rounded-lg`} />
 						</SignedOut>
 
 						<SignedIn>
-
 							{/* Start Coding Button */}
 							<motion.div
 								initial={{ opacity: 0, x: 50 }}
@@ -107,10 +110,17 @@ const MainNavbar = () => {
 							</motion.div>
 							<UserButton userProfileMode="modal" />
 						</SignedIn>
-					{/* Hamburger Menu for Mobile */}
-					<div className="lg:hidden">
-						<Hamburger toggled={isOpen} toggle={setIsOpen} />
-					</div>
+						<div className="flex items-center justify-center cursor-pointer">
+							{dark ? (
+								<MdOutlineLightMode size={30} onClick={() => setDark(!dark)} />
+							) : (
+								<MdDarkMode className="text-black" size={30} onClick={() => setDark(!dark)} />
+							)}
+						</div>
+						{/* Hamburger Menu for Mobile */}
+						<div className={`${dark? "text-white" : "text-black"} lg:hidden`}>
+							<Hamburger  toggled={isOpen} toggle={setIsOpen} />
+						</div>
 					</div>
 				</div>
 
@@ -126,30 +136,28 @@ const MainNavbar = () => {
 							<Link
 								key={index}
 								to={item.page}
-								className="text-lg font-semibold text-center uppercase text-white hover:text-yellow-300 transition-colors"
+								className={`${dark?"text-white":"text-slate-800"} text-lg font-semibold text-center uppercase text-white hover:text-yellow-300 transition-colors"`}
 								onClick={() => setIsOpen(false)} // Close menu on click
 							>
 								{item.tab}
 							</Link>
 						))}
 
-						<div>
-							{/* <SignedOut>
-								<SignInButton />
-							</SignedOut> */}
+					
+							
 
 							<SignedIn>
-							<button
-								onClick={() => {
-									navigate("/cheats");
-									setIsOpen(false);
-								}}
-								className="bg-yellow-400 px-6 py-2 rounded text-purple-900 hover:bg-yellow-300 font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-							>
-								Start Coding
-							</button>
+								<button
+									onClick={() => {
+										navigate("/cheats");
+										setIsOpen(false);
+									}}
+									className="bg-yellow-400 px-6 py-2 rounded text-purple-900 hover:bg-yellow-300 font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+								>
+									Start Coding
+								</button>
 							</SignedIn>
-						</div>
+						
 					</motion.div>
 				)}
 			</nav>

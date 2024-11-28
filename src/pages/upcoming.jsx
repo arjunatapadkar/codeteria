@@ -5,12 +5,15 @@ import logo from "../assets/logo.svg";
 import { useNavigate } from "react-router-dom";
 
 import Navbarm from "../components/landing page/Navbarm";
+import MainNavbar from "../components/MainNavbar";
+import { useAPI } from "../context/apiContext";
 
 const Upcoming = () => {
   const navigate = useNavigate();
+  const {dark} = useAPI()
   return (
-    <div className=" bg-[#3A1C71] text-white h-full">
-      <Navbarm />
+    <div className={` ${dark? "bg-slate-900 text-slate-200": "bg-white text-slate-700"}  h-full`}>
+      <MainNavbar />
 
       <div className="relative h-[600px] overflow-hidden ">
         <img
@@ -23,7 +26,7 @@ const Upcoming = () => {
 
           <p className=" text-xl">Stay ahead with Codeteria updates</p>
           <button
-            className="bg-[#FACC15] hover:bg-[#b1972f] px-8 text-lg py-1 text-white rounded-full"
+            className="bg-[#FACC15] hover:bg-[#b1972f] px-8 text-lg py-1  rounded-full"
             onClick={() => navigate(-1)}
           >
             Back
