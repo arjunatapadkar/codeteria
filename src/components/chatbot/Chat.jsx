@@ -94,7 +94,7 @@ const Chat = () => {
           {isWebchatOpen && (
   <div
     ref={webchatRef}
-    className={`absolute bottom-20 right-0 h-[400px] w-[300px] bg-white shadow-lg rounded-lg overflow-hidden`}
+    className={`absolute bottom-20 right-0 h-[80vh] w-[95vw] bg-white shadow-lg rounded-lg overflow-hidden`}
   >
     <Webchat />
   </div>
