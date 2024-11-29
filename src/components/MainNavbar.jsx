@@ -136,7 +136,7 @@ const MainNavbar = () => {
 							<Link
 								key={index}
 								to={item.page}
-								className={`${dark?"text-white":"text-slate-800"} text-lg font-semibold text-center uppercase text-white hover:text-yellow-300 transition-colors"`}
+								className={`${dark?"text-white":"text-slate-800"} text-lg font-semibold text-center uppercase  hover:text-yellow-300 transition-colors"`}
 								onClick={() => setIsOpen(false)} // Close menu on click
 							>
 								{item.tab}
