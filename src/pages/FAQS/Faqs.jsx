@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import MainNavbar from "../../components/MainNavbar";
 import Footer from "../../components/core/Footer";
+import { useAPI } from "../../context/apiContext";
 // import Contact from "../../components/Contact";
 
 const faqsData = [
@@ -49,12 +50,11 @@ const faqsData = [
   
 
 const Faqs = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
+  const {dark} = useAPI();
 
   return (
-    <motion.div className="min-h-screen text-white bg-purple-900 bg-opacity-50 relative">
+    <motion.div className={`${dark ? "bg-slate-900 text-white" : "bg-white text-slate-900" } min-h-screen   relative`}>
       <MainNavbar />
       <main className="container mx-auto px-5 lg:px-36 py-12">
         <motion.section
@@ -74,9 +74,9 @@ const Faqs = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           {faqsData.map((faq, index) => (
-            <div key={index} className="bg-purple-800 bg-opacity-70 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+            <div key={index} className={`${dark? "bg-slate-800" :"bg-slate-50"} bg-opacity-70 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105`}>
               <h2 className="text-xl font-semibold">{faq.question}</h2>
-              <p className="mt-2 text-gray-300">{faq.answer}</p>
+              <p className="mt-2 opacity-70 ">{faq.answer}</p>
             </div>
           ))}
         </motion.section>
