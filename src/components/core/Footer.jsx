@@ -87,7 +87,7 @@ const Footer = () => {
                 <i className="fab fa-twitter p-2 border border-white rounded-full"></i>
               </a>
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/arjun.atp"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="m-2 hover:scale-125 transform transition-transform duration-200 hover:text-yellow-400"
@@ -95,7 +95,7 @@ const Footer = () => {
                 <i className="fab fa-instagram p-2 border border-white rounded-full"></i>
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/arjunatapadkar"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="m-2 hover:scale-125 transform transition-transform duration-200 hover:text-yellow-400"

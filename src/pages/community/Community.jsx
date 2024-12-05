@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import MainNavbar from "../../components/MainNavbar";
 import Footer from "../../components/core/Footer";
+import { useAPI } from "../../context/apiContext";
 
 const communitySections = [
   {
@@ -27,22 +28,22 @@ const communitySections = [
 ];
 
 const Community = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
+  const {dark} = useAPI();
+  
 
   return (
-    <motion.div className="min-h-screen text-gold bg-dark-purple relative">
+    <motion.div className={`${dark? "bg-black text-white" : "bg-white text-black"} min-h-screen  relative`}>
       <MainNavbar />
-      <main className="container mx-auto px-5 lg:px-36 py-12">
+      <main className=" mx-auto px-5 lg:px-36 py-12">
         <motion.section
           className="text-center mb-20"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gold">Connect, Collaborate, Create</h1>
-          <p className="text-xl md:text-2xl mb-10 text-gold-light">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 ">Connect, Collaborate, Create</h1>
+          <p className="text-xl md:text-2xl mb-10">
             Join Codeteria's community to learn, connect, and grow your coding skills.
           </p>
         </motion.section>
@@ -56,13 +57,13 @@ const Community = () => {
           {communitySections.map((section, index) => (
             <motion.div
               key={index}
-              className="bg-dark-purple-light text-gold p-6 rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+              className=" p-6 rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
               <h2 className="text-2xl font-semibold mb-4">{section.title}</h2>
-              <p className="text-gold-light">{section.description}</p>
+              <p className="">{section.description}</p>
               {section.comingSoon && (
                 <p className="text-yellow-500 mt-4">Coming Soon!</p>
               )}
@@ -70,7 +71,7 @@ const Community = () => {
           ))}
         </motion.section>
       </main>
-      <Footer bg={"#1E2128"} text={"white"} />
+      <Footer />
     </motion.div>
   );
 };
