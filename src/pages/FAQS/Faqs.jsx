@@ -54,7 +54,7 @@ const Faqs = () => {
   const {dark} = useAPI();
 
   return (
-    <motion.div className={`${dark ? "bg-slate-900 text-white" : "bg-white text-slate-900" } min-h-screen   relative`}>
+    <motion.div className={`${dark ? " text-white" : "bg-white text-slate-900" } min-h-screen   relative`}>
       <MainNavbar />
       <main className="container mx-auto px-5 lg:px-36 py-12">
         <motion.section

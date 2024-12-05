@@ -12,6 +12,7 @@ import * as clipboard from "clipboard-polyfill";
 import { FaCopy } from "react-icons/fa";
 import { IoMdDownload } from "react-icons/io";
 import { FaRegShareFromSquare } from "react-icons/fa6";
+import { useAPI } from "../../context/apiContext";
 
 const JUDGE0_API_KEY = import.meta.env.VITE_JUDGE0_API_KEY;
 
@@ -53,6 +54,7 @@ const Playground = () => {
   const [languageExtension, setLanguageExtension] = useState(null);
   const [filteredLanguage, setFilteredLanguage] = useState(languages);
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
+  const {dark} = useAPI()
 
   useEffect(() => {
     const fetchLanguages = async () => {
@@ -393,7 +395,7 @@ const Playground = () => {
 
 	return (
 		<motion.div
-			className="min-h-screen  bg-gradient-to-br from-[#151B23] to-[#151B23] text-white"
+			className={`${dark ? "bg-[#151B23] text-white" : "bg-slate-300 text-black" } min-h-screen   `}
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{ duration: 0.8 }}
@@ -501,7 +503,7 @@ const Playground = () => {
 					<div className="relative">
 						<button
 							onClick={() => setIsShareDialogOpen((prev) => !prev)}
-							className="flex items-center px-4 py-2 rounded-md text-sm font-medium bg-[#4A3B5D] hover:bg-[#5A4B6D]"
+							className="flex items-center px-4 py-2 text-white rounded-md text-sm font-medium bg-[#4A3B5D] hover:bg-[#5A4B6D]"
 						>
 							Share Snippet
 							<FaRegShareFromSquare className="ml-2 h-4 w-4" />
@@ -531,21 +533,22 @@ const Playground = () => {
                                 height="589px"
                                 extensions={languageExtension ? [languageExtension] : []}
                                 onChange={(value) => setCode(value)}
-                                className="rounded-lg text-white"
+                                className={`${dark ? "text-white" : " text-black"} rounded-lg `}
                                 placeholder="Enter your program code here..."
-                                theme="dark"
+                                theme={dark ? "dark" : "light"}
                             />
                         </div>
                     </div>
-                    <div className="space-y-4 w-full flex flex-col md:w-1/3 px-1 h-fit">
+                    <div className=" w-full flex flex-col md:w-1/3 px-1 h-fit">
                         <textarea
-                            className="w-full p-4 bg-[#151B23] border-b h-[200px] text-white resize-none focus:outline-none placeholder:text-white/50"
+                            className={`${dark ? "bg-[#151B23] text-white" :"bg-white"} w-full p-4   h-[200px]  resize-none focus:outline-none rounded-lg `}
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             placeholder="Enter your program input here..."
                         />
+						<hr className="mb-1 mt-1" />
                         <div 
-                            className="w-full h-[360px] p-4 rounded-lg overflow-auto text-white  font-mono"
+                            className={`${dark? "text-white " : " bg-white"} w-full h-[350px] p-4 rounded-lg overflow-auto font-semibold `}
                             dangerouslySetInnerHTML={{ __html: output || "Your output will appear here..." }}
                         />
                     </div>

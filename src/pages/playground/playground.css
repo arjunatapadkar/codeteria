@@ -1,12 +1,12 @@
 /* Custom CodeMirror Styles */
 .cm-editor {
-  background-color: #0D1117; /* Light gray background */
+  /* background-color: #0D1117; Light gray background */
   font-family: 'Courier New', Courier, monospace;
 }
 
 .cm-content {
   padding: 10px;
-  color: white; /* Change the text color */
+  
 }
 
 .cm-gutters {

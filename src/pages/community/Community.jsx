@@ -33,7 +33,7 @@ const Community = () => {
   
 
   return (
-    <motion.div className={`${dark? "bg-black text-white" : "bg-white text-black"} min-h-screen  relative`}>
+    <motion.div className={`${dark? " text-white" : "bg-white text-black"} min-h-screen  relative`}>
       <MainNavbar />
       <main className=" mx-auto px-5 lg:px-36 py-12">
         <motion.section
