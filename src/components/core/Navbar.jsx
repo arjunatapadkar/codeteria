@@ -8,8 +8,8 @@ const Navbar = ({ cheats }) => {
 	if (!cheats) return <Loading/>;
 
 	return (
-		<div className="w-full">
-			<div className="navbar  overflow-x-scroll no-scrollbar  flex gap-10   px-20 py-5">
+		<div className="w-full lg:fixed lg:top-20 lg:w-96 lg:max-h-[90vh] overflow-scroll">
+			<div className="navbar  overflow-x-scroll no-scrollbar  lg:flex-col flex gap-10   px-20 py-5">
 				{cheats.map((cheat, index) => (
 					<div
 						key={index}
