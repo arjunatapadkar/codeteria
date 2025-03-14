@@ -35,7 +35,7 @@ const Cheatsheet = () => {
 				} min-h-screen  pt-16`}
 			>
 				<Navbarm />
-				<div className="lg:flex">
+				<div className="flex-col">
 					<Navbar cheats={cheats} />
 
 					{currentCheatData && (
