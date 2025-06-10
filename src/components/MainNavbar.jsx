@@ -7,12 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 import { useState } from "react";
-import {
-	SignedIn,
-	SignedOut,
-	SignInButton,
-	UserButton,
-} from "@clerk/clerk-react";
+
 import { useAPI } from "../context/apiContext";
 
 const MainNavbar = () => {
@@ -88,11 +83,11 @@ const MainNavbar = () => {
 					</motion.div>
 
 					<div className="flex gap-2">
-						<SignedOut>
+						{/* <SignedOut>
 							<SignInButton className={`${dark?"":"text-black border-black"} border px-3 text-xs lg:text-lg lg:px-5 lg:py-2 rounded-lg`} />
-						</SignedOut>
+						</SignedOut> */}
 
-						<SignedIn>
+						
 							{/* Start Coding Button */}
 							<motion.div
 								initial={{ opacity: 0, x: 50 }}
@@ -108,8 +103,8 @@ const MainNavbar = () => {
 									Start Coding
 								</button>
 							</motion.div>
-							<UserButton userProfileMode="modal" />
-						</SignedIn>
+							{/* <UserButton userProfileMode="modal" /> */}
+						
 						<div className="flex items-center justify-center cursor-pointer">
 							{dark ? (
 								<MdOutlineLightMode size={30} onClick={() => setDark(!dark)} />
@@ -146,7 +141,7 @@ const MainNavbar = () => {
 					
 							
 
-							<SignedIn>
+						
 								<button
 									onClick={() => {
 										navigate("/cheats");
@@ -156,7 +151,7 @@ const MainNavbar = () => {
 								>
 									Start Coding
 								</button>
-							</SignedIn>
+							
 						
 					</motion.div>
 				)}
