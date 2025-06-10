@@ -202,7 +202,7 @@ const Homepage = () => {
 					animate={{ opacity: 1, scale: 1 }}
 					transition={{ duration: 0.8, delay: 0.4 }}
 				>
-					<div
+				    <div
 						className={`${
 							dark
 								? "bg-slate-800 border text-slate-400 border-slate-600"

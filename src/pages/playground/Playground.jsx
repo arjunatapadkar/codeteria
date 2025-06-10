@@ -204,6 +204,7 @@ const Playground = () => {
                 outputContent = "No output generated.";
             }
 
+			console.log(result)
             // Create metrics HTML if execution was successful
             if (result.status.id === 3) {
                 const metrics = {
