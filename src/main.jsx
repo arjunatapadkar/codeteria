@@ -4,10 +4,10 @@ import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { APIProvider } from "./context/apiContext.jsx";
-import { ClerkProvider } from '@clerk/clerk-react'
+
 
 // Import your publishable key
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const 
 
 if (!PUBLISHABLE_KEY) {
 	throw new Error("Missing Publishable Key");
@@ -16,9 +16,8 @@ if (!PUBLISHABLE_KEY) {
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<BrowserRouter>
 		<APIProvider>
-			<ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
-				<App />
-			</ClerkProvider>
+			<App />
+			
 		</APIProvider>
 	</BrowserRouter>
 );
