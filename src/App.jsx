@@ -21,7 +21,7 @@ import Faqs from "./pages/FAQS/Faqs";
 import Quiz from "./pages/quizzes/Quiz";
 
 
-import { SignedIn } from "@clerk/clerk-react";
+//import { SignedIn } from "@clerk/clerk-react";
 
 const App = () => {
 	const { dark } = useAPI();
@@ -54,13 +54,13 @@ const App = () => {
 
 					<Route path="*" element={<ErrorPage />} />
 
-					<Route path="/cheats" element={<SignedIn><Cheatsheet /></SignedIn>} />
-					<Route path="/interview" element={<SignedIn><InterviewPrep /></SignedIn>} />
-					<Route path="/machinecoding" element={<SignedIn><MachineCoding /></SignedIn>} />
-					<Route path="/dsproblem" element={<SignedIn><DSProblem /></SignedIn>} />
-					<Route path="/Quizzes" element={<SignedIn><Quiz /></SignedIn>} />
-					<Route path="/challenge/:id" element={<SignedIn><ChallengeDetail /></SignedIn>} />
-					<Route path="/product" element={<SignedIn><Product /></SignedIn>} />
+					<Route path="/cheats" element={<Cheatsheet />} />
+					<Route path="/interview" element={<InterviewPrep />} />
+					<Route path="/machinecoding" element={<MachineCoding />} />
+					<Route path="/dsproblem" element={<DSProblem />} />
+					<Route path="/Quizzes" element={<Quiz />} />
+					<Route path="/challenge/:id" element={<ChallengeDetail />} />
+					<Route path="/product" element={<Product />} />
 				</Routes>
 			</div>
 
