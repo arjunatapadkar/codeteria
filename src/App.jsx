@@ -21,7 +21,6 @@ import Faqs from "./pages/FAQS/Faqs";
 import Quiz from "./pages/quizzes/Quiz";
 
 
-//import { SignedIn } from "@clerk/clerk-react";
 
 const App = () => {
 	const { dark } = useAPI();
